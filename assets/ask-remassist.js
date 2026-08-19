@@ -32,7 +32,7 @@
 
   /* Every link the assistant can hand out, in one table. */
   var P = {
-    home:       'Home.dc.html',
+    home:       'index.html',
     cs:         'Customer Service Agents.dc.html',
     gtm:        'GTM Teams.dc.html',
     sdr:        'SDR as a Service.dc.html',
@@ -40,11 +40,11 @@
     pricing:    'Pricing.dc.html',
     privacy:    'Privacy Policy.dc.html',
     terms:      'https://remassistance.com/terms-of-service/',
-    faq:        'Home.dc.html#faq',
+    faq:        'index.html#faq',
     /* The on-page testimonials section was removed, so review links go to the
        Trustpilot profile rather than a dead anchor. */
-    certs:      'Home.dc.html#certifications',
-    quiz:       'Home.dc.html#fit-finder',
+    certs:      'index.html#certifications',
+    quiz:       'index.html#fit-finder',
     trustpilot: 'https://www.trustpilot.com/review/remassistance.com',
     book:       CALENDLY
   };

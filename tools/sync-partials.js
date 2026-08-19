@@ -56,9 +56,14 @@ function indentOf(src, i) {
   return m ? m[0] : '';
 }
 
-const pages = fs.readdirSync(ROOT).filter((f) => f.endsWith('.dc.html')).sort();
+/* index.html is the deployed homepage (Vercel serves / from it), so it no
+   longer carries the .dc.html suffix the other artboards use — match it by
+   name as well or the homepage silently stops receiving partial updates. */
+const isPage = (f) => f.endsWith('.dc.html') || f === 'index.html';
+
+const pages = fs.readdirSync(ROOT).filter(isPage).sort();
 if (!pages.length) {
-  console.error('no .dc.html pages found in ' + ROOT);
+  console.error('no pages found in ' + ROOT);
   process.exit(1);
 }
 
