@@ -1,0 +1,9 @@
+# Separate repository — lives at github.com/Hakevesc/RemAssistance
+RemAssistance/
+
+# Playwright MCP scratch output
+.playwright-mcp/
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
