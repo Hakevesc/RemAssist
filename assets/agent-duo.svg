@@ -66,8 +66,8 @@
     <g class="rem-front">
       <path d="M222 430V290c0-38 30-68 68-68s68 30 68 68v140z" fill="url(#uniFront)"></path>
       <path d="M270 229l20 36 20-36" fill="none" stroke="#C3D5F0" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"></path>
-      <path d="M290 265v34" fill="none" stroke="#079BE0" stroke-width="5" stroke-linecap="round"></path>
-      <rect x="277" y="299" width="26" height="34" rx="5" fill="#079BE0"></rect>
+      <path d="M290 265v34" fill="none" stroke="#518DE0" stroke-width="5" stroke-linecap="round"></path>
+      <rect x="277" y="299" width="26" height="34" rx="5" fill="#518DE0"></rect>
       <rect x="283" y="307" width="14" height="4" rx="2" fill="#BFE0FF"></rect>
       <rect x="283" y="315" width="14" height="4" rx="2" fill="#BFE0FF"></rect>
       <path d="M222 430v-120c-16 10-26 28-26 48v72z" fill="#E7EFFB"></path>

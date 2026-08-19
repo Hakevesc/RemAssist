@@ -633,7 +633,7 @@
   }
 
   /* ---- Styles ----------------------------------------------------------- */
-  var NAVY = '#000543', BLUE = '#079be0', SKY = '#34bdf0', WA = '#25d366';
+  var NAVY = '#000543', BLUE = '#518de0', SKY = '#34bdf0', WA = '#25d366';
 
   var CSS = [
     '#rem-ask,#rem-ask *{box-sizing:border-box}',
@@ -735,7 +735,7 @@
     '.rem-ask-form label{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#667180;margin:10px 0 4px}',
     '.rem-ask-form input,.rem-ask-form textarea{width:100%;padding:9px 11px;border:1px solid #dbe1ea;border-radius:10px;font-family:inherit;font-size:13px;color:' + NAVY + ';background:#fbfcfe;transition:border-color .15s,box-shadow .15s}',
     '.rem-ask-form textarea{min-height:74px;resize:vertical}',
-    '.rem-ask-form input:focus,.rem-ask-form textarea:focus{outline:0;border-color:' + BLUE + ';box-shadow:0 0 0 3px rgba(7,155,224,.14)}',
+    '.rem-ask-form input:focus,.rem-ask-form textarea:focus{outline:0;border-color:' + BLUE + ';box-shadow:0 0 0 3px rgba(81,141,224,.14)}',
     '.rem-ask-form .err{color:#b42318;font-size:11.5px;margin-top:6px;display:none}',
     '.rem-ask-form .err.on{display:block}',
     '.rem-ask-form .fine{margin-top:10px;font-size:10.5px;line-height:1.5;color:#8892a4}',
@@ -755,7 +755,7 @@
     '#rem-ask-input::-webkit-scrollbar{width:6px}',
     '#rem-ask-input::-webkit-scrollbar-button{display:none}',
     '#rem-ask-input::-webkit-scrollbar-thumb{background:#d7dde8;border-radius:6px}',
-    '#rem-ask-input:focus{outline:0;border-color:' + BLUE + ';background:#fff;box-shadow:0 0 0 3px rgba(7,155,224,.13)}',
+    '#rem-ask-input:focus{outline:0;border-color:' + BLUE + ';background:#fff;box-shadow:0 0 0 3px rgba(81,141,224,.13)}',
     '#rem-ask-submit{width:42px;height:42px;flex:none;display:grid;place-items:center;border:0;border-radius:50%;background:' + BLUE + ';color:#fff;cursor:pointer;transition:background .15s,transform .15s}',
     '#rem-ask-submit:hover{background:#0070d8;transform:scale(1.05)}',
     '#rem-ask-submit:disabled{background:#c8d2e0;cursor:default;transform:none}',
