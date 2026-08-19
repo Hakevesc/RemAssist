@@ -344,6 +344,8 @@
   .dc-team-faces { display: flex; align-items: center; }
   .dc-team-face { display: block; width: 64px; height: 64px; border-radius: 50%; overflow: hidden; position: relative;
     border: 3px solid #fff; box-shadow: 0 0 0 2px rgba(0, 133, 254, 0.55); background: var(--blue-50); }
+  .dc-team-face img { width: 100%; height: 100%; display: block; object-fit: cover;
+    object-position: 50% 22%; filter: grayscale(1); }
   .dc-team-face + .dc-team-face { margin-left: -16px; }
   .dc-team-face:nth-child(1) { z-index: 3; }
   .dc-team-face:nth-child(2) { z-index: 2; }
@@ -754,7 +756,7 @@
         <span class="dc-team-rail" aria-hidden="true"></span>
         <span class="dc-team-num">01</span>
         <span class="dc-team-rail" aria-hidden="true"></span>
-        <span class="dc-team-faces"><span class="dc-team-face"><x-import component-from-global-scope="image-slot" from="./assets/image-slot.js" id="agent-cs-1" shape="circle" placeholder="CS 1" hint-size="64px,64px" style="width:64px;height:64px"></x-import></span><span class="dc-team-face"><x-import component-from-global-scope="image-slot" from="./assets/image-slot.js" id="agent-cs-2" shape="circle" placeholder="CS 2" hint-size="64px,64px" style="width:64px;height:64px"></x-import></span><span class="dc-team-face"><x-import component-from-global-scope="image-slot" from="./assets/image-slot.js" id="agent-cs-3" shape="circle" placeholder="CS 3" hint-size="64px,64px" style="width:64px;height:64px"></x-import></span></span>
+        <span class="dc-team-faces" aria-hidden="true"><span class="dc-team-face"><img src="assets/images/Agents/cs-1.jpg" alt="" loading="lazy" decoding="async"></span><span class="dc-team-face"><img src="assets/images/Agents/cs-2.jpg" alt="" loading="lazy" decoding="async"></span><span class="dc-team-face"><img src="assets/images/Agents/cs-3.jpg" alt="" loading="lazy" decoding="async"></span></span>
         <span>
           <span class="dc-team-title">Virtual Back Office Team</span>
           <span class="dc-team-desc">Product experts, software experts, account admins, email and chat admins, bookkeepers, data-entry and order-processing clerks — the seats that keep operations running behind the front line.</span>
@@ -768,7 +770,7 @@
         <span class="dc-team-rail" aria-hidden="true"></span>
         <span class="dc-team-num">02</span>
         <span class="dc-team-rail" aria-hidden="true"></span>
-        <span class="dc-team-faces"><span class="dc-team-face"><x-import component-from-global-scope="image-slot" from="./assets/image-slot.js" id="agent-gtm-1" shape="circle" placeholder="GTM 1" hint-size="64px,64px" style="width:64px;height:64px"></x-import></span><span class="dc-team-face"><x-import component-from-global-scope="image-slot" from="./assets/image-slot.js" id="agent-gtm-2" shape="circle" placeholder="GTM 2" hint-size="64px,64px" style="width:64px;height:64px"></x-import></span><span class="dc-team-face"><x-import component-from-global-scope="image-slot" from="./assets/image-slot.js" id="agent-gtm-3" shape="circle" placeholder="GTM 3" hint-size="64px,64px" style="width:64px;height:64px"></x-import></span></span>
+        <span class="dc-team-faces" aria-hidden="true"><span class="dc-team-face"><img src="assets/images/Agents/gtm-1.jpg" alt="" loading="lazy" decoding="async"></span><span class="dc-team-face"><img src="assets/images/Agents/gtm-2.jpg" alt="" loading="lazy" decoding="async"></span><span class="dc-team-face"><img src="assets/images/Agents/gtm-3.jpg" alt="" loading="lazy" decoding="async"></span></span>
         <span>
           <span class="dc-team-title">GTM Teams</span>
           <span class="dc-team-desc">Marketing ops managers, CRM and automation admins, content and campaign coordinators, lifecycle email specialists, RevOps analysts — a full go-to-market motion hired as one unit.</span>
@@ -782,7 +784,7 @@
         <span class="dc-team-rail" aria-hidden="true"></span>
         <span class="dc-team-num">03</span>
         <span class="dc-team-rail" aria-hidden="true"></span>
-        <span class="dc-team-faces"><span class="dc-team-face"><x-import component-from-global-scope="image-slot" from="./assets/image-slot.js" id="agent-sdr-1" shape="circle" placeholder="SDR 1" hint-size="64px,64px" style="width:64px;height:64px"></x-import></span><span class="dc-team-face"><x-import component-from-global-scope="image-slot" from="./assets/image-slot.js" id="agent-sdr-2" shape="circle" placeholder="SDR 2" hint-size="64px,64px" style="width:64px;height:64px"></x-import></span><span class="dc-team-face"><x-import component-from-global-scope="image-slot" from="./assets/image-slot.js" id="agent-sdr-3" shape="circle" placeholder="SDR 3" hint-size="64px,64px" style="width:64px;height:64px"></x-import></span></span>
+        <span class="dc-team-faces" aria-hidden="true"><span class="dc-team-face"><img src="assets/images/Agents/sdr-1.jpg" alt="" loading="lazy" decoding="async"></span><span class="dc-team-face"><img src="assets/images/Agents/sdr-2.jpg" alt="" loading="lazy" decoding="async"></span><span class="dc-team-face"><img src="assets/images/Agents/sdr-3.jpg" alt="" loading="lazy" decoding="async"></span></span>
         <span>
           <span class="dc-team-title">SDR as a Service</span>
           <span class="dc-team-desc">Outbound SDRs, list builders and data researchers, cold callers, LinkedIn and email sequencers, appointment setters — the full pipeline engine from ICP to booked meeting.</span>
