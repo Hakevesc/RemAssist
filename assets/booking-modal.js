@@ -26,7 +26,7 @@
     { src: 'assets/images/ISO_27001-2022.svg', alt: 'ISO 27001:2022 certified',
       top: 'Certified', bottom: 'ISO 27001:2022' }
   ];
-  var BRAND = '0085fe';
+  var BRAND = '079be0';
 
   /* The four ribbon paths of the Rem mark — same artwork the page loader
      animates. Used here as a looping watermark. */

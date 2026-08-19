@@ -28,8 +28,8 @@
     <!-- headset -->
     <path d="M60 90a40 40 0 0 1 80 0" fill="none" stroke="#F4F8FF" stroke-width="8" stroke-linecap="round"></path>
     <path d="M62 90a38 38 0 0 1 76 0" fill="none" stroke="#0E2A67" stroke-width="4" stroke-linecap="round"></path>
-    <rect x="49" y="76" width="19" height="31" rx="9" fill="#0085FE"></rect>
-    <rect x="132" y="76" width="19" height="31" rx="9" fill="#0085FE"></rect>
+    <rect x="49" y="76" width="19" height="31" rx="9" fill="#079BE0"></rect>
+    <rect x="132" y="76" width="19" height="31" rx="9" fill="#079BE0"></rect>
 
     <!-- mic boom -->
     <path d="M60 107c0 15 8 26 20 29" fill="none" stroke="#0E2A67" stroke-width="5" stroke-linecap="round"></path>
