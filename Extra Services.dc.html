@@ -13,20 +13,269 @@
   html, body { margin: 0; padding: 0; background: var(--bg-marketing-paper); color: var(--ink-900); font-family: var(--font-sans); }
   a { color: var(--fg-link); }
   a:hover { color: var(--blue-700); }
+
+  /* ---------- services directory ---------- */
+  .xs-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .xs-eyebrow { margin: 0 0 14px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--brand-blue); }
+  .xs-h1 { margin: 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.025em;
+    line-height: 1.08; font-size: clamp(34px, 4.4vw, 54px); color: var(--brand-navy); max-width: 24ch; }
+  .xs-h1 span { color: var(--brand-blue); }
+  .xs-lede { margin: 18px 0 0; font-size: 17.5px; line-height: 1.7; color: var(--ink-600); max-width: 58ch; }
+
+  .xs-nav { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 30px; }
+  .xs-nav a { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: 999px;
+    background: #fff; border: 1px solid var(--border-default); box-shadow: var(--shadow-xs);
+    font-size: 13.5px; font-weight: 600; color: var(--brand-navy); text-decoration: none;
+    transition: border-color 150ms, box-shadow 150ms, transform 150ms; }
+  .xs-nav a:hover { border-color: var(--brand-blue); color: var(--brand-navy);
+    box-shadow: 0 6px 14px -6px rgba(81, 141, 224, 0.5); transform: translateY(-1px); }
+  .xs-nav a span { font-family: var(--font-mono); font-size: 11px; color: var(--ink-500); }
+
+  .xs-cat { padding: 58px 0; border-top: 1px solid var(--border-default); background: var(--bg-marketing-paper); }
+  .xs-cat:nth-of-type(even) { background: #fff; }
+  /* anchor targets clear the sticky 72px header */
+  .xs-cat { scroll-margin-top: 88px; }
+  .xs-cat-head { display: flex; align-items: flex-start; gap: 16px; }
+  .xs-cat-ico { flex: none; width: 48px; height: 48px; border-radius: 13px;
+    background: rgba(81, 141, 224, 0.10); display: grid; place-items: center; }
+  .xs-cat-ico svg { width: 24px; height: 24px; fill: none; stroke: var(--brand-blue);
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .xs-cat-head h2 { margin: 0; font-family: var(--font-display); font-size: clamp(23px, 2.4vw, 30px);
+    font-weight: 700; letter-spacing: -0.02em; color: var(--brand-navy); line-height: 1.2; }
+  .xs-cat-head p { margin: 6px 0 0; font-size: 15.5px; line-height: 1.6; color: var(--ink-600); max-width: 60ch; }
+
+  .xs-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 30px; }
+  .xs-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--border-default);
+    border-radius: 14px; padding: 22px 22px 20px;
+    transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out), border-color 180ms; }
+  .xs-cat:nth-of-type(even) .xs-card { background: var(--bg-marketing-paper); }
+  .xs-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md);
+    border-color: rgba(81, 141, 224, 0.45); }
+  .xs-card h3 { margin: 0 0 8px; font-size: 16.5px; font-weight: 700; color: var(--brand-navy); line-height: 1.32; }
+  .xs-card p { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--ink-600); }
+  .xs-more { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px;
+    font-size: 13.5px; font-weight: 600; color: var(--brand-blue); text-decoration: none; }
+  .xs-more svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2.2;
+    stroke-linecap: round; stroke-linejoin: round; transition: transform 150ms; }
+  .xs-more:hover svg { transform: translateX(3px); }
+
+  @media (max-width: 1024px) {
+    .xs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 680px) {
+    .xs-cat { padding: 44px 0; }
+    .xs-grid { grid-template-columns: 1fr; }
+    .xs-nav a { font-size: 13px; padding: 8px 13px; }
+  }
 </style>
 </helmet>
 
 <!-- @shared:header — generated from partials/header.html by tools/sync-partials.js. Edit the partial, not this block. -->
-<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--border-default)">
-  <div style="width:100%;max-width:1200px;box-sizing:border-box;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;gap:32px">
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border-default)">
+  <!-- The mega-menu needs real CSS (:hover / :focus-within cannot be expressed
+       inline), so the styles live here in the partial and travel with it to every
+       page via tools/sync-partials.js. Hover opens it for pointers, focus-within
+       opens it for keyboards, so it is reachable by Tab with no JavaScript. -->
+  <style>
+    .nav-row { display: flex; gap: 26px; margin-left: auto; align-items: center; }
+    .nav-link { color: var(--ink-700); font-size: 15px; font-weight: 500; text-decoration: none;
+      transition: color 150ms; white-space: nowrap; }
+    .nav-link:hover, .nav-link:focus-visible { color: var(--brand-blue); }
+    .nav-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--brand-blue);
+      color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; padding: 10px 20px;
+      border-radius: 6px; transition: background 150ms; white-space: nowrap; }
+    .nav-cta:hover { background: var(--blue-700); color: #fff; }
+
+    .nav-has-menu { position: static; display: flex; align-items: center; }
+    .nav-has-menu > .nav-link { display: inline-flex; align-items: center; gap: 6px; }
+    .nav-caret { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.2;
+      stroke-linecap: round; stroke-linejoin: round; transition: transform 180ms; }
+    .nav-has-menu:hover .nav-caret, .nav-has-menu:focus-within .nav-caret { transform: rotate(180deg); }
+
+    /* Anchored to the header, not the link, so a panel this wide can centre in the
+       viewport instead of hanging off the right edge. */
+    .nav-mega { position: absolute; top: 100%; left: 50%; margin-top: 8px;
+      width: min(1030px, calc(100vw - 40px));
+      transform: translateX(-50%) translateY(6px);
+      padding: 22px; border-radius: 20px; background: #fff; box-sizing: border-box;
+      border: 1px solid var(--border-default); box-shadow: 0 40px 80px -28px rgba(0, 5, 67, 0.38);
+      display: grid; grid-template-columns: 1.05fr 1.05fr 0.9fr; gap: 20px;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 170ms ease, transform 170ms ease, visibility 170ms; }
+    /* bridges the 8px gap so the panel does not close as the pointer crosses it */
+    .nav-has-menu::after { content: ""; position: absolute; top: 100%; left: 0; right: 0; height: 12px; }
+    .nav-has-menu:hover .nav-mega, .nav-has-menu:focus-within .nav-mega {
+      opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+
+    .nav-colhead { display: block; font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-500); margin: 2px 0 10px 2px; }
+    .nav-box { display: block; border: 1px solid var(--border-default); border-radius: 14px; padding: 6px; }
+
+    .nav-item { display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 11px;
+      padding: 8px 9px; border-radius: 10px; text-decoration: none;
+      transition: background 130ms; }
+    .nav-item:hover, .nav-item:focus-visible { background: rgba(81, 141, 224, 0.09); }
+    .nav-ico { width: 34px; height: 34px; border-radius: 9px; background: rgba(81, 141, 224, 0.11);
+      display: grid; place-items: center; }
+    .nav-ico svg { width: 17px; height: 17px; fill: none; stroke: var(--brand-blue); stroke-width: 1.9;
+      stroke-linecap: round; stroke-linejoin: round; }
+    .nav-item b { display: block; font-size: 13.5px; font-weight: 700; color: var(--brand-navy);
+      line-height: 1.3; }
+    .nav-item small { display: block; margin-top: 1px; font-size: 11.5px; line-height: 1.35;
+      color: var(--ink-500); }
+    .nav-count { font-family: var(--font-mono); font-size: 11px; color: var(--ink-500);
+      background: var(--bg-marketing-paper); border-radius: 6px; padding: 3px 7px; }
+    .nav-browse { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0 2px;
+      font-size: 13px; font-weight: 600; color: var(--brand-blue); text-decoration: none; }
+    .nav-browse svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.3;
+      stroke-linecap: round; stroke-linejoin: round; transition: transform 150ms; }
+    .nav-browse:hover svg { transform: translateX(3px); }
+
+    .nav-promo { border-radius: 14px; padding: 20px 18px; background: var(--bg-marketing-paper);
+      border: 1px solid var(--border-default); display: flex; flex-direction: column; }
+    .nav-promo h3 { margin: 0; font-family: var(--font-display); font-size: 20px; font-weight: 700;
+      line-height: 1.2; letter-spacing: -0.015em; color: var(--brand-navy); }
+    .nav-promo p { margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--ink-600); }
+    .nav-stat { display: flex; align-items: center; gap: 9px; margin-top: 12px; padding: 9px 11px;
+      background: #fff; border: 1px solid var(--border-default); border-radius: 9px; }
+    .nav-stat b { font-family: var(--font-display); font-size: 15px; color: var(--brand-blue); }
+    .nav-stat span { font-size: 11.5px; color: var(--ink-600); line-height: 1.3; }
+    .nav-promo-cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 14px; background: var(--brand-blue); color: #fff; font-size: 13.5px; font-weight: 600;
+      text-decoration: none; padding: 11px 16px; border-radius: 8px; transition: background 150ms; }
+    .nav-promo-cta:hover { background: var(--blue-700); color: #fff; }
+    .nav-promo-foot { margin-top: 9px; font-size: 11px; color: var(--ink-500); text-align: center; }
+
+    @media (max-width: 1100px) {
+      .nav-row { gap: 18px; }
+      .nav-link { font-size: 14px; }
+      .nav-mega { grid-template-columns: 1fr 1fr; }
+      .nav-promo { grid-column: 1 / -1; }
+    }
+    /* A hover panel is unusable on touch, so below the tablet break Services
+       becomes a plain link to the directory and the anchor items step aside. */
+    @media (max-width: 820px) {
+      .nav-caret, .nav-mega { display: none; }
+      .nav-secondary { display: none; }
+    }
+  </style>
+
+  <div style="width:100%;max-width:1200px;box-sizing:border-box;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;gap:32px;position:relative">
     <a href="index.html" style="display:flex;align-items:center;flex-shrink:0"><img src="assets/images/rem-logo.svg" alt="Rem Assist" style="height:42px;display:block"></a>
-    <nav style="display:flex;gap:24px;margin-left:auto;align-items:center">
-      <a href="Customer Service Agents.dc.html" style="color:var(--ink-700);font-size:15px;font-weight:500;text-decoration:none" style-hover="color:var(--brand-blue)">Customer Service</a>
-      <a href="GTM Teams.dc.html" style="color:var(--ink-700);font-size:15px;font-weight:500;text-decoration:none" style-hover="color:var(--brand-blue)">GTM Teams</a>
-      <a href="SDR as a Service.dc.html" style="color:var(--ink-700);font-size:15px;font-weight:500;text-decoration:none" style-hover="color:var(--brand-blue)">SDR as a Service</a>
-      <a href="Extra Services.dc.html" style="color:var(--ink-700);font-size:15px;font-weight:500;text-decoration:none" style-hover="color:var(--brand-blue)">Extra Services</a>
-      <a href="Pricing.dc.html" style="color:var(--ink-700);font-size:15px;font-weight:500;text-decoration:none" style-hover="color:var(--brand-blue)">Pricing</a>
-      <a href="https://calendly.com/j-zemene-remassistance/new-meeting" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--brand-blue);color:#fff;font-size:15px;font-weight:600;text-decoration:none;padding:10px 20px;border-radius:6px;transition:background 150ms" style-hover="background:var(--blue-700);color:#fff">Book a Call</a>
+
+    <nav class="nav-row" aria-label="Main">
+
+      <span class="nav-has-menu">
+        <a class="nav-link" href="Extra Services.dc.html">Services
+          <svg class="nav-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+
+        <span class="nav-mega">
+
+          <span>
+            <span class="nav-colhead">By function</span>
+            <span class="nav-box">
+              <a class="nav-item" href="Extra Services.dc.html#sales-revenue">
+                <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 17 5-5 4 3 6-7"/><path d="M15 8h4v4"/></svg></span>
+                <span><b>Sales &amp; Revenue</b><small>SDRs, lead gen, cold calling, outreach</small></span>
+                <span class="nav-count">6</span>
+              </a>
+              <a class="nav-item" href="Customer Service Agents.dc.html">
+                <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v-5a8 8 0 0 1 16 0v5"/><path d="M20 18a2 2 0 0 1-2 2h-.8a1.8 1.8 0 0 1-1.8-1.8v-2.4A1.8 1.8 0 0 1 17.2 14H20zM4 18a2 2 0 0 0 2 2h.8a1.8 1.8 0 0 0 1.8-1.8v-2.4A1.8 1.8 0 0 0 6.8 14H4z"/></svg></span>
+                <span><b>Customer Experience</b><small>Voice, chat, email, technical support</small></span>
+                <span class="nav-count">3</span>
+              </a>
+              <a class="nav-item" href="Extra Services.dc.html#finance">
+                <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10h18M6 6h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"/><path d="M9 15h4"/></svg></span>
+                <span><b>Finance &amp; Accounting</b><small>Bookkeeping, AP/AR, payroll</small></span>
+                <span class="nav-count">3</span>
+              </a>
+              <a class="nav-item" href="Virtual Back Office Team.dc.html">
+                <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+                <span><b>Back Office</b><small>Data entry, documents, claims, EAs</small></span>
+                <span class="nav-count">4</span>
+              </a>
+              <a class="nav-item" href="Extra Services.dc.html#managed-it">
+                <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span>
+                <span><b>Managed IT</b><small>Endpoints, help desk, security, cloud</small></span>
+                <span class="nav-count">4</span>
+              </a>
+              <a class="nav-item" href="Extra Services.dc.html#hr-recruiting">
+                <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3 20v-1.4A4.6 4.6 0 0 1 7.6 14h2.8a4.6 4.6 0 0 1 4.6 4.6V20"/><path d="M16.5 4.6a3.4 3.4 0 0 1 0 6.6M21 20v-1.4a4.6 4.6 0 0 0-3.2-4.4"/></svg></span>
+                <span><b>HR &amp; Recruiting</b><small>Sourcing, onboarding, records</small></span>
+                <span class="nav-count">2</span>
+              </a>
+              <a class="nav-item" href="GTM Teams.dc.html">
+                <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4l12 5V5z"/><path d="M16 9a3 3 0 0 1 0 6"/></svg></span>
+                <span><b>Marketing &amp; Content</b><small>GTM pods, SEO, content, research</small></span>
+                <span class="nav-count">4</span>
+              </a>
+              <a class="nav-item" href="Extra Services.dc.html#ai-automation">
+                <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.7 4.4 4.4 1.7-4.4 1.7L12 15.2l-1.7-4.4L5.9 9.1l4.4-1.7z"/><path d="m18.5 15.5.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span>
+                <span><b>AI &amp; Automation</b><small>Workflows, agents, integration</small></span>
+                <span class="nav-count">5</span>
+              </a>
+            </span>
+            <a class="nav-browse" href="Extra Services.dc.html">Browse all 35 services
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </span>
+
+          <span>
+            <span class="nav-colhead">By industry</span>
+            <span class="nav-box">
+              <a class="nav-item" href="Extra Services.dc.html#industry">
+                <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16"/><circle cx="12" cy="12" r="9"/></svg></span>
+                <span><b>Healthcare &amp; Medical</b><small>Coding, claims, denials, A/R recovery</small></span>
+                <span class="nav-count">1</span>
+              </a>
+              <a class="nav-item" href="Extra Services.dc.html#industry">
+                <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6.5V12c0 4.4 3.2 8 8 9 4.8-1 8-4.6 8-9V6.5z"/></svg></span>
+                <span><b>Insurance</b><small>Quoting, policy servicing, renewals</small></span>
+                <span class="nav-count">1</span>
+              </a>
+              <a class="nav-item" href="Extra Services.dc.html#industry">
+                <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M6 8h12M8 8l-3 6h6zM16 8l-3 6h6z"/></svg></span>
+                <span><b>Legal</b><small>Document review, intake, case files</small></span>
+                <span class="nav-count">1</span>
+              </a>
+              <a class="nav-item" href="Extra Services.dc.html#industry">
+                <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></span>
+                <span><b>Logistics &amp; Freight</b><small>Load booking, dispatch, freight billing</small></span>
+                <span class="nav-count">1</span>
+              </a>
+              <a class="nav-item" href="Extra Services.dc.html#customer-experience">
+                <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14l-1.2 12H6.2z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></span>
+                <span><b>E-commerce &amp; Retail</b><small>Orders, tracking, returns, exceptions</small></span>
+                <span class="nav-count">1</span>
+              </a>
+              <a class="nav-item" href="Extra Services.dc.html#managed-it">
+                <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg></span>
+                <span><b>SaaS &amp; Technology</b><small>Tier 1/2 support, onboarding, admin</small></span>
+                <span class="nav-count">1</span>
+              </a>
+            </span>
+            <a class="nav-browse" href="Extra Services.dc.html#industry">Browse industry work
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </span>
+
+          <span class="nav-promo">
+            <h3>Not sure which seat you need?</h3>
+            <p>Answer five questions and we will name the service line, the tier, and a monthly estimate.</p>
+            <span class="nav-stat"><b>$8</b><span>per hour, Pro tier</span></span>
+            <span class="nav-stat"><b>Free</b><span>trial on every engagement</span></span>
+            <a class="nav-promo-cta" href="index.html#fit-finder">Qualify in two minutes
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <span class="nav-promo-foot">No commitment &middot; Nothing signed up front</span>
+          </span>
+
+        </span>
+      </span>
+
+      <a class="nav-link nav-secondary" href="index.html#how-it-works">How it Works</a>
+      <a class="nav-link" href="Pricing.dc.html">Pricing</a>
+      <a class="nav-link nav-secondary" href="index.html#fit-finder">Qualify</a>
+      <a class="nav-cta" href="https://calendly.com/j-zemene-remassistance/new-meeting" target="_blank" rel="noopener">Book a Call</a>
     </nav>
   </div>
 </header>
@@ -35,24 +284,295 @@
 <main data-screen-label="Extra Services">
 
   <!-- HERO -->
-  <section style="background:var(--bg-marketing-paper)">
-    <div style="max-width:1200px;margin:0 auto;padding:80px 24px 56px">
-      <p style="margin:0 0 16px;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--brand-blue)">Extra Services</p>
-      <h1 style="margin:0 0 20px;font-family:var(--font-display);font-size:46px;line-height:1.15;font-weight:700;color:var(--brand-navy);max-width:26ch;text-wrap:balance">The rest of the bench.</h1>
-      <p style="margin:0;font-size:18px;line-height:1.6;color:var(--ink-600);max-width:60ch">Beyond customer service, GTM, and SDR seats, the same tech-adept VAs cover the operational work that keeps a company running. Mix any of these into your team.</p>
+  <section style="background:linear-gradient(180deg,#f7faff 0%,var(--bg-marketing-paper) 70%)">
+    <div class="xs-wrap" style="padding-top:76px;padding-bottom:52px">
+      <p class="xs-eyebrow">Services</p>
+      <h1 class="xs-h1">Everything we staff, <span>in one place.</span></h1>
+      <p class="xs-lede">35 services across 9 practice areas. One trained
+        seat often covers several of these at once &mdash; that is the point. Take a single
+        role, or a whole pod.</p>
+      <nav class="xs-nav" aria-label="Service categories">
+        <a href="#sales-revenue">Sales &amp; Revenue<span>6</span></a>
+        <a href="#customer-experience">Customer Experience<span>3</span></a>
+        <a href="#finance">Finance &amp; Accounting<span>3</span></a>
+        <a href="#back-office">Back Office<span>4</span></a>
+        <a href="#managed-it">Managed IT<span>4</span></a>
+        <a href="#hr-recruiting">HR &amp; Recruiting<span>2</span></a>
+        <a href="#industry">Industry-Specific<span>4</span></a>
+        <a href="#marketing">Marketing &amp; Content<span>4</span></a>
+        <a href="#ai-automation">AI &amp; Automation<span>5</span></a>
+      </nav>
     </div>
   </section>
 
-  <!-- SERVICES GRID -->
-  <section style="background:var(--bg-marketing-paper)">
-    <div style="max-width:1200px;margin:0 auto;padding:0 24px 80px">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
-        <sc-for list="{{ services }}" as="svc" hint-placeholder-count="6">
-          <div style="background:#fff;border:1px solid var(--border-default);border-radius:10px;padding:32px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:10px;transition:box-shadow 150ms" style-hover="box-shadow:var(--shadow-md)">
-            <h3 style="margin:0;font-size:19px;font-weight:700;color:var(--brand-navy)">{{ svc.title }}</h3>
-            <p style="margin:0;font-size:15px;line-height:1.6;color:var(--ink-600)">{{ svc.desc }}</p>
+  <section id="sales-revenue" class="xs-cat">
+    <div class="xs-wrap">
+      <div class="xs-cat-head">
+        <span class="xs-cat-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 17 5-5 4 3 6-7"/><path d="M15 8h4v4"/></svg></span>
+        <div>
+          <h2>Sales &amp; Revenue</h2>
+          <p>Pipeline built and worked by dedicated reps.</p>
+        </div>
+      </div>
+      <div class="xs-grid">
+          <div class="xs-card">
+            <h3>SDR as a Service</h3>
+            <p>Dedicated outbound reps booking qualified meetings on your calendar.</p>
+            <a class="xs-more" href="SDR as a Service.dc.html">Learn more<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
           </div>
-        </sc-for>
+          <div class="xs-card">
+            <h3>Lead Generation &amp; List Building</h3>
+            <p>Verified, ICP-matched contact data sourced and enriched continuously.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Cold Calling Teams</h3>
+            <p>Trained callers working your scripts, dispositions, and CRM in real time.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Appointment Setting</h3>
+            <p>Inbound and outbound scheduling with confirmation and no-show recovery.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Email Outreach &amp; Campaign Management</h3>
+            <p>Infrastructure, sequences, deliverability, and reply handling managed end to end.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Virtual Sales Teams</h3>
+            <p>Full-cycle remote sales reps — beyond SDR work, through close — built to match your culture.</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="customer-experience" class="xs-cat">
+    <div class="xs-wrap">
+      <div class="xs-cat-head">
+        <span class="xs-cat-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v-5a8 8 0 0 1 16 0v5"/><path d="M20 18a2 2 0 0 1-2 2h-.8a1.8 1.8 0 0 1-1.8-1.8v-2.4A1.8 1.8 0 0 1 17.2 14H20zM4 18a2 2 0 0 0 2 2h.8a1.8 1.8 0 0 0 1.8-1.8v-2.4A1.8 1.8 0 0 0 6.8 14H4z"/></svg></span>
+        <div>
+          <h2>Customer Experience</h2>
+          <p>The front line, covered across your hours.</p>
+        </div>
+      </div>
+      <div class="xs-grid">
+          <div class="xs-card">
+            <h3>Inbound Customer Support</h3>
+            <p>Voice, chat, and email coverage across your hours.</p>
+            <a class="xs-more" href="Customer Service Agents.dc.html">Learn more<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </div>
+          <div class="xs-card">
+            <h3>Technical Support</h3>
+            <p>Product-trained agents who resolve instead of escalate.</p>
+            <a class="xs-more" href="Customer Service Agents.dc.html">Learn more<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </div>
+          <div class="xs-card">
+            <h3>Order &amp; Fulfillment Support</h3>
+            <p>Order entry, tracking, returns, and exception handling.</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="finance" class="xs-cat">
+    <div class="xs-wrap">
+      <div class="xs-cat-head">
+        <span class="xs-cat-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10h18M6 6h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"/><path d="M9 15h4"/></svg></span>
+        <div>
+          <h2>Finance &amp; Accounting</h2>
+          <p>Clean books, closed on time, with an audit trail.</p>
+        </div>
+      </div>
+      <div class="xs-grid">
+          <div class="xs-card">
+            <h3>Bookkeeping &amp; Accounting</h3>
+            <p>Daily reconciliation, month-end close, and clean books.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Accounts Payable &amp; Receivable</h3>
+            <p>Invoice processing, vendor management, and collections follow-up.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Payroll Processing</h3>
+            <p>Multi-state payroll runs, filings, and employee records.</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="back-office" class="xs-cat">
+    <div class="xs-wrap">
+      <div class="xs-cat-head">
+        <span class="xs-cat-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+        <div>
+          <h2>Back Office</h2>
+          <p>The work that keeps operations running behind the front line.</p>
+        </div>
+      </div>
+      <div class="xs-grid">
+          <div class="xs-card">
+            <h3>Data Entry &amp; Processing</h3>
+            <p>High-volume, accuracy-audited data work.</p>
+            <a class="xs-more" href="Virtual Back Office Team.dc.html">Learn more<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </div>
+          <div class="xs-card">
+            <h3>Document Management</h3>
+            <p>Digitization, indexing, transcription, and retrieval.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Claims &amp; Application Processing</h3>
+            <p>Intake, verification, and routing at volume.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Executive &amp; Virtual Assistants</h3>
+            <p>Dedicated admin support embedded in your workflow.</p>
+            <a class="xs-more" href="Virtual Back Office Team.dc.html">Learn more<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="managed-it" class="xs-cat">
+    <div class="xs-wrap">
+      <div class="xs-cat-head">
+        <span class="xs-cat-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span>
+        <div>
+          <h2>Managed IT</h2>
+          <p>Your digital backbone, monitored and maintained.</p>
+        </div>
+      </div>
+      <div class="xs-grid">
+          <div class="xs-card">
+            <h3>Managed IT Services</h3>
+            <p>Fully managed endpoints, networks, and systems with proactive monitoring.</p>
+          </div>
+          <div class="xs-card">
+            <h3>IT Help Desk</h3>
+            <p>Tier 1 and Tier 2 support for your team or your customers.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Cybersecurity &amp; Compliance</h3>
+            <p>Threat monitoring, access control, and audit-ready documentation.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Cloud &amp; Infrastructure</h3>
+            <p>Migration, provisioning, backup, and disaster recovery.</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hr-recruiting" class="xs-cat">
+    <div class="xs-wrap">
+      <div class="xs-cat-head">
+        <span class="xs-cat-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3 20v-1.4A4.6 4.6 0 0 1 7.6 14h2.8a4.6 4.6 0 0 1 4.6 4.6V20"/><path d="M16.5 4.6a3.4 3.4 0 0 1 0 6.6M21 20v-1.4a4.6 4.6 0 0 0-3.2-4.4"/></svg></span>
+        <div>
+          <h2>HR &amp; Recruiting</h2>
+          <p>An extension of your people team.</p>
+        </div>
+      </div>
+      <div class="xs-grid">
+          <div class="xs-card">
+            <h3>Recruitment Process Outsourcing</h3>
+            <p>Sourcing, screening, and scheduling as an extension of your HR team.</p>
+          </div>
+          <div class="xs-card">
+            <h3>HR Administration</h3>
+            <p>Onboarding, records, benefits admin, and offboarding.</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="industry" class="xs-cat">
+    <div class="xs-wrap">
+      <div class="xs-cat-head">
+        <span class="xs-cat-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg></span>
+        <div>
+          <h2>Industry-Specific</h2>
+          <p>Regulated, specialist work handled by agents trained for it.</p>
+        </div>
+      </div>
+      <div class="xs-grid">
+          <div class="xs-card">
+            <h3>Medical Billing &amp; RCM</h3>
+            <p>Coding, claims submission, denials, and A/R recovery.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Insurance Back Office</h3>
+            <p>Quoting, policy servicing, endorsements, and renewals.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Legal Process Outsourcing</h3>
+            <p>Document review, intake, and case file management.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Logistics &amp; Dispatch Support</h3>
+            <p>Load booking, driver coordination, and freight billing.</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="marketing" class="xs-cat">
+    <div class="xs-wrap">
+      <div class="xs-cat-head">
+        <span class="xs-cat-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4l12 5V5z"/><path d="M16 9a3 3 0 0 1 0 6"/></svg></span>
+        <div>
+          <h2>Marketing &amp; Content</h2>
+          <p>The go-to-market motion, staffed as one pod.</p>
+        </div>
+      </div>
+      <div class="xs-grid">
+          <div class="xs-card">
+            <h3>GTM Teams</h3>
+            <p>Marketing ops, CRM and automation admins, campaign coordinators, and RevOps analysts hired as one unit.</p>
+            <a class="xs-more" href="GTM Teams.dc.html">Learn more<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </div>
+          <div class="xs-card">
+            <h3>Marketing Support</h3>
+            <p>Strategic marketing services including SEO, social media, EDDM, print marketing, and more.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Content &amp; Brand Management</h3>
+            <p>Create and manage your online content across platforms and build an identity that differentiates your company.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Research &amp; Analysis</h3>
+            <p>Extensive research and analysis from our agents to enhance your product or service.</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai-automation" class="xs-cat">
+    <div class="xs-wrap">
+      <div class="xs-cat-head">
+        <span class="xs-cat-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.7 4.4 4.4 1.7-4.4 1.7L12 15.2l-1.7-4.4L5.9 9.1l4.4-1.7z"/><path d="m18.5 15.5.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span>
+        <div>
+          <h2>AI &amp; Automation</h2>
+          <p>Software does the volume; our agents keep the judgment calls.</p>
+        </div>
+      </div>
+      <div class="xs-grid">
+          <div class="xs-card">
+            <h3>AI Automations</h3>
+            <p>Automate repetitive workflows across your tools — billing, data entry, CRM updates, reporting.</p>
+          </div>
+          <div class="xs-card">
+            <h3>AI Implementation</h3>
+            <p>Guided rollout of AI into your operations, with ongoing recommendations as the landscape shifts.</p>
+          </div>
+          <div class="xs-card">
+            <h3>AI Agents &amp; Chatbots</h3>
+            <p>Custom-trained assistants handling inbound chat, FAQs, and first-touch qualification.</p>
+          </div>
+          <div class="xs-card">
+            <h3>Workflow &amp; Systems Integration</h3>
+            <p>Connect your stack so data moves without manual handoffs.</p>
+          </div>
+          <div class="xs-card">
+            <h3>AI-Assisted Back Office</h3>
+            <p>Human-in-the-loop processing where AI does the volume and agents do the judgment.</p>
+          </div>
       </div>
     </div>
   </section>
@@ -131,17 +651,6 @@ class Component extends DCLogic {
   renderVals() {
     return {
       ctaLabel: this.props.ctaLabel ?? "Book a Call",
-      services: [
-        { title: "IT Help Desk & Managed Services", desc: "Comprehensive help desk and managed services designed to keep your digital backbone resilient." },
-        { title: "Virtual Sales Teams", desc: "Full-cycle remote sales reps — beyond SDR work, through close — built to match your culture." },
-        { title: "Marketing Support", desc: "Strategic marketing services including SEO, social media, EDDM, print marketing, and more." },
-        { title: "AI Implementation", desc: "Implementation agents guide you from business formation to AI-integrated operations, with ongoing recommendations as the AI landscape changes." },
-        { title: "AI Automations", desc: "AI plus human assistance for seamless automation of administrative duties — cold calling, billing, CRM, data entry, and much more." },
-        { title: "Lead Generation & Data", desc: "AI data scraping and lead gen/management tooling to keep your pipeline sourced and clean." },
-        { title: "Research & Analysis", desc: "Extensive research and analysis from our agents to enhance your product or service." },
-        { title: "Content & Brand Management", desc: "Create and manage your online content across platforms and build an identity that differentiates your company." },
-        { title: "Custom Software", desc: "We can create and customize software that fits your specialty and industry." },
-      ],
     };
   }
 }
