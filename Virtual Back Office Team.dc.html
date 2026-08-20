@@ -58,24 +58,27 @@
   .vb-proof-bottom { font-size: 13.5px; color: var(--ink-600); }
   .vb-proof-bottom b { color: var(--brand-navy); }
 
-  /* ---------- hero photo wall (animated) ---------- */
-  .vb-wall { position: relative; height: clamp(400px, 46vw, 540px); display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; overflow: hidden;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 11%, #000 89%, transparent 100%);
-            mask-image: linear-gradient(180deg, transparent 0, #000 11%, #000 89%, transparent 100%); }
-  /* Each column lists its photos twice so translating exactly -50% loops seamlessly.
-     Tile spacing is margin-bottom, not a grid gap: with a gap the half-way point
-     lands mid-gap and the loop visibly jumps every cycle. */
-  .vb-col { will-change: transform; animation: vb-drift-up 38s linear infinite; }
-  .vb-col--down { animation-name: vb-drift-down; }
-  .vb-col--mid { animation-duration: 47s; }
-  .vb-col--slow { animation-duration: 56s; }
-  .vb-tile { position: relative; aspect-ratio: 1; margin-bottom: 14px; border-radius: 20px;
-    overflow: hidden; background: var(--ink-100); box-shadow: 0 16px 32px -18px rgba(0, 5, 67, 0.42); }
-  .vb-tile img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block; }
-  @keyframes vb-drift-up   { from { transform: translateY(0);     } to { transform: translateY(-50%); } }
-  @keyframes vb-drift-down { from { transform: translateY(-50%); } to { transform: translateY(0);     } }
-  @media (prefers-reduced-motion: reduce) { .vb-col { animation: none; } }
+  /* ---------- hero photo wall (animated, horizontal) ---------- */
+  .vb-wall { position: relative; display: grid; gap: 14px; overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%); }
+  /* Each row lists its photos twice so translating exactly -50% loops seamlessly.
+     Tile spacing is margin-right, not a flex gap: with a gap the half-way point
+     lands mid-gap and the loop visibly jumps every cycle. Each half must also be
+     at least as wide as the wall, or a bare patch scrolls through. */
+  .vb-row { display: flex; width: max-content; will-change: transform;
+    animation: vb-drift-left 42s linear infinite; }
+  .vb-row--right { animation-name: vb-drift-right; }
+  .vb-row--mid { animation-duration: 52s; }
+  .vb-row--slow { animation-duration: 62s; }
+  .vb-tile { flex: none; position: relative; width: clamp(112px, 13vw, 152px); aspect-ratio: 1;
+    margin-right: 14px; border-radius: 20px; overflow: hidden; background: var(--ink-100);
+    box-shadow: 0 16px 32px -18px rgba(0, 5, 67, 0.42); }
+  .vb-tile img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%;
+    display: block; filter: grayscale(1); }
+  @keyframes vb-drift-left  { from { transform: translateX(0);     } to { transform: translateX(-50%); } }
+  @keyframes vb-drift-right { from { transform: translateX(-50%); } to { transform: translateX(0);     } }
+  @media (prefers-reduced-motion: reduce) { .vb-row { animation: none; } }
 
   .vb-wall-badge { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
     z-index: 4; display: flex; align-items: center; gap: 13px; white-space: nowrap;
@@ -165,7 +168,7 @@
   /* ---------- responsive ---------- */
   @media (max-width: 1024px) {
     .vb-hero { grid-template-columns: 1fr; gap: 48px; padding: 56px 0 64px; }
-    .vb-wall { max-width: 620px; margin: 0 auto; }
+    .vb-wall { max-width: 680px; margin: 0 auto; }
     .vb-roles, .vb-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .vb-contact-card { grid-template-columns: 1fr; }
     .vb-contact-photo { min-height: 320px; }
@@ -173,9 +176,8 @@
   @media (max-width: 680px) {
     .vb-section { padding: 62px 0; }
     .vb-roles, .vb-steps, .vb-tiers, .vb-form-grid { grid-template-columns: 1fr; }
-    .vb-wall { height: 400px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .vb-col:nth-of-type(3) { display: none; }
-    .vb-wall-badge { white-space: normal; max-width: 82%; }
+    .vb-row:nth-of-type(3) { display: none; }
+    .vb-wall-badge { white-space: normal; max-width: 84%; }
     .vb-proof { max-width: none; display: block; }
   }
 </style>
@@ -243,34 +245,65 @@
         </div>
       </div>
 
-      <!-- Animated photo wall. Purely decorative - the copy on the left carries the
-           meaning - so it is aria-hidden, and the columns hold still under
-           prefers-reduced-motion. Tiles render near 150px, which is the source
-           files' native size, so nothing is upscaled. -->
+      <!-- Animated photo wall: three rows drifting horizontally, the middle one
+           counter to the others. Purely decorative - the copy on the left carries
+           the meaning - so it is aria-hidden, and the rows hold still under
+           prefers-reduced-motion. Photos are greyscaled in CSS, matching the hero
+           video and the team rails; the source files stay in colour. -->
       <div class="vb-wall" aria-hidden="true">
-        <div class="vb-col">
+        <div class="vb-row">
           <div class="vb-tile"><img src="assets/images/Agents/cs-1.jpg" alt="" loading="lazy" decoding="async"></div>
-          <div class="vb-tile"><img src="assets/images/Agents/gtm-2.jpg" alt="" loading="lazy" decoding="async"></div>
-          <div class="vb-tile"><img src="assets/images/Agents/sdr-1.jpg" alt="" loading="lazy" decoding="async"></div>
-          <div class="vb-tile"><img src="assets/images/Agents/cs-1.jpg" alt="" loading="lazy" decoding="async"></div>
-          <div class="vb-tile"><img src="assets/images/Agents/gtm-2.jpg" alt="" loading="lazy" decoding="async"></div>
-          <div class="vb-tile"><img src="assets/images/Agents/sdr-1.jpg" alt="" loading="lazy" decoding="async"></div>
-        </div>
-        <div class="vb-col vb-col--down vb-col--mid">
           <div class="vb-tile"><img src="assets/images/Agents/cs-2.jpg" alt="" loading="lazy" decoding="async"></div>
-          <div class="vb-tile"><img src="assets/images/Agents/gtm-3.jpg" alt="" loading="lazy" decoding="async"></div>
-          <div class="vb-tile"><img src="assets/images/Agents/sdr-2.jpg" alt="" loading="lazy" decoding="async"></div>
-          <div class="vb-tile"><img src="assets/images/Agents/cs-2.jpg" alt="" loading="lazy" decoding="async"></div>
-          <div class="vb-tile"><img src="assets/images/Agents/gtm-3.jpg" alt="" loading="lazy" decoding="async"></div>
-          <div class="vb-tile"><img src="assets/images/Agents/sdr-2.jpg" alt="" loading="lazy" decoding="async"></div>
-        </div>
-        <div class="vb-col vb-col--slow">
           <div class="vb-tile"><img src="assets/images/Agents/cs-3.jpg" alt="" loading="lazy" decoding="async"></div>
           <div class="vb-tile"><img src="assets/images/Agents/gtm-1.jpg" alt="" loading="lazy" decoding="async"></div>
-          <div class="vb-tile"><img src="assets/images/Agents/sdr-3.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/gtm-2.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/gtm-3.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-2.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/cs-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/cs-2.jpg" alt="" loading="lazy" decoding="async"></div>
           <div class="vb-tile"><img src="assets/images/Agents/cs-3.jpg" alt="" loading="lazy" decoding="async"></div>
           <div class="vb-tile"><img src="assets/images/Agents/gtm-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/gtm-2.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/gtm-3.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-2.jpg" alt="" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="vb-row vb-row--right vb-row--mid">
+          <div class="vb-tile"><img src="assets/images/Agents/gtm-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/gtm-2.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/gtm-3.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-2.jpg" alt="" loading="lazy" decoding="async"></div>
           <div class="vb-tile"><img src="assets/images/Agents/sdr-3.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/cs-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/cs-2.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/gtm-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/gtm-2.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/gtm-3.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-2.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-3.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/cs-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/cs-2.jpg" alt="" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="vb-row vb-row--slow">
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-2.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-3.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/cs-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/cs-2.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/cs-3.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/gtm-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/gtm-2.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-2.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/sdr-3.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/cs-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/cs-2.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/cs-3.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/gtm-1.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="vb-tile"><img src="assets/images/Agents/gtm-2.jpg" alt="" loading="lazy" decoding="async"></div>
         </div>
 
         <span class="vb-wall-badge">
