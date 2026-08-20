@@ -71,7 +71,7 @@
     .nav-mega-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 30px; }
     .nav-box { display: block; }
 
-    .nav-item { display: grid; grid-template-columns: 38px 1fr auto; align-items: center; gap: 13px;
+    .nav-item { display: grid; grid-template-columns: 38px 1fr; align-items: center; gap: 13px;
       padding: 11px 12px; border-radius: 12px; text-decoration: none; transition: background 130ms; }
     .nav-item:hover, .nav-item:focus-visible { background: rgba(81, 141, 224, 0.09); }
     .nav-ico { width: 38px; height: 38px; border-radius: 9px; background: rgba(81, 141, 224, 0.11);
@@ -84,9 +84,6 @@
       color: var(--ink-500); }
 
     .nav-mega--sm { width: min(660px, calc(100vw - 40px)); }
-
-    .nav-count { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-500);
-      background: var(--bg-marketing-paper); border-radius: 7px; padding: 4px 8px; }
 
     .nav-mega-foot { display: flex; align-items: center; justify-content: space-between; gap: 20px;
       margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-default); }
@@ -135,56 +132,47 @@
             <a class="nav-item" href="Sales and Revenue.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 17 5-5 4 3 6-7"/><path d="M15 8h4v4"/></svg></span>
               <span><b>Sales &amp; Revenue</b><small>SDRs, lead gen, cold calling, outreach</small></span>
-              <span class="nav-count">6</span>
             </a>
             <a class="nav-item" href="Customer Service Agents.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v-5a8 8 0 0 1 16 0v5"/><path d="M20 18a2 2 0 0 1-2 2h-.8a1.8 1.8 0 0 1-1.8-1.8v-2.4A1.8 1.8 0 0 1 17.2 14H20zM4 18a2 2 0 0 0 2 2h.8a1.8 1.8 0 0 0 1.8-1.8v-2.4A1.8 1.8 0 0 0 6.8 14H4z"/></svg></span>
               <span><b>Customer Experience</b><small>Voice, chat, email, technical support</small></span>
-              <span class="nav-count">3</span>
             </a>
             <a class="nav-item" href="Extra Services.dc.html#finance">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10h18M6 6h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"/><path d="M9 15h4"/></svg></span>
               <span><b>Finance &amp; Accounting</b><small>Bookkeeping, AP/AR, payroll</small></span>
-              <span class="nav-count">3</span>
             </a>
             <a class="nav-item" href="Virtual Back Office Team.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
               <span><b>Back Office</b><small>Data entry, documents, claims, EAs</small></span>
-              <span class="nav-count">4</span>
             </a>
             <a class="nav-item" href="Extra Services.dc.html#managed-it">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span>
               <span><b>Managed IT</b><small>Endpoints, help desk, security, cloud</small></span>
-              <span class="nav-count">4</span>
             </a>
           </span>
           <span class="nav-box">
             <a class="nav-item" href="Extra Services.dc.html#hr-recruiting">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3 20v-1.4A4.6 4.6 0 0 1 7.6 14h2.8a4.6 4.6 0 0 1 4.6 4.6V20"/><path d="M16.5 4.6a3.4 3.4 0 0 1 0 6.6M21 20v-1.4a4.6 4.6 0 0 0-3.2-4.4"/></svg></span>
               <span><b>HR &amp; Recruiting</b><small>Sourcing, onboarding, records</small></span>
-              <span class="nav-count">2</span>
             </a>
             <a class="nav-item" href="Extra Services.dc.html#industry">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg></span>
               <span><b>Industry-Specific</b><small>Medical, insurance, legal, logistics</small></span>
-              <span class="nav-count">4</span>
             </a>
             <a class="nav-item" href="GTM Teams.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4l12 5V5z"/><path d="M16 9a3 3 0 0 1 0 6"/></svg></span>
               <span><b>Marketing &amp; Content</b><small>GTM pods, SEO, content, research</small></span>
-              <span class="nav-count">4</span>
             </a>
             <a class="nav-item" href="Extra Services.dc.html#ai-automation">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.7 4.4 4.4 1.7-4.4 1.7L12 15.2l-1.7-4.4L5.9 9.1l4.4-1.7z"/><path d="m18.5 15.5.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span>
               <span><b>AI &amp; Automation</b><small>Workflows, agents, integration</small></span>
-              <span class="nav-count">5</span>
             </a>
           </span>
           </span>
           <span class="nav-mega-foot">
-            <a class="nav-browse" href="Extra Services.dc.html">Browse all 35 services
+            <a class="nav-browse" href="Extra Services.dc.html">Browse every service
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
-            <span class="nav-foot-note">35 services across 9 practice areas &mdash; one seat often covers several.</span>
+            <span class="nav-foot-note">One trained seat often covers several of these at once.</span>
             <a class="nav-foot-cta" href="Qualify.dc.html">Qualify in two minutes
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
           </span>
