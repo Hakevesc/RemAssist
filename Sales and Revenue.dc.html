@@ -53,80 +53,113 @@
     color: var(--brand-navy); line-height: 1.1; }
   .sr-proof span { display: block; margin-top: 5px; font-size: 12.5px; line-height: 1.45; color: var(--ink-500); }
 
-  /* ---------- hero loop card ---------- */
-  .sr-loop { background: #fff; border: 1px solid var(--border-default); border-radius: 22px;
-    padding: 26px; box-shadow: 0 40px 80px -40px rgba(0, 5, 67, 0.42); }
-  .sr-loop-top { display: flex; align-items: center; justify-content: space-between; gap: 14px;
-    padding-bottom: 16px; border-bottom: 1px solid var(--border-default); }
-  .sr-loop-top b { font-size: 14.5px; color: var(--brand-navy); }
-  .sr-faces { display: flex; align-items: center; }
-  .sr-face { width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 2px solid #fff;
-    box-shadow: 0 0 0 1.5px rgba(81, 141, 224, 0.5); background: var(--ink-100); }
-  .sr-face + .sr-face { margin-left: -9px; }
-  .sr-face img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block;
-    filter: grayscale(1); }
+  /* ---------- hero: channel orchestration diagram ----------
+     Three channels converge on one dedicated seat, which emits one booked
+     meeting. The paths are SVG; the nodes are HTML so their labels stay crisp
+     text. Node positions are percentages of the square that match the SVG
+     coordinates in the 0 0 400 400 viewBox, so both layers stay registered at
+     any size. */
+  .sr-orb { position: relative; width: 100%; max-width: 470px; margin: 0 auto; aspect-ratio: 1; }
+  .sr-orb-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .sr-orb-rail { fill: none; stroke: rgba(81, 141, 224, 0.22); stroke-width: 2; stroke-linecap: round; }
+  /* paths carry pathLength="100", so these numbers are percentages of each leg
+     and one pulse crosses per cycle whatever the leg's real length */
+  .sr-orb-flow { fill: none; stroke: var(--brand-blue); stroke-width: 2.5; stroke-linecap: round;
+    stroke-dasharray: 24 76; animation: sr-signal 2.9s cubic-bezier(.45, 0, .55, 1) infinite; }
+  .sr-orb-flow--b { animation-delay: .55s; }
+  .sr-orb-flow--c { animation-delay: 1.1s; }
+  /* the outbound leg fires after the three inbound signals have landed */
+  .sr-orb-flow--out { stroke-dasharray: 30 70; animation-delay: 1.6s; }
+  @keyframes sr-signal { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
 
-  .sr-stages { position: relative; margin: 0; padding: 22px 0 2px; list-style: none; }
+  /* slow halo behind the seat */
+  .sr-orb-halo { position: absolute; left: 50%; top: 50%; width: 62%; aspect-ratio: 1;
+    transform: translate(-50%, -50%); border-radius: 50%;
+    background: conic-gradient(from 0deg, rgba(81,141,224,0), rgba(81,141,224,.30), rgba(0,71,179,.16), rgba(81,141,224,0));
+    animation: sr-spin 16s linear infinite; }
+  .sr-orb-halo::after { content: ""; position: absolute; inset: 12%; border-radius: 50%;
+    background: var(--bg-marketing-paper); }
+  @keyframes sr-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
 
-  .sr-stage { position: relative; display: grid; grid-template-columns: 40px 1fr; gap: 15px;
-    align-items: start; padding: 9px 10px; margin: 0 -10px 6px; border-radius: 13px;
-    transition: background 170ms var(--ease-out); }
-  .sr-stage:last-child { margin-bottom: 0; }
-  .sr-stage:hover { background: rgba(81, 141, 224, 0.08); }
+  /* the seat */
+  .sr-orb-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 47%; aspect-ratio: 1; border-radius: 50%; background: #fff;
+    border: 1px solid var(--border-default); box-shadow: 0 26px 54px -22px rgba(0, 5, 67, 0.34);
+    display: grid; place-items: center; align-content: center; gap: 7px; text-align: center; z-index: 2; }
+  .sr-orb-faces { display: flex; justify-content: center; }
+  .sr-orb-faces > span { width: 34px; height: 34px; border-radius: 50%; overflow: hidden;
+    border: 2px solid #fff; box-shadow: 0 0 0 1.5px rgba(81, 141, 224, 0.5); background: var(--ink-100); }
+  .sr-orb-faces > span + span { margin-left: -10px; }
+  .sr-orb-faces img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%;
+    display: block; filter: grayscale(1); }
+  .sr-orb-core b { display: block; font-family: var(--font-display); font-size: clamp(15px, 1.7vw, 19px);
+    font-weight: 700; letter-spacing: -0.01em; color: var(--brand-navy); line-height: 1.15; }
+  .sr-orb-core small { display: block; font-size: 10.5px; letter-spacing: 0.11em;
+    text-transform: uppercase; color: var(--ink-500); }
 
-  /* Connector drawn per stage rather than as one rail down the list: a single rail
-     has to be anchored to the last row's bottom, which moves whenever that text
-     wraps. Geometry here is derived from the layout - left 29px puts a 2px line
-     under the 40px dot's centre, top 49px starts at the dot's lower edge, and
-     -15px reaches the next dot through the 6px row gap and 9px of row padding. */
-  .sr-stage:not(:last-child)::before,
-  .sr-stage:not(:last-child)::after {
-    content: ""; position: absolute; left: 29px; top: 49px; bottom: -15px;
-    width: 2px; border-radius: 2px; }
-  .sr-stage:not(:last-child)::before { background: rgba(81, 141, 224, 0.26); }
-  .sr-stage:not(:last-child)::after { background: var(--brand-blue); transform-origin: top;
-    transform: scaleY(0); animation: sr-fill 7.2s ease-in-out infinite; }
-  @keyframes sr-fill { 0% { transform: scaleY(0); opacity: 1; }
-    8%, 74% { transform: scaleY(1); opacity: 1; }
-    88%, 100% { transform: scaleY(1); opacity: 0; } }
-  .sr-stage:nth-of-type(1)::after { animation-delay: 0s; }
-  .sr-stage:nth-of-type(2)::after { animation-delay: 1.5s; }
-  .sr-stage:nth-of-type(3)::after { animation-delay: 3s; }
+  /* channel nodes */
+  .sr-orb-node { position: absolute; transform: translate(-50%, -50%); z-index: 3;
+    display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px 8px 9px;
+    border-radius: 999px; background: #fff; border: 1px solid var(--border-default);
+    box-shadow: 0 14px 30px -14px rgba(0, 5, 67, 0.3); white-space: nowrap;
+    transition: box-shadow 200ms, border-color 200ms;
+    animation: sr-bob 6s ease-in-out infinite; }
+  .sr-orb-node:hover { border-color: rgba(81, 141, 224, 0.55);
+    box-shadow: 0 18px 36px -14px rgba(81, 141, 224, 0.5); }
+  .sr-orb-node i { flex: none; width: 30px; height: 30px; border-radius: 50%;
+    background: rgba(81, 141, 224, 0.11); display: grid; place-items: center;
+    transition: background 200ms; }
+  .sr-orb-node:hover i { background: var(--brand-blue); }
+  .sr-orb-node svg { width: 16px; height: 16px; fill: none; stroke: var(--brand-blue);
+    stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; display: block;
+    transition: stroke 200ms; }
+  .sr-orb-node:hover svg { stroke: #fff; }
+  .sr-orb-node b { display: block; font-size: 13px; font-weight: 700; color: var(--brand-navy); line-height: 1.2; }
+  .sr-orb-node em { display: block; font-style: normal; font-size: 10.5px; color: var(--ink-500); line-height: 1.3; }
+  /* bob via margin, so it cannot fight the translate that centres the node */
+  @keyframes sr-bob { 0%, 100% { margin-top: 0; } 50% { margin-top: -6px; } }
 
-  /* the circle: grid-centred, and highlighted in turn so the loop reads as a loop */
-  .sr-dot { width: 40px; height: 40px; border-radius: 50%; background: #fff; color: var(--brand-blue);
-    border: 1.5px solid rgba(81, 141, 224, 0.4);
-    display: grid; place-items: center; position: relative; z-index: 1; box-sizing: border-box;
-    transition: background 200ms, border-color 200ms, color 200ms, box-shadow 200ms;
-    animation: sr-lit 7.2s ease-in-out infinite; }
-  .sr-dot svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.9;
+  .sr-orb-node--email { left: 18%; top: 24%; }
+  .sr-orb-node--phone { left: 50%; top: 10%; animation-delay: .9s; }
+  .sr-orb-node--li    { left: 82%; top: 24%; animation-delay: 1.8s; }
+
+  /* the outcome */
+  .sr-orb-out { position: absolute; left: 50%; top: 88%; transform: translate(-50%, -50%); z-index: 3;
+    display: inline-flex; align-items: center; gap: 9px; padding: 11px 18px; border-radius: 999px;
+    background: linear-gradient(160deg, #518de0, #0047b3 82%); color: #fff; white-space: nowrap;
+    box-shadow: 0 20px 40px -16px rgba(0, 71, 179, 0.6); }
+  .sr-orb-out svg { width: 17px; height: 17px; fill: none; stroke: #fff; stroke-width: 2.2;
     stroke-linecap: round; stroke-linejoin: round; display: block; }
-  @keyframes sr-lit {
-    0%, 12%, 100% { background: #fff; border-color: rgba(81,141,224,0.4); color: var(--brand-blue);
-      box-shadow: 0 0 0 0 rgba(81,141,224,0); }
-    3%, 9% { background: var(--brand-blue); border-color: var(--brand-blue); color: #fff;
-      box-shadow: 0 0 0 6px rgba(81,141,224,0.16); } }
-  .sr-stage:nth-of-type(1) .sr-dot { animation-delay: 0s; }
-  .sr-stage:nth-of-type(2) .sr-dot { animation-delay: 1.5s; }
-  .sr-stage:nth-of-type(3) .sr-dot { animation-delay: 3s; }
-  .sr-stage:nth-of-type(4) .sr-dot { animation-delay: 4.5s; }
-  /* hover always wins over wherever the cycle happens to be */
-  .sr-stage:hover .sr-dot { animation: none; background: var(--brand-blue);
-    border-color: var(--brand-blue); color: #fff; box-shadow: 0 0 0 6px rgba(81,141,224,0.16); }
+  .sr-orb-out b { font-size: 14px; font-weight: 700; }
+  .sr-orb-out span { font-size: 11.5px; color: rgba(255, 255, 255, 0.82); }
+  .sr-orb-pulse { position: absolute; left: 50%; top: 88%; width: 78px; aspect-ratio: 1;
+    transform: translate(-50%, -50%); border-radius: 50%;
+    border: 1.5px solid rgba(81, 141, 224, 0.5); z-index: 1;
+    animation: sr-ping 2.9s ease-out infinite; animation-delay: 2.4s; }
+  @keyframes sr-ping { 0% { transform: translate(-50%, -50%) scale(.5); opacity: .85; }
+    70%, 100% { transform: translate(-50%, -50%) scale(1.75); opacity: 0; } }
 
-  @media (prefers-reduced-motion: reduce) {
-    .sr-stage:not(:last-child)::after { animation: none; transform: scaleY(1); opacity: 0.4; }
-    .sr-dot { animation: none; }
-    .sr-card, .sr-tier, .sr-chan-card, .sr-pill { transition: none; }
-    .sr-card:hover, .sr-tier:hover, .sr-chan-card:hover, .sr-pill:hover { transform: none; }
+  /* The node pills are text-sized, so they do not shrink with the square and
+     start clipping around 520px. Compact the pills only - their 18%/82% anchors
+     are what the SVG path ends are registered to, so those must not move. */
+  @media (max-width: 760px) {
+    .sr-orb { max-width: 400px; }
+    .sr-orb-node { gap: 7px; padding: 6px 12px 6px 7px; }
+    .sr-orb-node em { display: none; }
+    .sr-orb-node i { width: 26px; height: 26px; }
+    .sr-orb-node svg { width: 14px; height: 14px; }
+    .sr-orb-node b { font-size: 12px; }
+    .sr-orb-out { padding: 9px 15px; gap: 7px; }
+    .sr-orb-out b { font-size: 13px; }
+    .sr-orb-out span { display: none; }
+    .sr-orb-faces > span { width: 30px; height: 30px; }
   }
 
-  /* scoped to the text block: a bare `.sr-stage span` also matched .sr-dot and
-     forced display:block on it, which knocked the icon out of centre */
-  .sr-stage-body b { display: block; font-size: 15px; font-weight: 700; color: var(--brand-navy);
-    line-height: 1.3; }
-  .sr-stage-body span { display: block; margin-top: 3px; font-size: 13px; line-height: 1.55;
-    color: var(--ink-600); }
+  @media (prefers-reduced-motion: reduce) {
+    .sr-orb-flow { animation: none; stroke-dasharray: none; stroke: rgba(81, 141, 224, 0.5); }
+    .sr-orb-halo, .sr-orb-node, .sr-orb-pulse { animation: none; }
+    .sr-orb-pulse { opacity: .3; transform: translate(-50%, -50%) scale(1); }
+  }
 
   /* ---------- service cards ---------- */
   .sr-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 44px; }
@@ -491,34 +524,48 @@
         </div>
       </div>
 
-      <div class="sr-loop">
-        <div class="sr-loop-top">
-          <b>One seat owns the whole loop</b>
-          <span class="sr-faces" aria-hidden="true">
-            <span class="sr-face"><img src="assets/images/Agents/sdr-1.jpg" alt="" loading="lazy" decoding="async"></span>
-            <span class="sr-face"><img src="assets/images/Agents/sdr-2.jpg" alt="" loading="lazy" decoding="async"></span>
-            <span class="sr-face"><img src="assets/images/Agents/sdr-3.jpg" alt="" loading="lazy" decoding="async"></span>
-          </span>
-        </div>
+      <!-- Three channels converge on one seat, which emits one booked meeting.
+           Decorative: every claim it makes is stated in the copy beside it, so the
+           diagram is aria-hidden rather than read out as disconnected fragments. -->
+      <div class="sr-orb" aria-hidden="true">
+        <svg class="sr-orb-svg" viewBox="0 0 400 400">
+          <path class="sr-orb-rail" d="M72 96 Q101 122 127.0 140.7"/>
+          <path class="sr-orb-rail" d="M200 40 Q200 78 200.0 106.0"/>
+          <path class="sr-orb-rail" d="M328 96 Q299 122 273.0 140.7"/>
+          <path class="sr-orb-rail" d="M200 294 L200 336"/>
+          <path class="sr-orb-flow sr-orb-flow--a" pathLength="100" d="M72 96 Q101 122 127.0 140.7"/>
+          <path class="sr-orb-flow sr-orb-flow--b" pathLength="100" d="M200 40 Q200 78 200.0 106.0"/>
+          <path class="sr-orb-flow sr-orb-flow--c" pathLength="100" d="M328 96 Q299 122 273.0 140.7"/>
+          <path class="sr-orb-flow sr-orb-flow--out" pathLength="100" d="M200 294 L200 336"/>
+        </svg>
 
-        <ul class="sr-stages">
-          <li class="sr-stage">
-            <span class="sr-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg></span>
-            <span class="sr-stage-body"><b>Target</b><span>ICP-matched accounts sourced, enriched, and verified before anything sends.</span></span>
-          </li>
-          <li class="sr-stage">
-            <span class="sr-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
-            <span class="sr-stage-body"><b>Sequence</b><span>Multi-touch cadences across email, phone, and LinkedIn, run in your CRM.</span></span>
-          </li>
-          <li class="sr-stage">
-            <span class="sr-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 3z"/><path d="M9 10h6"/></svg></span>
-            <span class="sr-stage-body"><b>Qualify</b><span>Replies worked to a decision against criteria you set, not ours.</span></span>
-          </li>
-          <li class="sr-stage">
-            <span class="sr-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="m9.5 15.5 1.8 1.8 3.6-3.8"/></svg></span>
-            <span class="sr-stage-body"><b>Booked</b><span>Meeting on your AE&rsquo;s calendar, notes in the CRM, no-show rescue running.</span></span>
-          </li>
-        </ul>
+        <span class="sr-orb-halo"></span>
+
+        <span class="sr-orb-core">
+          <span class="sr-orb-faces"><span><img src="assets/images/Agents/sdr-1.jpg" alt="" loading="lazy" decoding="async"></span><span><img src="assets/images/Agents/sdr-2.jpg" alt="" loading="lazy" decoding="async"></span><span><img src="assets/images/Agents/sdr-3.jpg" alt="" loading="lazy" decoding="async"></span></span>
+          <b>One dedicated<br>seat</b>
+          <small>Owns the loop</small>
+        </span>
+
+        <span class="sr-orb-node sr-orb-node--email">
+          <i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></i>
+          <span><b>Email</b><em>Warmed, monitored</em></span>
+        </span>
+        <span class="sr-orb-node sr-orb-node--phone">
+          <i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg></i>
+          <span><b>Phone</b><em>Live conversations</em></span>
+        </span>
+        <span class="sr-orb-node sr-orb-node--li">
+          <i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2.4"/><path d="M8 10.5v6M8 7.6v.01M12.2 16.5v-3.4a2 2 0 0 1 4 0v3.4"/></svg></i>
+          <span><b>LinkedIn</b><em>Profile-led touches</em></span>
+        </span>
+
+        <span class="sr-orb-pulse"></span>
+        <span class="sr-orb-out">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+          <b>Meeting booked</b>
+          <span>held, not sent</span>
+        </span>
       </div>
 
     </div>
