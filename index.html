@@ -418,7 +418,10 @@
        page via tools/sync-partials.js. Hover opens it for pointers, focus-within
        opens it for keyboards, so it is reachable by Tab with no JavaScript. -->
   <style>
-    .nav-row { display: flex; gap: 26px; margin-left: auto; align-items: center; }
+    /* The row and the dropdown holders stretch to the full 72px header height.
+       Without this the holder is only as tall as its text, leaving ~25px of
+       dead space between the link and the panel where hover is lost. */
+    .nav-row { display: flex; gap: 26px; margin-left: auto; align-items: center; align-self: stretch; }
     .nav-link { color: var(--ink-700); font-size: 15px; font-weight: 500; text-decoration: none;
       transition: color 150ms; white-space: nowrap; }
     .nav-link:hover, .nav-link:focus-visible { color: var(--brand-blue); }
@@ -427,7 +430,7 @@
       border-radius: 6px; transition: background 150ms; white-space: nowrap; }
     .nav-cta:hover { background: var(--blue-700); color: #fff; }
 
-    .nav-has-menu { position: static; display: flex; align-items: center; }
+    .nav-has-menu { position: static; display: flex; align-items: center; align-self: stretch; }
     .nav-has-menu > .nav-link { display: inline-flex; align-items: center; gap: 6px; }
     .nav-caret { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.2;
       stroke-linecap: round; stroke-linejoin: round; transition: transform 180ms; }
@@ -435,18 +438,29 @@
 
     /* Anchored to the header, not the link, so a panel this wide centres in the
        viewport instead of hanging off the right edge. */
-    .nav-mega { position: absolute; top: 100%; left: 50%; margin-top: 8px;
+    /* Flush to the header, no gap. An 8px dead zone used to break the hover:
+       pointer-events flips to none the moment :hover is lost, so the panel became
+       unhittable mid-gap and could never re-acquire the pointer. Flush panel plus
+       the close delay below means the pointer is never outside both. */
+    .nav-mega { position: absolute; top: 100%; left: 50%; margin-top: 0;
       width: min(880px, calc(100vw - 40px));
-      transform: translateX(-50%) translateY(6px);
+      transform: translateX(-50%) translateY(4px);
       padding: 20px; border-radius: 20px; background: #fff; box-sizing: border-box;
       border: 1px solid var(--border-default); box-shadow: 0 40px 80px -28px rgba(0, 5, 67, 0.38);
       display: flex; flex-direction: column;
       opacity: 0; visibility: hidden; pointer-events: none;
-      transition: opacity 170ms ease, transform 170ms ease, visibility 170ms; }
-    /* bridges the 8px gap so the panel does not close as the pointer crosses it */
-    .nav-has-menu::after { content: ""; position: absolute; top: 100%; left: 0; right: 0; height: 12px; }
+      transition: opacity 160ms ease 140ms, transform 160ms ease 140ms, visibility 160ms 140ms; }
+    /* No bridge pseudo-element here. `.nav-has-menu` is position:static so an
+       ::after with left:0/right:0 anchors to the header and spans its full width -
+       each menu's bridge then covered the other's trigger, and the later one in the
+       DOM captured the pointer, so moving down from Services handed off to
+       Resources. The holder now fills the header height and the panel is flush
+       against it, so there is no gap left to bridge. */
+    /* open immediately; the delay above applies only on the way out, so a brief
+       slip off the trigger does not shut the panel */
     .nav-has-menu:hover .nav-mega, .nav-has-menu:focus-within .nav-mega {
-      opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+      opacity: 1; visibility: visible; pointer-events: auto;
+      transform: translateX(-50%) translateY(0); transition-delay: 0ms; }
 
     .nav-mega-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 30px; }
     .nav-box { display: block; }
@@ -512,7 +526,7 @@
         <span class="nav-mega">
           <span class="nav-mega-cols">
           <span class="nav-box">
-            <a class="nav-item" href="Extra Services.dc.html#sales-revenue">
+            <a class="nav-item" href="Sales and Revenue.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 17 5-5 4 3 6-7"/><path d="M15 8h4v4"/></svg></span>
               <span><b>Sales &amp; Revenue</b><small>SDRs, lead gen, cold calling, outreach</small></span>
               <span class="nav-count">6</span>
@@ -940,7 +954,7 @@
       </div>
 
       <div class="dc-team-list">
-      <a class="dc-team-card" href="Extra Services.dc.html#sales-revenue">
+      <a class="dc-team-card" href="Sales and Revenue.dc.html">
         <span class="dc-team-tile"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m4 17 5-5 4 3 6-7"></path><path d="M15 8h4v4"></path></svg></span>
         <span class="dc-team-rail" aria-hidden="true"></span>
         <span class="dc-team-num">01</span>
