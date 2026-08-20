@@ -13,7 +13,156 @@
   html, body { margin: 0; padding: 0; background: var(--bg-marketing-paper); color: var(--ink-900); font-family: var(--font-sans); }
   a { color: var(--fg-link); }
   a:hover { color: var(--blue-700); }
-  @keyframes waveDrift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  .pr-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .pr-narrow { max-width: 900px; margin: 0 auto; }
+  .pr-kicker { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--brand-blue); font-weight: 600; }
+  .pr-h1 { margin: 16px 0 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.025em;
+    line-height: 1.06; font-size: clamp(34px, 4.5vw, 56px); color: var(--brand-navy); }
+  .pr-h1 span { color: var(--brand-blue); }
+  .pr-h2 { margin: 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.13; font-size: clamp(27px, 3.1vw, 40px); color: var(--brand-navy); }
+  .pr-h2 span { color: var(--brand-blue); }
+  .pr-lede { margin: 18px 0 0; font-size: 17.5px; line-height: 1.7; color: var(--ink-600); max-width: 60ch; }
+  .pr-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--brand-blue); color: #fff;
+    font-size: 16px; font-weight: 600; text-decoration: none; padding: 14px 30px; border-radius: 8px;
+    transition: background 150ms, transform 150ms, box-shadow 150ms; }
+  .pr-btn:hover { background: var(--blue-700); color: #fff; transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(81,141,224,0.32); }
+  .pr-btn--ghost { background: #fff; color: var(--brand-blue); border: 1px solid rgba(81,141,224,0.45); }
+  .pr-btn--ghost:hover { background: rgba(81,141,224,0.06); color: var(--brand-blue); }
+  .pr-ghost-dark { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.4); border-radius: 8px; padding: 13px 26px; font-size: 16px;
+    font-weight: 600; text-decoration: none; transition: background 150ms, border-color 150ms; }
+  .pr-ghost-dark:hover { background: rgba(255,255,255,0.1); border-color: #fff; color: #fff; }
+  .pr-section { padding: 84px 0; }
+
+  /* ---------- hero ---------- */
+  .pr-hero { padding: 74px 0 0; text-align: center; }
+  .pr-hero .pr-lede { margin-left: auto; margin-right: auto; }
+  .pr-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 26px; }
+  .pr-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 15px; border-radius: 999px;
+    background: #fff; border: 1px solid var(--border-default); box-shadow: var(--shadow-xs);
+    font-size: 13px; font-weight: 600; color: var(--brand-navy); }
+  .pr-chip svg { width: 14px; height: 14px; fill: none; stroke: var(--brand-blue); stroke-width: 2.4;
+    stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ---------- the two tiers ---------- */
+  .pr-tiers { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px; margin-top: 44px;
+    text-align: left; }
+  .pr-tier { position: relative; background: #fff; border: 1px solid var(--border-default);
+    border-radius: 20px; padding: 32px 30px; box-shadow: var(--shadow-sm);
+    transition: transform 190ms var(--ease-out), box-shadow 190ms var(--ease-out), border-color 190ms; }
+  .pr-tier:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(81,141,224,0.5); }
+  .pr-tier--expert { border-color: rgba(81,141,224,0.55); box-shadow: 0 26px 48px -28px rgba(81,141,224,0.5); }
+  .pr-tier-tag { position: absolute; top: 18px; right: 18px; font-family: var(--font-mono); font-size: 10.5px;
+    letter-spacing: 0.11em; text-transform: uppercase; color: var(--brand-blue);
+    background: rgba(81,141,224,0.11); border-radius: 999px; padding: 5px 11px; }
+  .pr-tier h3 { margin: 0; font-family: var(--font-display); font-size: 26px; font-weight: 700;
+    color: var(--brand-navy); }
+  .pr-price { display: flex; align-items: baseline; gap: 7px; margin-top: 12px; white-space: nowrap; }
+  .pr-price small { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-500); font-weight: 600; }
+  .pr-price b { font-family: var(--font-display); font-size: clamp(52px, 6vw, 82px); font-weight: 800;
+    line-height: 0.86; letter-spacing: -0.04em; color: var(--brand-blue); }
+  .pr-price em { font-style: normal; font-size: 19px; font-weight: 700; color: var(--brand-blue); }
+  .pr-tier > p { margin: 16px 0 0; font-size: 15.5px; line-height: 1.7; color: var(--ink-600); }
+  .pr-tier ul { list-style: none; margin: 20px 0 0; padding: 20px 0 0; display: grid; gap: 11px;
+    border-top: 1px solid var(--border-default); }
+  .pr-tier li { display: grid; grid-template-columns: 18px 1fr; gap: 11px; font-size: 14.5px;
+    line-height: 1.6; color: var(--ink-700); }
+  .pr-tier li svg { width: 18px; height: 18px; margin-top: 1px; fill: none; stroke: var(--brand-blue);
+    stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ---------- the monthly grid ---------- */
+  .pr-table-wrap { margin-top: 40px; overflow-x: auto; border: 1px solid var(--border-default);
+    border-radius: 16px; background: #fff; box-shadow: var(--shadow-sm); }
+  table.pr-table { width: 100%; border-collapse: collapse; min-width: 620px; }
+  .pr-table th, .pr-table td { padding: 15px 18px; text-align: left; border-top: 1px solid var(--border-default); }
+  .pr-table thead th { border-top: 0; background: var(--bg-marketing-paper);
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-500); font-weight: 600; }
+  .pr-table tbody th { font-size: 15px; font-weight: 700; color: var(--brand-navy); }
+  .pr-table tbody th span { display: block; margin-top: 3px; font-size: 12.5px; font-weight: 500;
+    color: var(--ink-500); }
+  .pr-table td { font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--brand-navy); }
+  .pr-table td span { font-family: var(--font-sans); font-size: 12px; font-weight: 500; color: var(--ink-500);
+    display: block; margin-top: 2px; }
+  .pr-table tbody tr:hover { background: rgba(81,141,224,0.05); }
+  .pr-table-note { margin: 14px 0 0; font-size: 13px; line-height: 1.6; color: var(--ink-500); }
+
+  /* ---------- in / out lists ---------- */
+  .pr-two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+  .pr-list { background: #fff; border: 1px solid var(--border-default); border-radius: 16px; padding: 28px 26px; }
+  .pr-list h3 { margin: 0 0 16px; font-size: 17.5px; font-weight: 700; color: var(--brand-navy); }
+  .pr-list ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .pr-list li { display: grid; grid-template-columns: 19px 1fr; gap: 11px; font-size: 14.5px;
+    line-height: 1.6; color: var(--ink-700); }
+  .pr-list svg { width: 19px; height: 19px; margin-top: 1px; fill: none; stroke-width: 2.2;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .pr-list--in svg { stroke: var(--brand-blue); }
+  .pr-list--out svg { stroke: var(--ink-400); }
+  .pr-list--out li { color: var(--ink-600); }
+
+  /* ---------- pilot band ---------- */
+  .pr-band { padding: 84px 0; background: #518de0;
+    background-image: radial-gradient(ellipse 900px 450px at 85% 0%, rgba(90,155,240,0.20), transparent 65%),
+      linear-gradient(160deg,#518de0,#0047b3 82%); position: relative; overflow: hidden; }
+  .pr-band .pr-h2, .pr-band .pr-kicker { color: #fff; }
+  .pr-band .pr-lede { color: rgba(255,255,255,0.9); }
+  .pr-steps { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; margin-top: 42px; }
+  .pr-step { padding: 28px 26px; border-radius: 16px; background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.22);
+    transition: transform 190ms var(--ease-out), background 190ms, border-color 190ms; }
+  .pr-step:hover { transform: translateY(-4px); background: rgba(255,255,255,0.17);
+    border-color: rgba(255,255,255,0.42); }
+  .pr-step-n { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.13em;
+    color: rgba(255,255,255,0.72); }
+  .pr-step h3 { margin: 12px 0 9px; font-size: 19px; font-weight: 700; color: #fff; line-height: 1.28; }
+  .pr-step p { margin: 0; font-size: 14.5px; line-height: 1.7; color: rgba(255,255,255,0.88); }
+
+  /* ---------- where the team sits ---------- */
+  .pr-where { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; margin-top: 40px; }
+  .pr-place { background: #fff; border: 1px solid var(--border-default); border-radius: 16px; padding: 26px 24px; }
+  .pr-place-ico { width: 44px; height: 44px; border-radius: 12px; background: rgba(81,141,224,0.10);
+    display: grid; place-items: center; margin-bottom: 15px; }
+  .pr-place-ico svg { width: 22px; height: 22px; fill: none; stroke: var(--brand-blue); stroke-width: 1.9;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .pr-place h3 { margin: 0 0 7px; font-size: 17px; font-weight: 700; color: var(--brand-navy); }
+  .pr-place p { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--ink-600); }
+
+  /* ---------- faq ---------- */
+  .pr-faq { margin-top: 40px; border-top: 1px solid var(--border-default); }
+  .pr-faq details { border-bottom: 1px solid var(--border-default); }
+  .pr-faq summary { cursor: pointer; list-style: none; padding: 21px 4px; display: flex; align-items: center;
+    justify-content: space-between; gap: 22px; font-size: 16px; font-weight: 600; color: var(--brand-navy); }
+  .pr-faq summary::-webkit-details-marker { display: none; }
+  .pr-faq summary::after { content: "+"; flex: none; width: 33px; height: 33px; border-radius: 50%;
+    background: rgba(81,141,224,0.10); color: var(--brand-blue); display: grid; place-items: center;
+    font-size: 19px; font-weight: 600; line-height: 1; }
+  .pr-faq details[open] summary::after { content: "\2212"; background: var(--brand-blue); color: #fff; }
+  .pr-faq p { margin: 0 4px 22px; font-size: 15px; line-height: 1.75; color: var(--ink-600); max-width: 78ch; }
+
+  .pr-close { background: var(--brand-navy); padding: 84px 0; text-align: center; }
+  .pr-close h2 { margin: 0 auto; max-width: 26ch; font-family: var(--font-display);
+    font-size: clamp(28px,3.2vw,42px); font-weight: 700; letter-spacing: -0.02em; color: #fff; line-height: 1.14; }
+  .pr-close p { margin: 16px auto 0; max-width: 56ch; font-size: 16.5px; line-height: 1.7;
+    color: rgba(255,255,255,0.78); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pr-tier, .pr-step, .pr-btn { transition: none; }
+    .pr-tier:hover, .pr-step:hover, .pr-btn:hover { transform: none; }
+  }
+  @media (max-width: 1024px) {
+    .pr-steps, .pr-where { grid-template-columns: 1fr; }
+    .pr-two { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .pr-section { padding: 62px 0; }
+    .pr-hero { padding-top: 54px; }
+    .pr-tiers { grid-template-columns: 1fr; }
+  }
 </style>
 </helmet>
 
@@ -226,177 +375,266 @@
 
 <main data-screen-label="Pricing">
 
-  <!-- HERO -->
-  
+  <!-- ================= HERO + TIERS ================= -->
+  <section style="background:linear-gradient(180deg,#f7faff 0%,var(--bg-marketing-paper) 60%)">
+    <div class="pr-wrap pr-hero">
+      <span class="pr-kicker">Pricing</span>
+      <h1 class="pr-h1">Two rates, <span>published.</span></h1>
+      <p class="pr-lede">Most of this industry makes you book a call to find out whether they are in
+        your range. Here are the numbers. What we scope on the call is the shape, not the secret.</p>
 
-  <!-- COMPARE PLANS -->
-  <section style="background:linear-gradient(to bottom, rgba(44,123,229,0.08), rgba(44,123,229,0.03) 60%, #FFFFFF);position:relative">
-    <div style="max-width:1200px;margin:0 auto;padding:52px 24px 118px;text-align:center;position:relative;z-index:1">
-      <p style="margin: 0 0 16px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-blue); font-family: Arial">Pricing</p>
-      <h1 style="margin: 0 auto 20px; font-family: Arial; font-size: 46px; line-height: 1.15; font-weight: 700; color: var(--brand-navy); max-width: 24ch; text-wrap: balance">We customize every plan to fit your company's needs</h1>
-      <p style="margin: 0 auto; font-size: 18px; line-height: 1.6; color: var(--ink-600); max-width: 62ch; font-family: Arial">We rate-match reputable BPOs, assign personalized pricing per company, and offer payment structures aligned with your revenue cycles. All terms stay negotiable through the final consultation.</p>
+      <div class="pr-chips">
+        <span class="pr-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Hourly, per seat</span>
+        <span class="pr-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>No setup fee</span>
+        <span class="pr-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Add or drop seats any time</span>
+        <span class="pr-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>ISO 9001 &amp; 27001 audited</span>
+      </div>
+
+      <div class="pr-tiers">
+        <div class="pr-tier">
+          <span class="pr-tier-tag">Best value</span>
+          <h3>Pro</h3>
+          <span class="pr-price"><small>from</small><b>$8</b><em>/hr</em></span>
+          <p>Fully trained and fit for work from day one. Pro seats clear our core programme and pick
+            up whatever software you run &mdash; CRM, helpdesk, billing, scheduling, or a tool you built
+            in-house.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Works on any stack</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Core programme certified before placement</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Best rate per seat</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Suited to repeatable, rules-based work</li>
+          </ul>
+        </div>
+
+        <div class="pr-tier pr-tier--expert">
+          <span class="pr-tier-tag">Most judgment</span>
+          <h3>Expert</h3>
+          <span class="pr-price"><small>from</small><b>$11</b><em>/hr</em></span>
+          <p>More years on the job and a far more rigorous assessment path. Experts arrive already
+            fluent in your kind of operation and need the least direction to get moving.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Senior experience</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Rigorous assessment path</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Least supervision needed</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Suited to client-facing, high-stakes work</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="pr-lede" style="margin-top:26px;font-size:15px">A pod can mix tiers &mdash; an Expert lead
+        with Pro seats underneath is the most common shape we place, and the cheapest way to buy senior
+        judgment. <a href="Qualify.dc.html">Qualify in two minutes</a> to see which shape fits you.</p>
+      <div style="height:84px"></div>
     </div>
-  <div style="position:absolute;left:0;right:0;bottom:0;height:150px;overflow:hidden;pointer-events:none" aria-hidden="true">
-      <div style="position:absolute;bottom:-8px;left:0;width:200%;height:110px;display:flex;animation:waveDrift 18s linear infinite;opacity:0.5">
-        <svg width="50%" height="110" viewBox="0 0 1200 110" preserveAspectRatio="none" style="flex-shrink:0"><path d="M0 70 C 150 20, 300 20, 450 70 S 750 120, 900 70 S 1150 20, 1200 70 L1200 110 L0 110 Z" fill="var(--blue-100)"></path></svg>
-        <svg width="50%" height="110" viewBox="0 0 1200 110" preserveAspectRatio="none" style="flex-shrink:0"><path d="M0 70 C 150 20, 300 20, 450 70 S 750 120, 900 70 S 1150 20, 1200 70 L1200 110 L0 110 Z" fill="var(--blue-100)"></path></svg>
+  </section>
+
+  <!-- ================= WHAT COVERAGE COSTS ================= -->
+  <section class="pr-section" style="background:var(--bg-marketing-paper)">
+    <div class="pr-wrap">
+      <span class="pr-kicker">Do the maths yourself</span>
+      <h2 class="pr-h2" style="margin-top:14px">Coverage drives the cost, <span>not seniority.</span></h2>
+      <p class="pr-lede">Hours multiplied by the rate above. Nothing hidden in the middle, so you can
+        sanity-check us before you ever speak to anyone.</p>
+
+      <div class="pr-table-wrap">
+        <table class="pr-table">
+          <thead>
+            <tr>
+              <th scope="col">Coverage</th>
+              <th scope="col">Pro &mdash; $8/hr</th>
+              <th scope="col">Expert &mdash; $11/hr</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Part-time<span>About 80 hrs/month, one seat</span></th>
+              <td>$640<span>per month</span></td>
+              <td>$880<span>per month</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Full-time<span>160 hrs/month, one seat</span></th>
+              <td>$1,280<span>per month</span></td>
+              <td>$1,760<span>per month</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Extended hours<span>320 hrs/month, two seats on a rota</span></th>
+              <td>$2,560<span>per month</span></td>
+              <td>$3,520<span>per month</span></td>
+            </tr>
+            <tr>
+              <th scope="row">True 24/7<span>640 hrs/month, a pod across timezones</span></th>
+              <td>$5,120<span>per month</span></td>
+              <td>$7,040<span>per month</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div style="position:absolute;bottom:-8px;left:0;width:200%;height:90px;display:flex;animation:waveDrift 12s linear infinite reverse;opacity:0.6">
-        <svg width="50%" height="90" viewBox="0 0 1200 90" preserveAspectRatio="none" style="flex-shrink:0"><path d="M0 55 C 200 15, 400 95, 600 55 S 1000 15, 1200 55 L1200 90 L0 90 Z" fill="var(--blue-300)"></path></svg>
-        <svg width="50%" height="90" viewBox="0 0 1200 90" preserveAspectRatio="none" style="flex-shrink:0"><path d="M0 55 C 200 15, 400 95, 600 55 S 1000 15, 1200 55 L1200 90 L0 90 Z" fill="var(--blue-300)"></path></svg>
-      </div>
-      <div style="position:absolute;bottom:-8px;left:0;width:200%;height:70px;display:flex;animation:waveDrift 24s linear infinite">
-        <svg width="50%" height="70" viewBox="0 0 1200 70" preserveAspectRatio="none" style="flex-shrink:0"><path d="M0 40 C 250 5, 450 70, 700 40 S 1050 5, 1200 40 L1200 70 L0 70 Z" fill="var(--brand-blue)" opacity="0.25"></path><path d="M0 42 C 250 8, 450 72, 700 42 S 1050 8, 1200 42" stroke="var(--brand-blue)" stroke-width="2" fill="none" opacity="0.5"></path></svg>
-        <svg width="50%" height="70" viewBox="0 0 1200 70" preserveAspectRatio="none" style="flex-shrink:0"><path d="M0 40 C 250 5, 450 70, 700 40 S 1050 5, 1200 40 L1200 70 L0 70 Z" fill="var(--brand-blue)" opacity="0.25"></path><path d="M0 42 C 250 8, 450 72, 700 42 S 1050 8, 1200 42" stroke="var(--brand-blue)" stroke-width="2" fill="none" opacity="0.5"></path></svg>
-      </div>
-    </div></section><section style="background:#fff">
-    <div style="max-width:1200px;margin:0 auto;padding:72px 24px 88px">
-      <h2 style="margin:0 0 48px;font-family:var(--font-display);font-size:52px;font-weight:700;letter-spacing:-0.01em;color:var(--brand-navy)">Compare plans</h2>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--border-default)">
+      <p class="pr-table-note">Figures are floors, not quotes &mdash; your exact rate depends on hours,
+        start date and whether a mixed-tier pod suits you better. Extras are quoted a la carte and
+        confirmed in writing before anything starts.</p>
+    </div>
+  </section>
 
-        <div style="display:flex;flex-direction:column;padding:32px 28px;border-right:1px solid var(--border-default)">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;min-height:26px">
-            <h3 style="margin:0;font-size:19px;font-weight:500;color:var(--ink-900)">Customer Service Agents</h3>
-          </div>
-          <div style="font-size:40px;font-weight:600;color:var(--ink-900);line-height:1;margin-bottom:12px">From $8</div>
-          <div style="font-size:14px;line-height:1.5;color:var(--ink-600);margin-bottom:28px">Per agent per hour,<br>customized in consultation</div>
-          <a href="mailto:support@remassistance.com" style="text-align:center;background:var(--brand-blue);color:#fff;font-size:15px;font-weight:600;text-decoration:none;padding:13px 16px;border-radius:6px;transition:background 150ms;margin-bottom:28px" style-hover="background:var(--blue-700);color:#fff">Get started</a>
-          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column">
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> Voice, chat &amp; email coverage</li>
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> 24/7 or business-hours shifts</li>
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> QA scoring + daily reports</li>
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> 30–60-day pilot program</li>
+  <!-- ================= IN / OUT ================= -->
+  <section class="pr-section" style="background:#fff;border-top:1px solid var(--border-default)">
+    <div class="pr-wrap">
+      <span class="pr-kicker">Read the small print</span>
+      <h2 class="pr-h2" style="margin-top:14px">What the rate <span>does and does not</span> include.</h2>
+
+      <div class="pr-two">
+        <div class="pr-list pr-list--in">
+          <h3>Included in the hourly rate</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>The agent's working hours at the tier shown.</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Recruiting, vetting and the core training programme.</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Process build and SOP writing during onboarding &mdash; yours to keep.</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>QA, supervision and replacement if a seat is not working.</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Operating under ISO 9001 and ISO 27001 controls.</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>No setup fee, and seats can be added or dropped.</li>
           </ul>
-          <a href="Customer Service Agents.dc.html" style="margin-top:auto;padding-top:20px;font-size:14px;font-weight:600;color:var(--brand-blue);text-decoration:none" style-hover="text-decoration:underline">Learn more →</a>
         </div>
-
-        <div style="display:flex;flex-direction:column;padding:32px 28px;border-right:1px solid var(--border-default);background:var(--blue-50)">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;min-height:26px;flex-wrap:wrap">
-            <h3 style="margin:0;font-size:19px;font-weight:500;color:var(--ink-900)">GTM Team</h3>
-            <span style="background:var(--brand-blue);color:#fff;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:4px">Most popular</span>
-          </div>
-          <div style="font-size:40px;font-weight:600;color:var(--ink-900);line-height:1;margin-bottom:12px">Custom</div>
-          <div style="font-size:14px;line-height:1.5;color:var(--ink-600);margin-bottom:28px">Per pod of 2–6 seats,<br>scoped to your motion</div>
-          <a href="mailto:support@remassistance.com" style="text-align:center;background:var(--brand-navy);color:#fff;font-size:15px;font-weight:600;text-decoration:none;padding:13px 16px;border-radius:6px;transition:background 150ms;margin-bottom:28px" style-hover="background:var(--navy-800);color:#fff">Get started</a>
-          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column">
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> Lead + SDRs + marketing + RevOps</li>
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> GHL / HubSpot builds included</li>
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> Weekly pipeline reporting</li>
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> 30–60-day pilot program</li>
+        <div class="pr-list pr-list--out">
+          <h3>Quoted separately, and we will say so</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>Your own software licences and seat costs.</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>Paid media, data credits and sending infrastructure.</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>A la carte extras beyond the staffed seat.</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>Optional time-tracking client &mdash; provided on request only, never imposed.</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>A guaranteed outcome. We commit to the process and the reporting, not a number we have not earned yet.</li>
           </ul>
-          <a href="GTM Teams.dc.html" style="margin-top:auto;padding-top:20px;font-size:14px;font-weight:600;color:var(--brand-blue);text-decoration:none" style-hover="text-decoration:underline">Learn more →</a>
         </div>
-
-        <div style="display:flex;flex-direction:column;padding:32px 28px;border-right:1px solid var(--border-default)">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;min-height:26px">
-            <h3 style="margin:0;font-size:19px;font-weight:500;color:var(--ink-900)">SDR as a Service</h3>
-          </div>
-          <div style="font-size:40px;font-weight:600;color:var(--ink-900);line-height:1;margin-bottom:12px">From $8</div>
-          <div style="font-size:14px;line-height:1.5;color:var(--ink-600);margin-bottom:28px">Per SDR per hour,<br>customized in consultation</div>
-          <a href="mailto:support@remassistance.com" style="text-align:center;background:var(--brand-blue);color:#fff;font-size:15px;font-weight:600;text-decoration:none;padding:13px 16px;border-radius:6px;transition:background 150ms;margin-bottom:28px" style-hover="background:var(--blue-700);color:#fff">Get started</a>
-          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column">
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> Lists, sequences &amp; booking</li>
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> Sales Navigator + RevenueBase data</li>
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> Reported on meetings held</li>
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> 30–60-day pilot program</li>
-          </ul>
-          <a href="SDR as a Service.dc.html" style="margin-top:auto;padding-top:20px;font-size:14px;font-weight:600;color:var(--brand-blue);text-decoration:none" style-hover="text-decoration:underline">Learn more →</a>
-        </div>
-
-        <div style="display:flex;flex-direction:column;padding:32px 28px">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;min-height:26px">
-            <h3 style="margin:0;font-size:19px;font-weight:500;color:var(--ink-900)">Extra Services</h3>
-          </div>
-          <div style="font-size:40px;font-weight:600;color:var(--ink-900);line-height:1;margin-bottom:12px">Custom</div>
-          <div style="font-size:14px;line-height:1.5;color:var(--ink-600);margin-bottom:28px">Per seat or per project,<br>mix into any plan</div>
-          <a href="mailto:support@remassistance.com" style="text-align:center;background:var(--brand-blue);color:#fff;font-size:15px;font-weight:600;text-decoration:none;padding:13px 16px;border-radius:6px;transition:background 150ms;margin-bottom:28px" style-hover="background:var(--blue-700);color:#fff">Get started</a>
-          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column">
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> IT helpdesk, marketing, AI, research</li>
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> One VA can cover several tasks</li>
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> Add or remove plans anytime</li>
-            <li style="display:flex;gap:10px;align-items:center;padding:14px 0;border-top:1px solid var(--border-default);font-size:14px;color:var(--ink-800)"><svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="var(--brand-navy)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg> Custom software available</li>
-          </ul>
-          <a href="Extra Services.dc.html" style="margin-top:auto;padding-top:20px;font-size:14px;font-weight:600;color:var(--brand-blue);text-decoration:none" style-hover="text-decoration:underline">Learn more →</a>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section style="background:#fff;border-top:1px solid var(--border-default);position:relative;overflow:hidden">
-    <svg width="1400" height="1100" viewBox="0 0 1400 1100" fill="none" preserveAspectRatio="xMidYMin slice" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;height:100%;pointer-events:none" aria-hidden="true">
-      <circle cx="90" cy="90" r="7" fill="var(--blue-300)"></circle>
-      <circle cx="220" cy="230" r="4" fill="var(--brand-blue)" opacity="0.7"></circle>
-      <circle cx="70" cy="410" r="11" fill="var(--blue-100)"></circle>
-      <circle cx="170" cy="590" r="6" fill="var(--blue-300)"></circle>
-      <circle cx="100" cy="800" r="9" fill="var(--brand-blue)" opacity="0.5"></circle>
-      <circle cx="270" cy="730" r="4" fill="var(--blue-300)"></circle>
-      <circle cx="60" cy="990" r="6" fill="var(--blue-300)" opacity="0.8"></circle>
-      <circle cx="330" cy="940" r="5" fill="var(--brand-blue)" opacity="0.55"></circle>
-      <circle cx="1310" cy="110" r="8" fill="var(--blue-300)"></circle>
-      <circle cx="1180" cy="290" r="4" fill="var(--brand-blue)" opacity="0.7"></circle>
-      <circle cx="1340" cy="460" r="11" fill="var(--blue-100)"></circle>
-      <circle cx="1220" cy="640" r="6" fill="var(--blue-300)"></circle>
-      <circle cx="1300" cy="830" r="8" fill="var(--brand-blue)" opacity="0.5"></circle>
-      <circle cx="1130" cy="80" r="5" fill="var(--blue-300)"></circle>
-      <circle cx="1360" cy="1000" r="7" fill="var(--blue-300)" opacity="0.8"></circle>
-      <circle cx="1090" cy="950" r="5" fill="var(--brand-blue)" opacity="0.55"></circle>
-      <circle cx="360" cy="70" r="4" fill="var(--brand-blue)" opacity="0.6"></circle>
-      <circle cx="1010" cy="170" r="4" fill="var(--blue-300)"></circle>
-      <circle cx="420" cy="1040" r="5" fill="var(--blue-300)" opacity="0.7"></circle>
-      <circle cx="980" cy="1050" r="6" fill="var(--blue-100)"></circle>
-      <circle cx="700" cy="45" r="4" fill="var(--blue-300)" opacity="0.7"></circle>
-      <circle cx="560" cy="1070" r="4" fill="var(--brand-blue)" opacity="0.45"></circle>
-      <path d="M250 130 l12 -12 m0 12 l-12 -12" stroke="var(--brand-blue)" stroke-width="2.5" stroke-linecap="round" opacity="0.75"></path>
-      <path d="M130 310 l14 -14 m0 14 l-14 -14" stroke="var(--blue-300)" stroke-width="2.5" stroke-linecap="round"></path>
-      <path d="M1240 200 l14 -14 m0 14 l-14 -14" stroke="var(--blue-300)" stroke-width="2.5" stroke-linecap="round"></path>
-      <path d="M1160 520 l12 -12 m0 12 l-12 -12" stroke="var(--brand-blue)" stroke-width="2.5" stroke-linecap="round" opacity="0.75"></path>
-      <path d="M230 480 l14 -14 m0 14 l-14 -14" stroke="var(--blue-300)" stroke-width="2.5" stroke-linecap="round"></path>
-      <path d="M1270 740 l14 -14 m0 14 l-14 -14" stroke="var(--blue-300)" stroke-width="2.5" stroke-linecap="round"></path>
-      <path d="M180 900 l12 -12 m0 12 l-12 -12" stroke="var(--brand-blue)" stroke-width="2.5" stroke-linecap="round" opacity="0.6"></path>
-      <path d="M1200 1010 l12 -12 m0 12 l-12 -12" stroke="var(--blue-300)" stroke-width="2.5" stroke-linecap="round" opacity="0.8"></path>
-      <path d="M520 90 l10 -10 m0 10 l-10 -10" stroke="var(--blue-300)" stroke-width="2" stroke-linecap="round" opacity="0.7"></path>
-      <path d="M880 60 l10 -10 m0 10 l-10 -10" stroke="var(--brand-blue)" stroke-width="2" stroke-linecap="round" opacity="0.5"></path>
-      <path d="M760 1080 l10 -10 m0 10 l-10 -10" stroke="var(--blue-300)" stroke-width="2" stroke-linecap="round" opacity="0.7"></path>
-      <circle cx="90" cy="90" r="14" stroke="var(--blue-100)" stroke-width="2" fill="none"></circle>
-      <circle cx="1340" cy="460" r="19" stroke="var(--blue-100)" stroke-width="2" fill="none"></circle>
-      <circle cx="170" cy="590" r="12" stroke="var(--blue-100)" stroke-width="2" fill="none"></circle>
-      <circle cx="1300" cy="830" r="15" stroke="var(--blue-100)" stroke-width="2" fill="none"></circle>
-    </svg>
-    <div style="max-width:840px;margin:0 auto;padding:80px 24px;position:relative">
-      <h2 style="margin:0 0 12px;font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--brand-navy);text-align:center">FAQ’s</h2>
-      <p style="margin:0 auto 40px;font-size:16px;line-height:1.6;color:var(--ink-600);text-align:center;max-width:52ch">Answers to our most frequently asked questions. Still have questions? <a href="mailto:support@remassistance.com" style="color:var(--brand-blue);font-weight:600">Contact us</a>.</p>
-      <div style="display:flex;flex-direction:column;gap:0">
-        <sc-for list="{{ faqs }}" as="faq" hint-placeholder-count="5">
-          <div style="border-bottom:1px solid var(--border-default);padding:24px 0">
-            <h3 style="margin:0 0 8px;font-size:17px;font-weight:700;color:var(--brand-navy)">{{ faq.q }}</h3>
-            <p style="margin:0;font-size:15px;line-height:1.65;color:var(--ink-600)">{{ faq.a }}</p>
-          </div>
-        </sc-for>
+  <!-- ================= PILOT PROGRAMME ================= -->
+  <section class="pr-band">
+    <div class="pr-wrap">
+      <span class="pr-kicker">Before a full rollout</span>
+      <h2 class="pr-h2" style="margin-top:14px">Start with a pilot, not a contract.</h2>
+      <p class="pr-lede">Training and security setup for your specific processes is real work, so we do
+        not pretend it is free. What we do instead is keep the first phase small enough to measure.</p>
+
+      <div class="pr-steps">
+        <div class="pr-step">
+          <span class="pr-step-n">STEP 01</span>
+          <h3>Free consultation</h3>
+          <p>We scope the seats, the coverage and the rate for your hours. No charge and no obligation
+            &mdash; if the numbers above do not work for you, you have lost half an hour.</p>
+        </div>
+        <div class="pr-step">
+          <span class="pr-step-n">STEP 02</span>
+          <h3>30&ndash;60 day pilot</h3>
+          <p>A dedicated team stood up on a smaller scale, so you can measure our SLAs and quality
+            firsthand before committing to a full-scale rollout.</p>
+        </div>
+        <div class="pr-step">
+          <span class="pr-step-n">STEP 03</span>
+          <h3>Scale on what you saw</h3>
+          <p>You extend the shape that worked and drop what did not. Seasonal discounted pricing can
+            apply to a pilot or an initial contract phase &mdash; ask on the call.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section id="book" style="background:linear-gradient(to bottom, #FFFFFF, rgba(44,123,229,0.06) 55%, rgba(44,123,229,0.10));position:relative;overflow:hidden">
-    <div style="max-width:1200px;margin:0 auto;padding:64px 24px 140px;text-align:center;position:relative;z-index:1">
-      <h2 style="margin:0 auto 16px;font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--brand-navy)">Get your personalized quote</h2>
-      <p style="margin:0 auto 32px;font-size:16px;line-height:1.6;color:var(--ink-600);max-width:52ch">Schedule a free consultation to scope services, team size, and pricing that fits your revenue cycle.</p>
-      <a href="https://calendly.com/j-zemene-remassistance/new-meeting" target="_blank" rel="noopener" style="display:inline-block;background:var(--brand-blue);color:#fff;font-size:17px;font-weight:600;text-decoration:none;padding:15px 32px;border-radius:6px;transition:background 150ms" style-hover="background:var(--blue-700);color:#fff">{{ ctaLabel }}</a>
+  <!-- ================= WHERE THE TEAM SITS ================= -->
+  <section class="pr-section" style="background:var(--bg-marketing-paper)">
+    <div class="pr-wrap">
+      <span class="pr-kicker">Where your team sits</span>
+      <h2 class="pr-h2" style="margin-top:14px">Two delivery centres, <span>three working setups.</span></h2>
+      <p class="pr-lede">Worth knowing before you compare rates: these are staffed offices, not a
+        marketplace of freelancers bidding on your task.</p>
+
+      <div class="pr-where">
+        <div class="pr-place">
+          <span class="pr-place-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+          <h3>Addis Ababa, Ethiopia</h3>
+          <p>Our primary delivery centre, covering EMEA hours comfortably and extending into the
+            Americas and APAC on a rota.</p>
+        </div>
+        <div class="pr-place">
+          <span class="pr-place-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+          <h3>Cassino, Italy</h3>
+          <p>European presence for accounts that need it, in the same operating model and under the
+            same audited controls.</p>
+        </div>
+        <div class="pr-place">
+          <span class="pr-place-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20v-1.4A4.6 4.6 0 0 1 8.6 14h6.8a4.6 4.6 0 0 1 4.6 4.6V20"/><circle cx="12" cy="8" r="3.6"/></svg></span>
+          <h3>Remote, hybrid or in-office</h3>
+          <p>All three setups are available for every agent. Where a client's security posture requires
+            in-office only, we staff it that way.</p>
+        </div>
+      </div>
     </div>
-    <div style="position:absolute;left:0;right:0;bottom:0;height:130px;overflow:hidden;pointer-events:none" aria-hidden="true">
-      <div style="position:absolute;bottom:-8px;left:0;width:200%;height:100px;display:flex;animation:waveDrift 18s linear infinite;opacity:0.5">
-        <svg width="50%" height="100" viewBox="0 0 1200 110" preserveAspectRatio="none" style="flex-shrink:0"><path d="M0 70 C 150 20, 300 20, 450 70 S 750 120, 900 70 S 1150 20, 1200 70 L1200 110 L0 110 Z" fill="var(--blue-100)"></path></svg>
-        <svg width="50%" height="100" viewBox="0 0 1200 110" preserveAspectRatio="none" style="flex-shrink:0"><path d="M0 70 C 150 20, 300 20, 450 70 S 750 120, 900 70 S 1150 20, 1200 70 L1200 110 L0 110 Z" fill="var(--blue-100)"></path></svg>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="pr-section" style="background:#fff;border-top:1px solid var(--border-default)">
+    <div class="pr-wrap pr-narrow">
+      <span class="pr-kicker">Before you ask</span>
+      <h2 class="pr-h2" style="margin-top:14px">Pricing questions, <span>answered plainly.</span></h2>
+
+      <div class="pr-faq">
+        <details>
+          <summary>Why publish rates when nobody else does?</summary>
+          <p>Because the alternative wastes both our time. If $8 or $11 an hour is outside your range,
+            you should find that out in two minutes rather than after a discovery call. What genuinely
+            needs a conversation is the shape &mdash; how many seats, what coverage, which tier &mdash;
+            and that is what the consult is for.</p>
+        </details>
+        <details>
+          <summary>Do you have set pricing?</summary>
+          <p>Rates start at $8 an hour and the tiers above are real, but the total is assembled from
+            options we quote a la carte, so every client gets the customisation benefit. The rate is
+            fixed; the scope is yours to choose.</p>
+        </details>
+        <details>
+          <summary>Is there a free trial?</summary>
+          <p>Not a traditional free trial &mdash; the training and security setup for your specific
+            processes is substantial work, and we would rather be straight about that than dress it up.
+            Instead there is a 30&ndash;60 day pilot: a dedicated team at smaller scale so you can
+            measure our SLAs and quality before a full rollout. Seasonal discounted pricing can apply
+            to the pilot or an initial contract phase.</p>
+        </details>
+        <details>
+          <summary>Can I change plans once I have signed up?</summary>
+          <p>You can add or remove seats at any time, and your service rep handles the change rather
+            than sending you into a queue. There is no setup fee to re-pay when a pod grows.</p>
+        </details>
+        <details>
+          <summary>Where are your agents based?</summary>
+          <p>Addis Ababa, Ethiopia and Cassino, Italy. Remote, hybrid and in-office setups are available
+            for all agents &mdash; useful if your own security posture rules one of them out.</p>
+        </details>
+        <details>
+          <summary>How do we train the agents we hire?</summary>
+          <p>Agents arrive having cleared several rigorous assessments, so client training starts from a
+            working baseline rather than from scratch. If your process is not documented we write the
+            SOP during onboarding and hand it to you &mdash; you keep it either way.</p>
+        </details>
+        <details>
+          <summary>Do we have to use your software?</summary>
+          <p>No. Agents work in whatever you already run, and the audit trail stays in your system. The
+            time-tracking client we can provide is on request only &mdash; it is never a condition of
+            the engagement.</p>
+        </details>
       </div>
-      <div style="position:absolute;bottom:-8px;left:0;width:200%;height:80px;display:flex;animation:waveDrift 12s linear infinite reverse;opacity:0.6">
-        <svg width="50%" height="80" viewBox="0 0 1200 90" preserveAspectRatio="none" style="flex-shrink:0"><path d="M0 55 C 200 15, 400 95, 600 55 S 1000 15, 1200 55 L1200 90 L0 90 Z" fill="var(--blue-300)"></path></svg>
-        <svg width="50%" height="80" viewBox="0 0 1200 90" preserveAspectRatio="none" style="flex-shrink:0"><path d="M0 55 C 200 15, 400 95, 600 55 S 1000 15, 1200 55 L1200 90 L0 90 Z" fill="var(--blue-300)"></path></svg>
-      </div>
-      <div style="position:absolute;bottom:-8px;left:0;width:200%;height:64px;display:flex;animation:waveDrift 24s linear infinite">
-        <svg width="50%" height="64" viewBox="0 0 1200 70" preserveAspectRatio="none" style="flex-shrink:0"><path d="M0 40 C 250 5, 450 70, 700 40 S 1050 5, 1200 40 L1200 70 L0 70 Z" fill="var(--brand-blue)" opacity="0.25"></path><path d="M0 42 C 250 8, 450 72, 700 42 S 1050 8, 1200 42" stroke="var(--brand-blue)" stroke-width="2" fill="none" opacity="0.5"></path></svg>
-        <svg width="50%" height="64" viewBox="0 0 1200 70" preserveAspectRatio="none" style="flex-shrink:0"><path d="M0 40 C 250 5, 450 70, 700 40 S 1050 5, 1200 40 L1200 70 L0 70 Z" fill="var(--brand-blue)" opacity="0.25"></path><path d="M0 42 C 250 8, 450 72, 700 42 S 1050 8, 1200 42" stroke="var(--brand-blue)" stroke-width="2" fill="none" opacity="0.5"></path></svg>
+    </div>
+  </section>
+
+  <!-- ================= CLOSE ================= -->
+  <section id="book" class="pr-close">
+    <div class="pr-wrap">
+      <h2>You have the rates. Bring us the shape.</h2>
+      <p>Tell us the hours and the work and we will give you the exact figure for your engagement,
+        plus the profiles of the people who would do it.</p>
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:13px;margin-top:30px">
+        <a class="pr-btn" href="https://calendly.com/j-zemene-remassistance/new-meeting" target="_blank" rel="noopener">
+          Book a free consult
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
+        <a class="pr-ghost-dark" href="Qualify.dc.html">Qualify in two minutes</a>
       </div>
     </div>
   </section>
@@ -464,20 +702,7 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;ctaLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Book a Call&quot;, &quot;tsType&quot;: &quot;string&quot;}}">
 class Component extends DCLogic {
   renderVals() {
-    return {
-      ctaLabel: this.props.ctaLabel ?? "Book a Call",
-      faqs: [
-        { q: "Where can I find the pricing for each service you offer?", a: "Our pricing is fully customized to cater to all of your company's needs! Schedule a consultation to find out more about our services and pricing!" },
-        { q: "Can I change plans once I've signed up?", a: "You can add or remove plans at any time. Our service reps are here to assist you every step of the way to ensure a seamless and successful operation." },
-        { q: "How can I train representatives that I hire?", a: "Our agents have completed several rigorous assessments and are ready to be trained with clients' systems. We administer collaborative training processes to ensure requested agents understand their duties before starting any role." },
-        { q: "Where are your agents based?", a: "Our agents are based in Addis Ababa, Ethiopia and Cassino, Italy. We have remote, hybrid, and in-office setup options for all agents." },
-        { q: "Does Rem Assistance have customized software/applications?", a: "Yes! We have fully customized options including but not limited to CRM, booking app, AI analytics, sales funnels, email marketing, call tracking, document signing, courses/products, reputation management, and more. We can also customize and integrate any features with your existing systems. Our devs are highly skilled and can integrate applications in quick turnaround times." },
-        { q: "Do we have to use your proprietary software?", a: "Not at all! We can tailor our services to your desired requests." },
-        { q: "Do you have a free trial to test out services?", a: "While we don't offer traditional free trials due to the intensive training and security setup required for your specific processes, we do provide a 30-60-day Pilot Program. This allows us to establish a dedicated team on a smaller scale so you can measure our Service Level Agreements (SLAs) and quality firsthand before committing to a full-scale rollout. Additionally, we currently offer seasonal discounted pricing that can be applied to your pilot or initial contract phase to further optimize your BPO ROI." },
-        { q: "Do you have set pricing?", a: "Our agents' pricing starts at $8 an hour. We have an array of options that we include a la carte. Each of our clients get our full customization benefit, therefore all pricing will be discussed in consultation." },
-        { q: "Is the time tracker software a required service?", a: "Absolutely not! The time tracking client we provide is upon request only!" },
-      ],
-    };
+    return { ctaLabel: this.props.ctaLabel ?? "Book a Call" };
   }
 }
 </script>
