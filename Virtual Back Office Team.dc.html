@@ -113,9 +113,14 @@
   .vb-tier { background: #fff; border: 1px solid var(--border-default); border-radius: 18px; padding: 30px 28px;
     box-shadow: var(--shadow-sm); }
   .vb-tier--expert { border-color: rgba(81, 141, 224, 0.55); box-shadow: 0 24px 44px -28px rgba(81, 141, 224, 0.5); }
-  .vb-tier-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  .vb-tier-head { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
   .vb-tier-head h3 { margin: 0; font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--brand-navy); }
-  .vb-tier-price { font-size: 15px; font-weight: 700; color: var(--brand-blue); white-space: nowrap; }
+  .vb-tier-price { display: flex; align-items: baseline; gap: 6px; white-space: nowrap; }
+  .vb-tier-price small { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-500); font-weight: 600; }
+  .vb-tier-price b { font-family: var(--font-display); font-size: clamp(38px, 3.6vw, 52px);
+    font-weight: 800; line-height: 0.9; letter-spacing: -0.03em; color: var(--brand-blue); }
+  .vb-tier-price em { font-style: normal; font-size: 16px; font-weight: 700; color: var(--brand-blue); }
   .vb-tier p { margin: 12px 0 0; font-size: 15px; line-height: 1.7; color: var(--ink-600); }
   .vb-tier ul { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
   .vb-tier li { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; color: var(--ink-700); }
@@ -558,7 +563,7 @@
 
       <div class="vb-tiers">
         <div class="vb-tier">
-          <div class="vb-tier-head"><h3>Pro</h3><span class="vb-tier-price">from $8/hr</span></div>
+          <div class="vb-tier-head"><h3>Pro</h3><span class="vb-tier-price"><small>from</small><b>$8</b><em>/hr</em></span></div>
           <p>Fully trained and fit for work from day one. Pro agents clear our core program and pick up whatever
             software you run &mdash; CRM, helpdesk, billing, scheduling, or an internal tool.</p>
           <ul>
@@ -568,7 +573,7 @@
           </ul>
         </div>
         <div class="vb-tier vb-tier--expert">
-          <div class="vb-tier-head"><h3>Expert</h3><span class="vb-tier-price">from $11/hr</span></div>
+          <div class="vb-tier-head"><h3>Expert</h3><span class="vb-tier-price"><small>from</small><b>$11</b><em>/hr</em></span></div>
           <p>More years on the job and a far more rigorous assessment path. Experts arrive already fluent in
             your kind of operation and need the least direction to get moving.</p>
           <ul>

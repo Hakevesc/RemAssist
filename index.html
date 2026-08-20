@@ -195,7 +195,12 @@
   .dc-tier-icon svg { width: 36px; height: 36px; fill: none; stroke: currentColor; stroke-width: 1.6;
     stroke-linecap: round; stroke-linejoin: round; }
   .dc-tier-title { margin: 4px 0 0; font-size: 24px; font-weight: 700; line-height: 1.15; color: var(--brand-navy); }
-  .dc-tier-price { font-family: var(--font-mono); font-size: 15px; font-weight: 600; color: var(--brand-blue); margin-left: 10px; }
+  .dc-tier-price { display: flex; margin-top: 10px; align-items: baseline; gap: 6px; white-space: nowrap; }
+  .dc-tier-price small { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-500); font-weight: 600; }
+  .dc-tier-price b { font-family: var(--font-display); font-size: clamp(38px, 3.6vw, 52px);
+    font-weight: 800; line-height: 0.9; letter-spacing: -0.03em; color: var(--brand-blue); }
+  .dc-tier-price em { font-style: normal; font-size: 16px; font-weight: 700; color: var(--brand-blue); }
   .dc-tier-text { margin: 10px 0 0; font-size: 15px; line-height: 1.65; color: var(--ink-600); }
   .dc-tier-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
   .dc-tier-chip { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600;
@@ -1028,7 +1033,8 @@
                     <div class="dc-tier">
             <span class="dc-tier-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16v-4a8 8 0 0 1 16 0v4"></path><path d="M20 17a2.5 2.5 0 0 1-2.5 2.5H17a1.6 1.6 0 0 1-1.6-1.6v-2.3A1.6 1.6 0 0 1 17 14h3zM4 17a2.5 2.5 0 0 0 2.5 2.5H7a1.6 1.6 0 0 0 1.6-1.6v-2.3A1.6 1.6 0 0 0 7 14H4z"></path><path d="M15.4 19.9a2.6 2.6 0 0 1-2.6 2.1h-1"></path></svg></span>
             <div>
-              <h3 class="dc-tier-title">Pro<span class="dc-tier-price">from $8/hr</span></h3>
+              <h3 class="dc-tier-title">Pro</h3>
+              <span class="dc-tier-price"><small>from</small><b>$8</b><em>/hr</em></span>
               <p class="dc-tier-text">Fully trained, fit for work from day one. Pro agents clear our core program and pick up any software you run — CRM, helpdesk, billing, scheduling, or the tool you built in-house.</p>
               <div class="dc-tier-chips"><span class="dc-tier-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="m8.4 12.2 2.4 2.4 4.8-5"></path></svg>Any stack</span><span class="dc-tier-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="m8.4 12.2 2.4 2.4 4.8-5"></path></svg>Core program certified</span><span class="dc-tier-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="m8.4 12.2 2.4 2.4 4.8-5"></path></svg>Best value per seat</span></div>
             </div>
@@ -1037,7 +1043,8 @@
                     <div class="dc-tier dc-tier--expert">
             <span class="dc-tier-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"></circle><path d="m8.2 14.2-1.2 7.6 5-3 5 3-1.2-7.6"></path><path d="m12 6.2.95 2 2.15.3-1.55 1.5.37 2.1L12 11.1l-1.92 1-.37-2.1L8.16 8.5l2.15-.3z"></path></svg></span>
             <div>
-              <h3 class="dc-tier-title">Expert<span class="dc-tier-price">from $11/hr</span></h3>
+              <h3 class="dc-tier-title">Expert</h3>
+              <span class="dc-tier-price"><small>from</small><b>$11</b><em>/hr</em></span>
               <p class="dc-tier-text">More years on the job and a far more rigorous assessment path. Experts arrive already fluent in your motion and need the least direction — we walk through real examples on the call.</p>
               <div class="dc-tier-chips"><span class="dc-tier-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="m8.4 12.2 2.4 2.4 4.8-5"></path></svg>Senior experience</span><span class="dc-tier-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="m8.4 12.2 2.4 2.4 4.8-5"></path></svg>Rigorous assessments</span><span class="dc-tier-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="m8.4 12.2 2.4 2.4 4.8-5"></path></svg>Least supervision needed</span></div>
             </div>

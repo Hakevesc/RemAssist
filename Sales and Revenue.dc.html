@@ -216,9 +216,14 @@
     transition: transform 190ms var(--ease-out), box-shadow 190ms var(--ease-out), border-color 190ms; }
   .sr-tier:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(81, 141, 224, 0.5); }
   .sr-tier--expert { border-color: rgba(81, 141, 224, 0.55); box-shadow: 0 24px 44px -28px rgba(81, 141, 224, 0.5); }
-  .sr-tier-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  .sr-tier-head { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
   .sr-tier-head h3 { margin: 0; font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--brand-navy); }
-  .sr-tier-price { font-size: 15px; font-weight: 700; color: var(--brand-blue); white-space: nowrap; }
+  .sr-tier-price { display: flex; align-items: baseline; gap: 6px; white-space: nowrap; }
+  .sr-tier-price small { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-500); font-weight: 600; }
+  .sr-tier-price b { font-family: var(--font-display); font-size: clamp(38px, 3.6vw, 52px);
+    font-weight: 800; line-height: 0.9; letter-spacing: -0.03em; color: var(--brand-blue); }
+  .sr-tier-price em { font-style: normal; font-size: 16px; font-weight: 700; color: var(--brand-blue); }
   .sr-tier p { margin: 12px 0 0; font-size: 15px; line-height: 1.7; color: var(--ink-600); }
   .sr-tier ul { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
   .sr-tier li { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; color: var(--ink-700); }
@@ -654,7 +659,7 @@
 
       <div class="sr-tiers">
         <div class="sr-tier">
-          <div class="sr-tier-head"><h3>Pro</h3><span class="sr-tier-price">from $8/hr</span></div>
+          <div class="sr-tier-head"><h3>Pro</h3><span class="sr-tier-price"><small>from</small><b>$8</b><em>/hr</em></span></div>
           <p>Cleared our outbound track and certified in the tooling. Picks up your scripts, ICP, and
             CRM conventions from day one.</p>
           <ul>
@@ -664,7 +669,7 @@
           </ul>
         </div>
         <div class="sr-tier sr-tier--expert">
-          <div class="sr-tier-head"><h3>Expert</h3><span class="sr-tier-price">from $11/hr</span></div>
+          <div class="sr-tier-head"><h3>Expert</h3><span class="sr-tier-price"><small>from</small><b>$11</b><em>/hr</em></span></div>
           <p>More years carrying a number and a far more rigorous assessment path. Arrives fluent in your
             kind of motion and needs the least direction.</p>
           <ul>
