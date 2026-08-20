@@ -501,7 +501,7 @@
             </div>
 
             <div class="q-answers">
-              <span>Your answers &mdash; tap any to change it</span>
+              <span>Your answers &mdash; tap any to change it and come straight back</span>
               <div class="q-answer-row" id="q-answer-row"></div>
             </div>
 
@@ -938,6 +938,17 @@
 
   function answer(id, value) {
     state.answers[id] = value;
+    /* If every question already has an answer we came here from the result to
+       change one of them, so go straight back to the result. Stepping forward
+       instead walked the user through the questions after it again, which read
+       as starting over. */
+    var complete = true;
+    for (var i = 0; i < QUIZ.length; i++) if (!state.answers[QUIZ[i].id]) complete = false;
+    if (complete) {
+      state.step = QUIZ.length;
+      renderResult();
+      return;
+    }
     state.step += 1;
     if (state.step >= QUIZ.length) renderResult(); else renderQuestion();
   }
