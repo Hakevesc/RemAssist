@@ -10,200 +10,196 @@
 <helmet>
 <link rel="stylesheet" href="assets/colors_and_type.css">
 <style>
-  html, body { margin: 0; padding: 0; background: var(--bg-marketing-paper); color: var(--ink-900); font-family: var(--font-sans); }
+  /* ============================================================
+     Customer Experience — built around a channel switcher and a full-bleed
+     coverage band. No proof strip, no three-column card grid, no blue gradient
+     band, no navy centred close: deliberately shares no spine with the other
+     service pages.
+     ============================================================ */
+  html, body { margin: 0; padding: 0; background: #fff; color: var(--ink-900); font-family: var(--font-sans); }
   a { color: var(--fg-link); }
   a:hover { color: var(--blue-700); }
 
-  .sv-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-  .sv-kicker { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--brand-blue); font-weight: 600; }
-  .sv-h1 { margin: 16px 0 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.025em;
-    line-height: 1.06; font-size: clamp(34px, 4.5vw, 56px); color: var(--brand-navy); }
-  .sv-h1 span { color: var(--brand-blue); }
-  .sv-h2 { margin: 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em;
-    line-height: 1.12; font-size: clamp(28px, 3.2vw, 42px); color: var(--brand-navy); }
-  .sv-h2 span { color: var(--brand-blue); }
-  .sv-lede { margin: 18px 0 0; font-size: 17px; line-height: 1.7; color: var(--ink-600); max-width: 54ch; }
-  .sv-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--brand-blue); color: #fff;
-    font-size: 16px; font-weight: 600; text-decoration: none; padding: 14px 30px; border-radius: 8px;
-    transition: background 150ms, transform 150ms, box-shadow 150ms; }
-  .sv-btn:hover { background: var(--blue-700); color: #fff; transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(81,141,224,0.32); }
-  .sv-btn--ghost { background: #fff; color: var(--brand-blue); border: 1px solid rgba(81,141,224,0.45); }
-  .sv-btn--ghost:hover { background: rgba(81,141,224,0.06); color: var(--brand-blue); }
-  .sv-section { padding: 88px 0; }
+  .cx-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .cx-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--brand-blue); color: #fff;
+    font-size: 16px; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: 8px;
+    transition: background 150ms, transform 150ms; }
+  .cx-btn:hover { background: var(--blue-700); color: #fff; transform: translateY(-1px); }
+  .cx-btn--out { background: #fff; color: var(--brand-blue); border: 1px solid rgba(81,141,224,0.45); }
+  .cx-btn--out:hover { background: rgba(81,141,224,0.06); color: var(--brand-blue); }
 
-  .sv-hero { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center;
-    padding: 74px 0 82px; }
-  .sv-checks { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 13px; }
-  .sv-checks li { display: flex; align-items: flex-start; gap: 12px; font-size: 15.5px; line-height: 1.55;
-    color: var(--ink-700); }
-  .sv-tick { flex: none; width: 22px; height: 22px; border-radius: 50%; background: rgba(81,141,224,0.12);
-    display: grid; place-items: center; margin-top: 1px; }
-  .sv-tick svg { width: 13px; height: 13px; fill: none; stroke: var(--brand-blue); stroke-width: 3;
-    stroke-linecap: round; stroke-linejoin: round; }
-  .sv-cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
-
-  .sv-proof { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); margin-top: 38px;
-    background: #fff; border: 1px solid var(--border-default); border-radius: 14px;
-    box-shadow: var(--shadow-sm); overflow: hidden; }
-  .sv-proof div { padding: 16px 18px; border-left: 1px solid var(--border-default); }
-  .sv-proof div:first-child { border-left: 0; }
-  .sv-proof b { display: block; font-family: var(--font-display); font-size: 21px; font-weight: 700;
-    color: var(--brand-navy); line-height: 1.1; }
-  .sv-proof span { display: block; margin-top: 5px; font-size: 12.5px; line-height: 1.45; color: var(--ink-500); }
-
-  /* hero panel shared shell */
-  .sv-panel { background: #fff; border: 1px solid var(--border-default); border-radius: 22px;
-    padding: 26px; box-shadow: 0 40px 80px -40px rgba(0,5,67,0.42); }
-  .sv-panel-top { display: flex; align-items: center; justify-content: space-between; gap: 14px;
-    padding-bottom: 16px; border-bottom: 1px solid var(--border-default); }
-  .sv-panel-top b { font-size: 14.5px; color: var(--brand-navy); }
-  .sv-faces { display: flex; align-items: center; }
-  .sv-faces > span { width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 2px solid #fff;
-    box-shadow: 0 0 0 1.5px rgba(81,141,224,0.5); background: var(--ink-100); }
-  .sv-faces > span + span { margin-left: -9px; }
-  .sv-faces img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block;
-    filter: grayscale(1); }
-
-  /* CX: coverage ring */
-  .sv-ring { display: grid; place-items: center; padding: 26px 0 10px; }
-  .sv-ring svg { grid-area: 1 / 1; width: min(260px, 68%); height: auto; transform: rotate(-90deg); }
-  .sv-ring-track { fill: none; stroke: rgba(81,141,224,0.14); stroke-width: 14; }
-  .sv-ring-arc { fill: none; stroke-width: 14; stroke-linecap: butt; }
-  .sv-ring-c { grid-area: 1 / 1; align-self: center; justify-self: center; text-align: center; }
-  .sv-ring-c b { display: block; font-family: var(--font-display); font-size: 34px; font-weight: 800;
+  /* ---------- asymmetric hero: copy left, big stat stack right ---------- */
+  .cx-hero { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 60px; align-items: end;
+    padding: 72px 0 56px; }
+  .cx-kick { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-mono);
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand-blue);
+    font-weight: 700; }
+  .cx-kick i { width: 7px; height: 7px; border-radius: 50%; background: #00b67a; font-style: normal;
+    box-shadow: 0 0 0 4px rgba(0,182,122,0.16); }
+  .cx-h1 { margin: 20px 0 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.03em;
+    line-height: 1.02; font-size: clamp(38px, 5.6vw, 74px); color: var(--brand-navy); max-width: 18ch; }
+  .cx-h1 span { color: var(--brand-blue); }
+  .cx-sub { margin: 22px 0 0; font-size: 18.5px; line-height: 1.6; color: var(--ink-600); max-width: 52ch; }
+  .cx-hero-cta { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+  /* the four figures as a vertical stack of ruled lines, not a boxed strip */
+  .cx-figs { display: grid; gap: 0; }
+  .cx-fig { display: flex; align-items: baseline; justify-content: space-between; gap: 14px;
+    padding: 15px 0; border-top: 1px solid var(--border-default); }
+  .cx-fig:last-child { border-bottom: 1px solid var(--border-default); }
+  .cx-fig b { font-family: var(--font-display); font-size: clamp(26px, 2.6vw, 34px); font-weight: 800;
     letter-spacing: -0.03em; color: var(--brand-navy); line-height: 1; }
-  .sv-ring-c span { display: block; margin-top: 4px; font-size: 10.5px; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--ink-500); }
-  .sv-shifts { display: grid; gap: 8px; margin-top: 18px; }
-  .sv-shift { display: grid; grid-template-columns: 10px 1fr auto; align-items: center; gap: 11px;
-    font-size: 13px; color: var(--ink-700); }
-  .sv-shift i { width: 10px; height: 10px; border-radius: 50%; }
-  .sv-shift em { font-style: normal; font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-500); }
+  .cx-fig span { font-size: 12.5px; line-height: 1.45; color: var(--ink-500); text-align: right; max-width: 15ch; }
 
-  /* Finance: close checklist */
-  .sv-close-list { list-style: none; margin: 4px 0 0; padding: 18px 0 0; }
-  .sv-close-row { display: grid; grid-template-columns: 26px 1fr auto; align-items: center; gap: 13px;
-    padding: 11px 10px; margin: 0 -10px; border-radius: 11px; transition: background 170ms; }
-  .sv-close-row:hover { background: rgba(81,141,224,0.07); }
-  .sv-close-box { width: 26px; height: 26px; border-radius: 8px; border: 1.5px solid rgba(81,141,224,0.45);
-    display: grid; place-items: center; color: var(--brand-blue);
-    animation: sv-check 8s ease-in-out infinite; }
-  .sv-close-box svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.6;
-    stroke-linecap: round; stroke-linejoin: round; }
-  @keyframes sv-check { 0%, 8%, 100% { background: #fff; border-color: rgba(81,141,224,0.45); color: var(--brand-blue); }
-    16%, 92% { background: var(--brand-blue); border-color: var(--brand-blue); color: #fff; } }
-  .sv-close-row:nth-of-type(1) .sv-close-box { animation-delay: 0s; }
-  .sv-close-row:nth-of-type(2) .sv-close-box { animation-delay: .5s; }
-  .sv-close-row:nth-of-type(3) .sv-close-box { animation-delay: 1s; }
-  .sv-close-row:nth-of-type(4) .sv-close-box { animation-delay: 1.5s; }
-  .sv-close-row:nth-of-type(5) .sv-close-box { animation-delay: 2s; }
-  .sv-close-row b { display: block; font-size: 14.5px; font-weight: 700; color: var(--brand-navy); line-height: 1.3; }
-  .sv-close-row small { display: block; margin-top: 2px; font-size: 12.5px; color: var(--ink-600); }
-  .sv-close-row em { font-style: normal; font-family: var(--font-mono); font-size: 11px; color: var(--ink-500); }
-  .sv-closed { display: flex; align-items: center; justify-content: center; gap: 9px; margin-top: 16px;
-    padding: 12px; border-radius: 12px; background: linear-gradient(160deg,#518de0,#0047b3 82%); color: #fff; }
-  .sv-closed svg { width: 16px; height: 16px; fill: none; stroke: #fff; stroke-width: 2.4;
-    stroke-linecap: round; stroke-linejoin: round; }
-  .sv-closed b { font-size: 14px; font-weight: 700; }
-
-  @media (prefers-reduced-motion: reduce) { .sv-close-box { animation: none; } }
-
-  .sv-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; margin-top: 44px; }
-  .sv-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--border-default);
-    border-radius: 16px; padding: 26px 24px;
-    transition: transform 190ms var(--ease-out), box-shadow 190ms var(--ease-out), border-color 190ms; }
-  .sv-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(81,141,224,0.45); }
-  .sv-card-ico { width: 44px; height: 44px; border-radius: 12px; background: rgba(81,141,224,0.10);
-    display: grid; place-items: center; margin-bottom: 16px; transition: background 190ms; }
-  .sv-card-ico svg { width: 22px; height: 22px; fill: none; stroke: var(--brand-blue); stroke-width: 1.9;
-    stroke-linecap: round; stroke-linejoin: round; transition: stroke 190ms; }
-  .sv-card:hover .sv-card-ico { background: var(--brand-blue); }
-  .sv-card:hover .sv-card-ico svg { stroke: #fff; }
-  .sv-card h3 { margin: 0 0 8px; font-size: 17px; font-weight: 700; color: var(--brand-navy); line-height: 1.3; }
-  .sv-card p { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--ink-600); }
-
-  .sv-band { padding: 84px 0; background: #518de0;
-    background-image: radial-gradient(ellipse 900px 450px at 85% 0%, rgba(90,155,240,0.20), transparent 65%),
-      linear-gradient(160deg,#518de0,#0047b3 82%); position: relative; overflow: hidden; }
-  .sv-band .sv-h2, .sv-band .sv-kicker { color: #fff; }
-  .sv-band .sv-lede { color: rgba(255,255,255,0.9); }
-  .sv-bcard { padding: 26px 24px; border-radius: 16px; background: rgba(255,255,255,0.10);
-    border: 1px solid rgba(255,255,255,0.22);
-    transition: transform 190ms var(--ease-out), background 190ms, border-color 190ms; }
-  .sv-bcard:hover { transform: translateY(-4px); background: rgba(255,255,255,0.17);
-    border-color: rgba(255,255,255,0.42); }
-  .sv-bcard h3 { margin: 0 0 8px; font-size: 18px; font-weight: 700; color: #fff; line-height: 1.3; }
-  .sv-bcard p { margin: 0; font-size: 14.5px; line-height: 1.7; color: rgba(255,255,255,0.88); }
-  .sv-bico { width: 42px; height: 42px; border-radius: 11px; background: rgba(255,255,255,0.16);
-    display: grid; place-items: center; margin-bottom: 15px; }
-  .sv-bico svg { width: 21px; height: 21px; fill: none; stroke: #fff; stroke-width: 1.9;
-    stroke-linecap: round; stroke-linejoin: round; }
-  .sv-stack { margin-top: 40px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.22); }
-  .sv-stack p { margin: 0 0 16px; font-size: 13px; font-weight: 700; letter-spacing: 0.09em;
-    text-transform: uppercase; color: rgba(255,255,255,0.7); }
-  .sv-pills { display: flex; flex-wrap: wrap; gap: 10px; }
-  .sv-pill { display: inline-flex; align-items: center; padding: 9px 16px; border-radius: 999px;
-    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.24);
-    font-size: 14px; font-weight: 600; color: #fff;
-    transition: background 150ms, border-color 150ms, transform 150ms; }
-  .sv-pill:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5);
-    transform: translateY(-2px); }
-
-  .sv-tiers { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px; margin-top: 44px; }
-  .sv-tier { background: #fff; border: 1px solid var(--border-default); border-radius: 18px; padding: 30px 28px;
-    box-shadow: var(--shadow-sm);
-    transition: transform 190ms var(--ease-out), box-shadow 190ms var(--ease-out), border-color 190ms; }
-  .sv-tier:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(81,141,224,0.5); }
-  .sv-tier--expert { border-color: rgba(81,141,224,0.55); box-shadow: 0 24px 44px -28px rgba(81,141,224,0.5); }
-  .sv-tier-head { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-  .sv-tier-head h3 { margin: 0; font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--brand-navy); }
-  .sv-tier-price { display: flex; align-items: baseline; gap: 6px; white-space: nowrap; }
-  .sv-tier-price small { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--ink-500); font-weight: 600; }
-  .sv-tier-price b { font-family: var(--font-display); font-size: clamp(38px, 3.6vw, 52px); font-weight: 800;
-    line-height: 0.9; letter-spacing: -0.03em; color: var(--brand-blue); }
-  .sv-tier-price em { font-style: normal; font-size: 16px; font-weight: 700; color: var(--brand-blue); }
-  .sv-tier p { margin: 12px 0 0; font-size: 15px; line-height: 1.7; color: var(--ink-600); }
-  .sv-tier ul { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
-  .sv-tier li { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; color: var(--ink-700); }
-  .sv-tier li svg { flex: none; width: 17px; height: 17px; margin-top: 2px; fill: none; stroke: var(--brand-blue);
-    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
-  .sv-faq { margin-top: 44px; border-top: 1px solid var(--border-default); }
-  .sv-faq details { border-bottom: 1px solid var(--border-default); }
-  .sv-faq summary { cursor: pointer; list-style: none; padding: 22px 4px; display: flex; align-items: center;
-    justify-content: space-between; gap: 24px; font-size: 16px; font-weight: 600; color: var(--brand-navy); }
-  .sv-faq summary::-webkit-details-marker { display: none; }
-  .sv-faq summary::after { content: "+"; flex: none; width: 34px; height: 34px; border-radius: 50%;
-    background: rgba(81,141,224,0.10); color: var(--brand-blue); display: grid; place-items: center;
-    font-size: 19px; font-weight: 600; line-height: 1; }
-  .sv-faq details[open] summary::after { content: "\2212"; background: var(--brand-blue); color: #fff; }
-  .sv-faq p { margin: 0 4px 24px; font-size: 15px; line-height: 1.75; color: var(--ink-600); max-width: 78ch; }
-
-  .sv-close-cta { background: var(--brand-navy); padding: 84px 0; text-align: center; }
-  .sv-close-cta h2 { margin: 0 auto; max-width: 24ch; font-family: var(--font-display);
-    font-size: clamp(28px,3.2vw,42px); font-weight: 700; letter-spacing: -0.02em; color: #fff; line-height: 1.14; }
-  .sv-close-cta p { margin: 16px auto 0; max-width: 56ch; font-size: 16.5px; line-height: 1.7;
+  /* ---------- full-bleed 24-hour coverage band ---------- */
+  .cx-band { background: var(--brand-navy); padding: 46px 0 40px; }
+  .cx-band-top { display: flex; align-items: baseline; justify-content: space-between; gap: 20px;
+    flex-wrap: wrap; }
+  .cx-band-top h2 { margin: 0; font-family: var(--font-display); font-size: clamp(21px, 2.2vw, 27px);
+    font-weight: 700; letter-spacing: -0.02em; color: #fff; }
+  .cx-band-top p { margin: 0; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.68); max-width: 44ch; }
+  .cx-clock { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 26px;
+    border-radius: 8px; overflow: hidden; }
+  .cx-slot { padding: 18px 20px 16px; }
+  .cx-slot:nth-child(1) { background: #518de0; }
+  .cx-slot:nth-child(2) { background: #3f7ad4; }
+  .cx-slot:nth-child(3) { background: #0047b3; }
+  .cx-slot em { display: block; font-style: normal; font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 11.5px; letter-spacing: 0.08em; color: rgba(255,255,255,0.72); }
+  .cx-slot b { display: block; margin-top: 7px; font-size: 15.5px; font-weight: 700; color: #fff; }
+  .cx-slot small { display: block; margin-top: 4px; font-size: 12.5px; line-height: 1.5;
     color: rgba(255,255,255,0.78); }
-  .sv-ghost { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: #fff;
-    border: 1.5px solid rgba(255,255,255,0.4); border-radius: 8px; padding: 13px 26px; font-size: 16px;
-    font-weight: 600; text-decoration: none; transition: background 150ms, border-color 150ms; }
-  .sv-ghost:hover { background: rgba(255,255,255,0.10); border-color: #fff; color: #fff; }
+  .cx-hours { display: flex; justify-content: space-between; margin-top: 9px;
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 10.5px;
+    color: rgba(255,255,255,0.42); }
 
-  @media (max-width: 1024px) {
-    .sv-hero { grid-template-columns: 1fr; gap: 46px; padding: 54px 0 62px; }
-    .sv-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-    .sv-proof { grid-template-columns: repeat(2, minmax(0,1fr)); }
-    .sv-proof div:nth-child(3) { border-left: 0; }
-    .sv-proof div:nth-child(n+3) { border-top: 1px solid var(--border-default); }
+  /* ---------- the channel switcher (CSS only) ---------- */
+  .cx-sw { padding: 74px 0; }
+  .cx-sw-head { max-width: 60ch; }
+  .cx-sw-head h2 { margin: 12px 0 0; font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px);
+    font-weight: 700; letter-spacing: -0.025em; line-height: 1.12; color: var(--brand-navy); }
+  .cx-sw-head h2 span { color: var(--brand-blue); }
+  .cx-sw-head p { margin: 16px 0 0; font-size: 17px; line-height: 1.7; color: var(--ink-600); }
+
+  .cx-tabs { margin-top: 34px; }
+  /* Driven by :target from the URL, not by form state. Radios were the obvious
+     choice, but support.js renders this through React, which treats them as
+     controlled inputs - the `checked` attribute is stripped on load and a click
+     reverts a moment later. A hash survives any number of re-renders. */
+  .cx-tablist { display: flex; gap: 4px; border-bottom: 2px solid var(--border-default); flex-wrap: wrap; }
+  .cx-tablist a { display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+    padding: 15px 22px; margin-bottom: -2px; border-bottom: 2px solid transparent;
+    font-size: 15.5px; font-weight: 700; color: var(--ink-500);
+    transition: color 150ms, border-color 150ms; }
+  .cx-tablist a:hover { color: var(--brand-navy); }
+  .cx-tablist a:focus-visible { outline: 2px solid var(--brand-blue); outline-offset: 3px; }
+  .cx-tablist a svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.9;
+    stroke-linecap: round; stroke-linejoin: round; }
+
+  .cx-panel { display: none; padding-top: 34px; scroll-margin-top: 96px; }
+  /* Nothing chosen yet: the first panel stands in. :has scopes that default so it
+     steps aside the moment a tab is picked. Where :has is unsupported all three
+     panels simply stack, which is readable rather than blank. */
+  .cx-panel:first-child { display: grid; }
+  .cx-panels:has(.cx-panel:target) .cx-panel { display: none; }
+  /* must be scoped the same way: the hide rule above is (0,4,0) and would
+     otherwise out-rank a bare .cx-panel:target at (0,2,0). */
+  .cx-panels:has(.cx-panel:target) .cx-panel:target { display: grid; }
+  .cx-tabs:has(#ch-voice:target) .cx-tablist a[href="#ch-voice"],
+  .cx-tabs:has(#ch-chat:target)  .cx-tablist a[href="#ch-chat"],
+  .cx-tabs:has(#ch-mail:target)  .cx-tablist a[href="#ch-mail"] {
+    color: var(--brand-blue); border-bottom-color: var(--brand-blue); }
+  .cx-tabs:not(:has(.cx-panel:target)) .cx-tablist a:first-child {
+    color: var(--brand-blue); border-bottom-color: var(--brand-blue); }
+
+  .cx-panel { grid-template-columns: 1.1fr 0.9fr; gap: 46px; align-items: start; }
+  .cx-panel-l h3 { margin: 0; font-family: var(--font-display); font-size: clamp(22px, 2.4vw, 30px);
+    font-weight: 700; letter-spacing: -0.02em; color: var(--brand-navy); line-height: 1.2; }
+  .cx-panel-l p { margin: 14px 0 0; font-size: 16px; line-height: 1.7; color: var(--ink-600); max-width: 56ch; }
+  .cx-panel-l ul { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 11px; }
+  .cx-panel-l li { display: grid; grid-template-columns: 18px 1fr; gap: 12px; font-size: 15px;
+    line-height: 1.6; color: var(--ink-700); }
+  .cx-panel-l svg { width: 18px; height: 18px; margin-top: 2px; fill: none; stroke: var(--brand-blue);
+    stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  /* right side: a worked example of the channel, as a transcript-ish stack */
+  .cx-flow { background: var(--bg-marketing-paper); border: 1px solid var(--border-default);
+    border-radius: 14px; padding: 22px; }
+  .cx-flow-t { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.11em;
+    text-transform: uppercase; color: var(--ink-500); font-weight: 700; }
+  .cx-step { display: grid; grid-template-columns: 22px 1fr; gap: 12px; padding: 13px 0;
+    border-bottom: 1px dotted var(--ink-300); }
+  .cx-step:last-child { border-bottom: 0; padding-bottom: 0; }
+  .cx-step i { font-style: normal; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px;
+    color: var(--brand-blue); padding-top: 3px; }
+  .cx-step b { display: block; font-size: 14.5px; font-weight: 700; color: var(--brand-navy); line-height: 1.35; }
+  .cx-step small { display: block; margin-top: 3px; font-size: 13px; line-height: 1.55; color: var(--ink-600); }
+  .cx-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid var(--border-default); }
+  .cx-tool { font-size: 12.5px; font-weight: 600; color: var(--brand-navy); background: #fff;
+    border: 1px solid var(--border-default); border-radius: 999px; padding: 6px 12px; }
+
+  /* ---------- scorecard ---------- */
+  .cx-score { padding: 74px 0; background: var(--bg-marketing-paper);
+    border-top: 1px solid var(--border-default); }
+  .cx-score-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 46px; margin-top: 30px;
+    align-items: start; }
+  .cx-score-list { border-top: 2px solid var(--brand-navy); }
+  .cx-score-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+    padding: 16px 0; border-bottom: 1px solid var(--border-default); }
+  .cx-score-row b { font-size: 15.5px; color: var(--brand-navy); }
+  .cx-score-row span { font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums; font-size: 13px; color: var(--brand-blue); font-weight: 700;
+    white-space: nowrap; }
+  .cx-score-note { font-size: 16px; line-height: 1.75; color: var(--ink-600); }
+  .cx-score-note b { color: var(--brand-navy); }
+  .cx-score-note + .cx-score-note { margin-top: 16px; }
+
+  /* ---------- rates as two inline lines ---------- */
+  .cx-rates { padding: 74px 0; }
+  .cx-rate { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px;
+    padding: 26px 0; border-top: 1px solid var(--border-default); flex-wrap: wrap; }
+  .cx-rate:last-of-type { border-bottom: 1px solid var(--border-default); }
+  .cx-rate-l b { display: block; font-family: var(--font-display); font-size: 23px; font-weight: 700;
+    color: var(--brand-navy); }
+  .cx-rate-l small { display: block; margin-top: 6px; font-size: 14.5px; line-height: 1.6;
+    color: var(--ink-600); max-width: 56ch; }
+  .cx-rate-r { display: flex; align-items: baseline; gap: 6px; }
+  .cx-rate-r i { font-style: normal; font-size: 11px; letter-spacing: 0.11em; text-transform: uppercase;
+    color: var(--ink-500); font-weight: 700; }
+  .cx-rate-r strong { font-family: var(--font-display); font-size: clamp(44px, 5vw, 64px); font-weight: 800;
+    line-height: 0.86; letter-spacing: -0.04em; color: var(--brand-blue); }
+  .cx-rate-r span { font-size: 17px; font-weight: 700; color: var(--brand-blue); }
+
+  /* ---------- FAQ as ruled two-column Q/A, not an accordion ---------- */
+  .cx-qa { padding: 0 0 74px; }
+  .cx-qa-row { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 40px; padding: 26px 0;
+    border-top: 1px solid var(--border-default); }
+  .cx-qa-row h3 { margin: 0; font-size: 17.5px; font-weight: 700; color: var(--brand-navy); line-height: 1.4; }
+  .cx-qa-row p { margin: 0; font-size: 15.5px; line-height: 1.75; color: var(--ink-600); }
+
+  /* ---------- close: left-aligned, not a navy centred slab ---------- */
+  .cx-close { border-top: 2px solid var(--brand-navy); padding: 56px 0 80px; }
+  .cx-close-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
+  .cx-close h2 { margin: 0; font-family: var(--font-display); font-size: clamp(26px, 3.2vw, 40px);
+    font-weight: 700; letter-spacing: -0.025em; line-height: 1.13; color: var(--brand-navy); max-width: 28ch; }
+  .cx-close p { margin: 15px 0 0; font-size: 16.5px; line-height: 1.7; color: var(--ink-600); max-width: 54ch; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cx-btn { transition: none; }
+    .cx-btn:hover { transform: none; }
   }
-  @media (max-width: 680px) {
-    .sv-section { padding: 62px 0; }
-    .sv-grid, .sv-tiers, .sv-proof { grid-template-columns: 1fr; }
-    .sv-proof div { border-left: 0; border-top: 1px solid var(--border-default); }
-    .sv-proof div:first-child { border-top: 0; }
+  @media (max-width: 1024px) {
+    .cx-hero { grid-template-columns: 1fr; gap: 40px; align-items: start; padding-bottom: 44px; }
+    .cx-panel { grid-template-columns: 1fr; gap: 30px; }
+    .cx-score-grid { grid-template-columns: 1fr; gap: 30px; }
+    .cx-qa-row { grid-template-columns: 1fr; gap: 12px; }
+    .cx-close-grid { grid-template-columns: 1fr; align-items: start; }
+  }
+  @media (max-width: 700px) {
+    .cx-sw, .cx-score, .cx-rates { padding: 52px 0; }
+    .cx-clock { grid-template-columns: 1fr; }
+    .cx-hours { display: none; }
+    .cx-tablist a { padding: 13px 15px; font-size: 14px; }
+    .cx-tablist a span { display: none; }
   }
 </style>
 </helmet>
@@ -423,210 +419,272 @@
 <main data-screen-label="Customer Experience">
 
   <!-- ================= HERO ================= -->
-  <section style="background:linear-gradient(180deg,#f7faff 0%,var(--bg-marketing-paper) 64%);border-bottom:1px solid var(--border-default)">
-    <div class="sv-wrap sv-hero">
+  <section>
+    <div class="cx-wrap cx-hero">
       <div>
-        <span class="sv-kicker">Customer Experience</span>
-        <h1 class="sv-h1">Your front line,<br><span>never unattended.</span></h1>
-        <p class="sv-lede">Dedicated agents answering by voice, chat and email inside your helpdesk &mdash; trained on your product, working your macros, QA-scored on every contact.</p>
-
-        <ul class="sv-checks">
-          <li><span class="sv-tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span>
-            Agents work in <b>your</b> helpdesk on <b>your</b> macros, tone guide and SLAs.</li>
-          <li><span class="sv-tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span>
-            Product training is completed before the first ticket, not learned on your customers.</li>
-          <li><span class="sv-tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span>
-            Every interaction is QA-reviewed, and you see a daily work report.</li>
-        </ul>
-
-        <div class="sv-cta-row">
-          <a class="sv-btn" href="https://calendly.com/j-zemene-remassistance/new-meeting" target="_blank" rel="noopener">Book a free consult <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
-          <a class="sv-btn sv-btn--ghost" href="Qualify.dc.html">Qualify in two minutes</a>
-        </div>
-
-        <div class="sv-proof">
-          <div><b>&lt;60s</b><span>Avg. first response, live chat</span></div>
-          <div><b>24/7</b><span>Coverage, any timezone</span></div>
-          <div><b>95%+</b><span>CSAT target per agent</span></div>
-          <div><b>100%</b><span>Interactions QA-reviewed</span></div>
+        <span class="cx-kick"><i></i>Customer Experience</span>
+        <h1 class="cx-h1">Your front line, <span>never unattended.</span></h1>
+        <p class="cx-sub">Dedicated agents answering by voice, chat and email inside your helpdesk
+          &mdash; trained on your product, working your macros, QA-scored on every contact.</p>
+        <div class="cx-hero-cta">
+          <a class="cx-btn" href="https://calendly.com/j-zemene-remassistance/new-meeting" target="_blank" rel="noopener">Book a free consult</a>
+          <a class="cx-btn cx-btn--out" href="Qualify.dc.html">Qualify in two minutes</a>
         </div>
       </div>
 
-      <div class="sv-panel">
-        <div class="sv-panel-top">
-          <b>One queue, covered around the clock</b>
-          <span class="sv-faces" aria-hidden="true">
-            <span><img src="assets/images/Agents/cs-1.jpg" alt="" loading="lazy" decoding="async"></span>
-            <span><img src="assets/images/Agents/cs-2.jpg" alt="" loading="lazy" decoding="async"></span>
-            <span><img src="assets/images/Agents/cs-3.jpg" alt="" loading="lazy" decoding="async"></span>
-          </span>
-        </div>
-
-        <div class="sv-ring">
-          <svg viewBox="0 0 120 120" aria-hidden="true">
-            <circle class="sv-ring-track" cx="60" cy="60" r="48"></circle>
-            <circle class="sv-ring-arc" cx="60" cy="60" r="48" stroke="#518de0"
-              pathLength="100" stroke-dasharray="33.3 66.7" stroke-dashoffset="0"></circle>
-            <circle class="sv-ring-arc" cx="60" cy="60" r="48" stroke="#326dda"
-              pathLength="100" stroke-dasharray="33.3 66.7" stroke-dashoffset="-33.3"></circle>
-            <circle class="sv-ring-arc" cx="60" cy="60" r="48" stroke="#0047b3"
-              pathLength="100" stroke-dasharray="33.4 66.6" stroke-dashoffset="-66.7"></circle>
-          </svg>
-          <span class="sv-ring-c"><b>24/7</b><span>no gaps</span></span>
-        </div>
-
-        <div class="sv-shifts">
-          <span class="sv-shift"><i style="background:#518de0"></i>Americas shift<em>voice &middot; chat &middot; email</em></span>
-          <span class="sv-shift"><i style="background:#326dda"></i>EMEA shift<em>voice &middot; chat &middot; email</em></span>
-          <span class="sv-shift"><i style="background:#0047b3"></i>APAC shift<em>voice &middot; chat &middot; email</em></span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= WHAT YOU CAN STAFF ================= -->
-  <section class="sv-section" style="background:var(--bg-marketing-paper)">
-    <div class="sv-wrap">
-      <span class="sv-kicker">What you can staff</span>
-      <h2 class="sv-h2" style="margin-top:14px">Every channel your <span>customers actually use.</span></h2>
-      <p class="sv-lede">One team, one queue discipline. Agents flex across channels during quiet hours, so you are never paying for idle seats.</p>
-      <div class="sv-grid">
-        <div class="sv-card">
-          <span class="sv-card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v-5a8 8 0 0 1 16 0v5"/><path d="M20 18a2 2 0 0 1-2 2h-.8a1.8 1.8 0 0 1-1.8-1.8v-2.4A1.8 1.8 0 0 1 17.2 14H20zM4 18a2 2 0 0 0 2 2h.8a1.8 1.8 0 0 0 1.8-1.8v-2.4A1.8 1.8 0 0 0 6.8 14H4z"/></svg></span>
-          <h3>Voice support</h3>
-          <p>Inbound lines answered in your name, with call notes logged straight into your CRM. Overflow and after-hours options included.</p>
-        </div>
-        <div class="sv-card">
-          <span class="sv-card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 3z"/><path d="M8 9h8M8 12h5"/></svg></span>
-          <h3>Live chat and chatbot handoff</h3>
-          <p>Agents pick up where your chatbot leaves off, with escalation paths tuned so customers never loop back to the start.</p>
-        </div>
-        <div class="sv-card">
-          <span class="sv-card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
-          <h3>Email and ticketing</h3>
-          <p>Full queue ownership in Zendesk, Intercom, GoHighLevel or whatever you run &mdash; triage, resolution, tagging and escalation SOPs.</p>
-        </div>
-        <div class="sv-card">
-          <span class="sv-card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg></span>
-          <h3>Order and fulfilment support</h3>
-          <p>Order entry, tracking enquiries, returns and exception handling, worked to the rules you set.</p>
-        </div>
-        <div class="sv-card">
-          <span class="sv-card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0"/><path d="m12 17 4-6"/></svg></span>
-          <h3>Technical support</h3>
-          <p>Product-trained agents who resolve rather than escalate, with a documented path for the cases that genuinely need your engineers.</p>
-        </div>
-        <div class="sv-card">
-          <span class="sv-card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6.5V12c0 4.4 3.2 8 8 9 4.8-1 8-4.6 8-9V6.5z"/><path d="m8.7 12.2 2.3 2.3 4.4-4.7"/></svg></span>
-          <h3>Quality and oversight</h3>
-          <p>Interactions QA-scored against your criteria, AI-assisted monitoring, and a supervisor who owns the queue rather than a dashboard.</p>
-        </div>
+      <div class="cx-figs">
+        <div class="cx-fig"><b>&lt;60s</b><span>Avg. first response, live chat</span></div>
+        <div class="cx-fig"><b>24/7</b><span>Coverage, any timezone</span></div>
+        <div class="cx-fig"><b>95%+</b><span>CSAT target per agent</span></div>
+        <div class="cx-fig"><b>100%</b><span>Interactions QA-reviewed</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ================= HOW IT RUNS ================= -->
-  <section class="sv-band">
-    <div class="sv-wrap">
-      <span class="sv-kicker">How it runs</span>
-      <h2 class="sv-h2" style="margin-top:14px">Trained before the first ticket.</h2>
-      <p class="sv-lede">Our generalist bench adapts to any helpdesk in days. Where an account needs it we place agents from a dedicated niche track instead.</p>
-      <div class="sv-grid">
-        <div class="sv-bcard">
-          <span class="sv-bico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7M9 16h5"/></svg></span>
-          <h3>Your playbook, not ours</h3>
-          <p>Macros, tone-of-voice guide, SLAs and escalation rules are loaded before go-live. If they do not exist yet we write them with you and hand them back.</p>
+  <!-- ================= FULL-BLEED COVERAGE BAND ================= -->
+  <section class="cx-band">
+    <div class="cx-wrap">
+      <div class="cx-band-top">
+        <h2>Coverage is a rota, not a longer day</h2>
+        <p>Extended hours means two or more seats sharing it. True 24/7 means a pod across timezones
+          &mdash; which is how nights and weekends get covered without overtime.</p>
+      </div>
+      <div class="cx-clock">
+        <div class="cx-slot">
+          <em>00:00 &ndash; 08:00</em>
+          <b>APAC shift</b>
+          <small>Voice &middot; chat &middot; email</small>
         </div>
-        <div class="sv-bcard">
-          <span class="sv-bico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6.5V12c0 4.4 3.2 8 8 9 4.8-1 8-4.6 8-9V6.5z"/><path d="m8.7 12.2 2.3 2.3 4.4-4.7"/></svg></span>
-          <h3>QA on every contact</h3>
-          <p>Every interaction is reviewed against your criteria, with daily work reports and a weekly quality summary you can audit.</p>
+        <div class="cx-slot">
+          <em>08:00 &ndash; 16:00</em>
+          <b>EMEA shift</b>
+          <small>Voice &middot; chat &middot; email</small>
         </div>
-        <div class="sv-bcard">
-          <span class="sv-bico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10" width="15" height="10" rx="2"/><path d="M8 10V7.5a4 4 0 0 1 8 0V10"/></svg></span>
-          <h3>Data handled under ISO 27001</h3>
-          <p>Access scoped per client, least-privilege by default, and independently audited controls rather than a policy page.</p>
+        <div class="cx-slot">
+          <em>16:00 &ndash; 24:00</em>
+          <b>Americas shift</b>
+          <small>Voice &middot; chat &middot; email</small>
         </div>
       </div>
-      <div class="sv-stack">
-        <p>Works in the helpdesk you already run</p>
-        <div class="sv-pills">
-          <span class="sv-pill">Zendesk</span>
-          <span class="sv-pill">Intercom</span>
-          <span class="sv-pill">GoHighLevel</span>
-          <span class="sv-pill">HubSpot Service</span>
-          <span class="sv-pill">Freshdesk</span>
-          <span class="sv-pill">Your in-house tool</span>
-        </div>
-      </div>
+      <div class="cx-hours"><span>00</span><span>04</span><span>08</span><span>12</span><span>16</span><span>20</span><span>24</span></div>
     </div>
   </section>
 
-  <!-- ================= TIERS + FAQ ================= -->
-  <section class="sv-section" style="background:var(--bg-marketing-paper)">
-    <div class="sv-wrap">
-      <span class="sv-kicker">What a seat costs</span>
-      <h2 class="sv-h2" style="margin-top:14px">Two tiers, <span>same controls.</span></h2>
-      <p class="sv-lede">Every seat operates under the same ISO 9001 quality and ISO 27001 information
-        security controls. The difference is experience and how much direction they need.</p>
+  <!-- ================= CHANNEL SWITCHER ================= -->
+  <section class="cx-sw">
+    <div class="cx-wrap">
+      <div class="cx-sw-head">
+        <span class="cx-kick" style="color:var(--brand-blue)"><i style="background:var(--brand-blue);box-shadow:0 0 0 4px rgba(81,141,224,0.16)"></i>Every channel</span>
+        <h2>One team, one queue discipline &mdash; <span>three ways in.</span></h2>
+        <p>Agents flex across channels during quiet hours, so you are never paying for idle seats.
+          Pick a channel to see how it actually runs.</p>
+      </div>
 
-      <div class="sv-tiers">
-        <div class="sv-tier">
-          <div class="sv-tier-head">
-            <h3>Pro</h3>
-            <span class="sv-tier-price"><small>from</small><b>$8</b><em>/hr</em></span>
+      <div class="cx-tabs">
+        <div class="cx-tablist">
+          <a href="#ch-voice">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>
+            Voice<span> support</span>
+          </a>
+          <a href="#ch-chat">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 3z"/><path d="M8 9h8M8 12h5"/></svg>
+            Live chat
+          </a>
+          <a href="#ch-mail">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
+            Email<span> &amp; ticketing</span>
+          </a>
+        </div>
+
+        <div class="cx-panels">
+
+          <!-- voice -->
+          <div class="cx-panel" id="ch-voice">
+            <div class="cx-panel-l">
+              <h3>Inbound lines answered in your name</h3>
+              <p>Agents pick up as your team, not as a call centre. Call notes land straight in your CRM,
+                and overflow and after-hours options are included rather than sold separately.</p>
+              <ul>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Answered in your company name, to your greeting</li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Call notes written into your CRM during the call</li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Overflow and after-hours handling included</li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Escalation to your team on thresholds you set</li>
+              </ul>
+            </div>
+            <div class="cx-flow">
+              <span class="cx-flow-t">How a call runs</span>
+              <div class="cx-step"><i>01</i><span><b>Answered inside SLA</b><small>Your greeting, your name, no hold-music maze.</small></span></div>
+              <div class="cx-step"><i>02</i><span><b>Identified and logged</b><small>Account matched in the CRM before the conversation starts.</small></span></div>
+              <div class="cx-step"><i>03</i><span><b>Resolved or escalated</b><small>Against your playbook, with the threshold you defined.</small></span></div>
+              <div class="cx-step"><i>04</i><span><b>Notes and disposition</b><small>Written up while it is fresh, not batched at end of shift.</small></span></div>
+              <div class="cx-tools">
+                <span class="cx-tool">Your telephony</span>
+                <span class="cx-tool">HubSpot</span>
+                <span class="cx-tool">GoHighLevel</span>
+                <span class="cx-tool">Your CRM</span>
+              </div>
+            </div>
           </div>
-          <p>Fully trained and fit for work from day one. Pro seats clear our core programme and pick up whatever software you run.</p>
-          <ul>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5"/></svg>Works any stack</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5"/></svg>Core programme certified</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5"/></svg>Best value per seat</li>
-          </ul>
-        </div>
-        <div class="sv-tier sv-tier--expert">
-          <div class="sv-tier-head">
-            <h3>Expert</h3>
-            <span class="sv-tier-price"><small>from</small><b>$11</b><em>/hr</em></span>
+
+          <!-- chat -->
+          <div class="cx-panel" id="ch-chat">
+            <div class="cx-panel-l">
+              <h3>Agents pick up where the bot gives up</h3>
+              <p>Human escalation paths tuned so customers never loop back to the start. Average first
+                response on live chat is under 60 seconds.</p>
+              <ul>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Under 60 seconds to first response, on average</li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Chatbot handoff without restarting the conversation</li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Concurrent chats handled to your quality bar, not a volume target</li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Macros and tone-of-voice guide applied consistently</li>
+              </ul>
+            </div>
+            <div class="cx-flow">
+              <span class="cx-flow-t">How a chat runs</span>
+              <div class="cx-step"><i>01</i><span><b>Bot hands over with context</b><small>The agent reads what was already said. The customer does not repeat it.</small></span></div>
+              <div class="cx-step"><i>02</i><span><b>Answered under 60 seconds</b><small>Average first response, measured rather than promised.</small></span></div>
+              <div class="cx-step"><i>03</i><span><b>Resolved in-channel where possible</b><small>Escalation only where your rules call for it.</small></span></div>
+              <div class="cx-step"><i>04</i><span><b>Tagged for the pattern</b><small>So recurring issues surface as a report, not a feeling.</small></span></div>
+              <div class="cx-tools">
+                <span class="cx-tool">Intercom</span>
+                <span class="cx-tool">Zendesk</span>
+                <span class="cx-tool">Your chat widget</span>
+              </div>
+            </div>
           </div>
-          <p>More years on the job and a far more rigorous assessment path. Experts arrive fluent in your kind of operation and need the least direction.</p>
-          <ul>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5"/></svg>Senior experience</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5"/></svg>Rigorous assessments</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5"/></svg>Least supervision needed</li>
-          </ul>
+
+          <!-- email -->
+          <div class="cx-panel" id="ch-mail">
+            <div class="cx-panel-l">
+              <h3>Full queue ownership, not queue watching</h3>
+              <p>Triage, resolution, tagging and escalation SOPs in whatever helpdesk you run. The queue
+                is owned by a named person, and the audit trail stays in your system.</p>
+              <ul>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Queue triaged and worked to zero, not skimmed</li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Tagging discipline so reporting is actually usable</li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Escalation SOPs written with you during onboarding</li>
+                <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Everything inside your helpdesk, nothing to migrate back</li>
+              </ul>
+            </div>
+            <div class="cx-flow">
+              <span class="cx-flow-t">How a ticket runs</span>
+              <div class="cx-step"><i>01</i><span><b>Triaged on arrival</b><small>Categorised and prioritised against your rules, not guessed at.</small></span></div>
+              <div class="cx-step"><i>02</i><span><b>Answered from your macros</b><small>Consistent wording, your tone, edited where a human should.</small></span></div>
+              <div class="cx-step"><i>03</i><span><b>Tagged and closed</b><small>Or escalated with the context your team needs attached.</small></span></div>
+              <div class="cx-step"><i>04</i><span><b>Reported daily</b><small>Volume handled, anything stuck, anything needing your decision.</small></span></div>
+              <div class="cx-tools">
+                <span class="cx-tool">Zendesk</span>
+                <span class="cx-tool">Intercom</span>
+                <span class="cx-tool">Freshdesk</span>
+                <span class="cx-tool">GoHighLevel</span>
+                <span class="cx-tool">Your in-house tool</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="sv-faq">
-        <details>
-          <summary>Do the agents work in our helpdesk or yours?</summary>
-          <p>Yours. Agents are placed inside your Zendesk, Intercom, GoHighLevel or in-house tool, using your macros and tags, so the audit trail stays in your system and nothing has to be migrated back if the engagement ends.</p>
-        </details>
-        <details>
-          <summary>How do you handle nights and weekends without overtime?</summary>
-          <p>With a rota rather than a longer day. Extended hours mean two or more seats sharing coverage, and true 24/7 means a pod of three to six across timezones &mdash; which is why coverage drives cost far more than seniority does.</p>
-        </details>
-        <details>
-          <summary>What does "QA-reviewed" actually mean?</summary>
-          <p>Every interaction is scored against criteria you agree, not a generic rubric. You get a daily work report and a weekly quality summary, and the scoring is visible to you rather than summarised into a single number.</p>
-        </details>
-        <details>
-          <summary>Can agents learn a technical product?</summary>
-          <p>Yes, and product training is completed before the first ticket. For accounts that need deeper knowledge we place from a niche track rather than the generalist bench, and we will tell you on the call which one fits.</p>
-        </details>
+  <!-- ================= SCORECARD ================= -->
+  <section class="cx-score">
+    <div class="cx-wrap">
+      <span class="cx-kick"><i style="background:var(--brand-blue);box-shadow:0 0 0 4px rgba(81,141,224,0.16)"></i>Quality</span>
+      <div class="cx-score-grid">
+        <div>
+          <div class="cx-score-list">
+            <div class="cx-score-row"><b>Interactions QA-reviewed</b><span>100%</span></div>
+            <div class="cx-score-row"><b>CSAT target per agent</b><span>95%+</span></div>
+            <div class="cx-score-row"><b>Avg. first response, chat</b><span>&lt;60s</span></div>
+            <div class="cx-score-row"><b>Work report</b><span>Daily</span></div>
+            <div class="cx-score-row"><b>Quality summary</b><span>Weekly</span></div>
+            <div class="cx-score-row"><b>Named supervisor</b><span>Per account</span></div>
+          </div>
+        </div>
+        <div>
+          <p class="cx-score-note"><b>Scored against your criteria, not a generic rubric.</b> The
+            rubric is agreed during onboarding and the scoring is visible to you, rather than averaged
+            into a single number on a dashboard nobody trusts.</p>
+          <p class="cx-score-note">Product training is completed before the first ticket, so your
+            customers are not the training set. Where an account needs deeper knowledge we place from a
+            niche track rather than the generalist bench.</p>
+          <p class="cx-score-note">Data is handled under independently audited ISO 27001 controls, with
+            access scoped per client.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RATES ================= -->
+  <section class="cx-rates">
+    <div class="cx-wrap">
+      <span class="cx-kick"><i style="background:var(--brand-blue);box-shadow:0 0 0 4px rgba(81,141,224,0.16)"></i>What a seat costs</span>
+      <div class="cx-rate">
+        <span class="cx-rate-l">
+          <b>Pro</b>
+          <small>Cleared the core programme and picks up your helpdesk in days. Suited to high-volume
+            triage, chat and first-line resolution.</small>
+        </span>
+        <span class="cx-rate-r"><i>from</i><strong>$8</strong><span>/hr</span></span>
+      </div>
+      <div class="cx-rate">
+        <span class="cx-rate-l">
+          <b>Expert</b>
+          <small>More years on the job and a harder assessment path. Suited to technical support and
+            anything where the customer is already unhappy.</small>
+        </span>
+        <span class="cx-rate-r"><i>from</i><strong>$11</strong><span>/hr</span></span>
+      </div>
+      <p style="margin:18px 0 0;font-size:13.5px;line-height:1.65;color:var(--ink-500)">Coverage drives
+        the cost far more than seniority does &mdash; see the <a href="Pricing.dc.html">full monthly
+        grid</a>. A pilot of 30&ndash;60 days comes before any full rollout.</p>
+    </div>
+  </section>
+
+  <!-- ================= Q&A ================= -->
+  <section class="cx-qa">
+    <div class="cx-wrap">
+      <div class="cx-qa-row">
+        <h3>Do the agents work in our helpdesk or yours?</h3>
+        <p>Yours &mdash; Zendesk, Intercom, GoHighLevel, HubSpot or an in-house tool, using your macros
+          and tags. The audit trail stays in your system, so nothing has to be migrated back if the
+          engagement ends.</p>
+      </div>
+      <div class="cx-qa-row">
+        <h3>How do you cover nights and weekends without overtime?</h3>
+        <p>With a rota rather than a longer day. Extended hours means two or more seats sharing coverage;
+          true 24/7 means a pod of three to six across timezones. That is why coverage drives cost far
+          more than seniority does.</p>
+      </div>
+      <div class="cx-qa-row">
+        <h3>What does &ldquo;QA-reviewed&rdquo; actually mean?</h3>
+        <p>Every interaction is scored against criteria you agree, by a person who owns your account.
+          You get a daily work report and a weekly quality summary, and the scoring is visible to you
+          rather than summarised into one number.</p>
+      </div>
+      <div class="cx-qa-row">
+        <h3>Can agents learn a technical product?</h3>
+        <p>Yes, and product training is completed before the first ticket. For accounts that need deeper
+          knowledge we place from a dedicated niche track rather than the generalist bench, and we will
+          tell you on the call which one fits.</p>
       </div>
     </div>
   </section>
 
   <!-- ================= CLOSE ================= -->
-  <section class="sv-close-cta">
-    <div class="sv-wrap">
-      <h2>Watch the queue move before you commit.</h2>
-      <p>Every engagement starts with a free trial, and you approve every agent before they answer a single customer.</p>
-      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:13px;margin-top:30px">
-        <a class="sv-btn" href="https://calendly.com/j-zemene-remassistance/new-meeting" target="_blank" rel="noopener">Book a free consult <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
-        <a class="sv-ghost" href="Pricing.dc.html">See pricing</a>
+  <section>
+    <div class="cx-wrap cx-close">
+      <div class="cx-close-grid">
+        <div>
+          <h2>Watch the queue move before you commit.</h2>
+          <p>You approve every agent before they answer a single customer, and the pilot is small on
+            purpose so you can judge the work rather than the pitch.</p>
+        </div>
+        <div class="cx-hero-cta" style="margin-top:0">
+          <a class="cx-btn" href="https://calendly.com/j-zemene-remassistance/new-meeting" target="_blank" rel="noopener">Book a free consult</a>
+          <a class="cx-btn cx-btn--out" href="Pricing.dc.html">See pricing</a>
+        </div>
       </div>
     </div>
   </section>
@@ -634,10 +692,20 @@
 </main>
 
 <!-- @shared:footer — generated from partials/footer.html by tools/sync-partials.js. Edit the partial, not this block. -->
+<style>
+  .dc-footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px;
+    padding-bottom: 40px; border-bottom: 1px solid var(--navy-700); }
+  @media (max-width: 900px) {
+    .dc-footer-grid { grid-template-columns: 1fr 1fr; gap: 34px 28px; }
+  }
+  @media (max-width: 560px) {
+    .dc-footer-grid { grid-template-columns: 1fr; gap: 30px; }
+  }
+</style>
 <footer style="background:var(--navy-900);color:var(--ink-300);position:relative;overflow:hidden">
   <div aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;text-align:center;line-height:1;font-size:clamp(96px,20vw,230px);font-weight:900;letter-spacing:0.06em;color:rgba(255,255,255,0.02);pointer-events:none;user-select:none;z-index:1">Rem Assist</div>
   <div style="max-width:1200px;margin:0 auto;padding:56px 24px 32px;position:relative;z-index:2">
-    <div class="dc-footer-grid" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--navy-700)">
+    <div class="dc-footer-grid">
       <div>
         <img src="assets/images/rem-logo.svg" alt="Rem Assist" style="height:38px;width:auto;display:block;margin-bottom:16px;filter:brightness(0) invert(1)">
         <p style="margin:0 0 16px;font-size:14px;line-height:1.6;max-width:36ch">Remote teams that match your culture — results-driven, efficient, on target, thoroughly excellent. Every time.</p>

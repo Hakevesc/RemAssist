@@ -1472,10 +1472,20 @@
 </main>
 <!-- FOOTER -->
 <!-- @shared:footer — generated from partials/footer.html by tools/sync-partials.js. Edit the partial, not this block. -->
+<style>
+  .dc-footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px;
+    padding-bottom: 40px; border-bottom: 1px solid var(--navy-700); }
+  @media (max-width: 900px) {
+    .dc-footer-grid { grid-template-columns: 1fr 1fr; gap: 34px 28px; }
+  }
+  @media (max-width: 560px) {
+    .dc-footer-grid { grid-template-columns: 1fr; gap: 30px; }
+  }
+</style>
 <footer style="background:var(--navy-900);color:var(--ink-300);position:relative;overflow:hidden">
   <div aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;text-align:center;line-height:1;font-size:clamp(96px,20vw,230px);font-weight:900;letter-spacing:0.06em;color:rgba(255,255,255,0.02);pointer-events:none;user-select:none;z-index:1">Rem Assist</div>
   <div style="max-width:1200px;margin:0 auto;padding:56px 24px 32px;position:relative;z-index:2">
-    <div class="dc-footer-grid" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--navy-700)">
+    <div class="dc-footer-grid">
       <div>
         <img src="assets/images/rem-logo.svg" alt="Rem Assist" style="height:38px;width:auto;display:block;margin-bottom:16px;filter:brightness(0) invert(1)">
         <p style="margin:0 0 16px;font-size:14px;line-height:1.6;max-width:36ch">Remote teams that match your culture — results-driven, efficient, on target, thoroughly excellent. Every time.</p>
