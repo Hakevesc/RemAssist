@@ -13,6 +13,110 @@
   html, body { margin: 0; padding: 0; background: var(--bg-marketing-paper); color: var(--ink-900); font-family: var(--font-sans); }
   a { color: var(--fg-link); }
   a:hover { color: var(--blue-700); }
+
+  .rs-wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  .rs-narrow { max-width: 880px; margin: 0 auto; }
+  .rs-eyebrow { margin: 0 0 14px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--brand-blue); }
+  .rs-h1 { margin: 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.025em;
+    line-height: 1.07; font-size: clamp(34px, 4.4vw, 54px); color: var(--brand-navy); max-width: 24ch; }
+  .rs-h1 span { color: var(--brand-blue); }
+  .rs-h2 { margin: 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.15; font-size: clamp(23px, 2.5vw, 31px); color: var(--brand-navy); }
+  .rs-lede { margin: 18px 0 0; font-size: 17.5px; line-height: 1.7; color: var(--ink-600); max-width: 60ch; }
+  .rs-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--brand-blue); color: #fff;
+    font-size: 16px; font-weight: 600; text-decoration: none; padding: 14px 28px; border-radius: 8px;
+    transition: background 150ms, transform 150ms, box-shadow 150ms; }
+  .rs-btn:hover { background: var(--blue-700); color: #fff; transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(81,141,224,0.32); }
+  .rs-btn--ghost { background: #fff; color: var(--brand-blue); border: 1px solid rgba(81,141,224,0.45); }
+  .rs-btn--ghost:hover { background: rgba(81,141,224,0.06); color: var(--brand-blue); }
+  .rs-cta-row { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 28px; }
+
+  /* jump chips */
+  .rs-jump { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 26px; }
+  .rs-jump a { display: inline-flex; align-items: center; gap: 8px; padding: 8px 15px; border-radius: 999px;
+    background: #fff; border: 1px solid var(--border-default); box-shadow: var(--shadow-xs);
+    font-size: 13.5px; font-weight: 600; color: var(--brand-navy); text-decoration: none;
+    transition: border-color 150ms, box-shadow 150ms, transform 150ms; }
+  .rs-jump a:hover { border-color: var(--brand-blue); transform: translateY(-1px);
+    box-shadow: 0 6px 14px -6px rgba(81,141,224,0.5); }
+
+  /* faq groups */
+  .rs-group { padding: 54px 0; border-top: 1px solid var(--border-default); scroll-margin-top: 88px; }
+  .rs-group:nth-of-type(even) { background: #fff; }
+  .rs-group-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;
+    flex-wrap: wrap; }
+  .rs-group-head p { margin: 7px 0 0; font-size: 15px; line-height: 1.6; color: var(--ink-600); max-width: 56ch; }
+  .rs-source { display: inline-flex; align-items: center; gap: 7px; flex: none; font-size: 13.5px;
+    font-weight: 600; color: var(--brand-blue); text-decoration: none; white-space: nowrap; }
+  .rs-source:hover { text-decoration: underline; }
+  .rs-faq { margin-top: 26px; border-top: 1px solid var(--border-default); }
+  .rs-faq details { border-bottom: 1px solid var(--border-default); }
+  .rs-faq summary { cursor: pointer; list-style: none; padding: 20px 4px; display: flex; align-items: center;
+    justify-content: space-between; gap: 22px; font-size: 16px; font-weight: 600; color: var(--brand-navy); }
+  .rs-faq summary::-webkit-details-marker { display: none; }
+  .rs-faq summary::after { content: "+"; flex: none; width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(81,141,224,0.10); color: var(--brand-blue); display: grid; place-items: center;
+    font-size: 18px; font-weight: 600; line-height: 1; }
+  .rs-faq details[open] summary::after { content: "\2212"; background: var(--brand-blue); color: #fff; }
+  .rs-faq p { margin: 0 4px 21px; font-size: 15px; line-height: 1.75; color: var(--ink-600); max-width: 78ch; }
+
+  /* empty state */
+  .rs-empty { margin-top: 42px; background: #fff; border: 1px solid var(--border-default);
+    border-radius: 18px; padding: clamp(28px, 3.4vw, 44px); box-shadow: var(--shadow-sm);
+    display: grid; grid-template-columns: 56px 1fr; gap: 22px; align-items: start; }
+  .rs-empty-ico { width: 56px; height: 56px; border-radius: 15px; background: rgba(81,141,224,0.10);
+    display: grid; place-items: center; }
+  .rs-empty-ico svg { width: 27px; height: 27px; fill: none; stroke: var(--brand-blue); stroke-width: 1.8;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .rs-empty h2 { margin: 0; font-family: var(--font-display); font-size: clamp(21px, 2.2vw, 27px);
+    font-weight: 700; letter-spacing: -0.02em; color: var(--brand-navy); line-height: 1.25; }
+  .rs-empty p { margin: 12px 0 0; font-size: 16px; line-height: 1.7; color: var(--ink-600); max-width: 62ch; }
+
+  /* verify-instead cards */
+  .rs-verify { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; margin-top: 40px; }
+  .rs-card { background: #fff; border: 1px solid var(--border-default); border-radius: 16px; padding: 26px 24px;
+    transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out), border-color 180ms; }
+  .rs-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(81,141,224,0.45); }
+  .rs-card-ico { width: 44px; height: 44px; border-radius: 12px; background: rgba(81,141,224,0.10);
+    display: grid; place-items: center; margin-bottom: 15px; }
+  .rs-card-ico svg { width: 22px; height: 22px; fill: none; stroke: var(--brand-blue); stroke-width: 1.9;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .rs-card h3 { margin: 0 0 8px; font-size: 17px; font-weight: 700; color: var(--brand-navy); line-height: 1.3; }
+  .rs-card p { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--ink-600); }
+  .rs-iso { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+  .rs-iso img { height: 42px; width: auto; display: block; }
+
+  .rs-alts { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 40px; }
+  .rs-alt { display: block; background: #fff; border: 1px solid var(--border-default); border-radius: 14px;
+    padding: 22px; text-decoration: none;
+    transition: transform 180ms, box-shadow 180ms, border-color 180ms; }
+  .rs-alt:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: rgba(81,141,224,0.45); }
+  .rs-alt b { display: block; font-size: 16px; font-weight: 700; color: var(--brand-navy); }
+  .rs-alt span { display: block; margin-top: 6px; font-size: 14px; line-height: 1.6; color: var(--ink-600); }
+
+  .rs-close { background: var(--brand-navy); padding: 80px 0; text-align: center; }
+  .rs-close h2 { margin: 0 auto; max-width: 26ch; font-family: var(--font-display);
+    font-size: clamp(27px,3.1vw,40px); font-weight: 700; letter-spacing: -0.02em; color: #fff; line-height: 1.15; }
+  .rs-close p { margin: 15px auto 0; max-width: 54ch; font-size: 16.5px; line-height: 1.7;
+    color: rgba(255,255,255,0.78); }
+  .rs-ghost-dark { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.4); border-radius: 8px; padding: 13px 26px; font-size: 16px;
+    font-weight: 600; text-decoration: none; transition: background 150ms, border-color 150ms; }
+  .rs-ghost-dark:hover { background: rgba(255,255,255,0.1); border-color: #fff; color: #fff; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rs-card, .rs-alt, .rs-jump a, .rs-btn { transition: none; }
+    .rs-card:hover, .rs-alt:hover, .rs-jump a:hover, .rs-btn:hover { transform: none; }
+  }
+  @media (max-width: 900px) {
+    .rs-verify, .rs-alts { grid-template-columns: 1fr; }
+    .rs-empty { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 680px) {
+    .rs-group { padding: 40px 0; }
+  }
 </style>
 </helmet>
 
@@ -228,111 +332,235 @@
 </header>
 <!-- /@shared:header -->
 
-<main data-screen-label="GTM Teams">
+<main data-screen-label="FAQ">
+  <section style="background:linear-gradient(180deg,#f7faff 0%,var(--bg-marketing-paper) 72%)">
+    <div class="rs-wrap" style="padding-top:76px;padding-bottom:52px">
+      <p class="rs-eyebrow">FAQ</p>
+      <h1 class="rs-h1">Everything we get <span>asked, in one place.</span></h1>
+      <p class="rs-lede">The questions from every service page, collected and answered here —
+        including the ones with awkward answers. Each group links back to the page it came from.</p>
+      <nav class="rs-jump" aria-label="Question groups">
+        <a href="#pricing">Pricing and terms</a>
+        <a href="#starting">Getting started</a>
+        <a href="#people">The agents</a>
+        <a href="#tools-data">Tools and data</a>
+        <a href="#scope">Services and scope</a>
+        <a href="#oversight">Oversight and reporting</a>
+      </nav>
+    </div>
+  </section>
 
-  <!-- HERO -->
-  <section style="background:var(--brand-navy)">
-    <div style="max-width:1200px;margin:0 auto;padding:80px 24px 72px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:center">
-      <div>
-        <p style="margin:0 0 16px;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue-300)">GTM Teams</p>
-        <h1 style="margin:0 0 20px;font-family:var(--font-display);font-size:48px;line-height:1.15;font-weight:700;color:#fff;text-wrap:balance">A go-to-market pod, hired as one unit.</h1>
-        <p style="margin:0 0 32px;font-size:18px;line-height:1.6;color:var(--ink-200);max-width:54ch">Skip six hiring cycles. We assemble outbound, marketing ops, and CRM administration into a single team that runs your motion end to end — under one contract, one report, one weekly standup.</p>
-        <div style="display:flex;gap:16px;align-items:center">
-          <a href="https://calendly.com/j-zemene-remassistance/new-meeting" target="_blank" rel="noopener" style="background:var(--brand-blue);color:#fff;font-size:17px;font-weight:600;text-decoration:none;padding:14px 28px;border-radius:6px;transition:background 150ms" style-hover="background:var(--blue-700);color:#fff">{{ ctaLabel }}</a>
-          <a href="Pricing.dc.html" style="color:#fff;font-size:17px;font-weight:600;text-decoration:none;padding:14px 20px;border-radius:6px;border:1px solid var(--navy-500)" style-hover="border-color:var(--blue-300);color:var(--blue-300)">See pricing</a>
+  <section id="pricing" class="rs-group">
+    <div class="rs-wrap rs-narrow">
+      <div class="rs-group-head">
+        <div>
+          <h2 class="rs-h2">Pricing and terms</h2>
+          <p>What a seat costs, what moves the number, and what is quoted separately.</p>
         </div>
+        <a class="rs-source" href="Pricing.dc.html">Pricing page &rarr;</a>
       </div>
-      <div style="height:380px;min-width:0;width:100%;overflow:hidden;border-radius:10px">
-        <x-import component-from-global-scope="image-slot" from="./assets/image-slot.js" id="gtm-hero-photo" shape="rounded" radius="10" placeholder="Drop a team-at-work photo" hint-size="100%,380px" style="width:100%;height:380px"></x-import>
+      <div class="rs-faq">
+          <details>
+            <summary>Why publish rates when nobody else does?</summary>
+            <p>Because the alternative wastes both our time. If $8 or $11 an hour is outside your range you should find that out in two minutes rather than after a discovery call. What genuinely needs a conversation is the shape — how many seats, what coverage, which tier.</p>
+          </details>
+          <details>
+            <summary>Do you have set pricing?</summary>
+            <p>Rates start at $8 an hour and the two tiers are real, but the total is assembled from options quoted a la carte. The rate is fixed; the scope is yours to choose.</p>
+          </details>
+          <details>
+            <summary>Is there a free trial?</summary>
+            <p>Not a traditional free trial — the training and security setup for your specific processes is substantial work and we would rather be straight about that. Instead there is a 30—60 day pilot: a dedicated team at smaller scale so you can measure our SLAs and quality before a full rollout.</p>
+          </details>
+          <details>
+            <summary>What drives the cost more, coverage or seniority?</summary>
+            <p>Coverage, by a long way. Part-time seats are real, and you do not have to buy 160 hours to start. Anything past 40 hours a week means more than one person, which is where a pod beats a single hire — two agents can cover nights and weekends without overtime.</p>
+          </details>
+          <details>
+            <summary>Can I change plans once I have signed up?</summary>
+            <p>You can add or remove seats at any time and your service rep handles the change. There is no setup fee to re-pay when a pod grows back later.</p>
+          </details>
       </div>
     </div>
   </section>
 
-  <!-- POD COMPOSITION -->
-  <section style="background:var(--bg-marketing-paper)">
-    <div style="max-width:1200px;margin:0 auto;padding:80px 24px">
-      <h2 style="margin:0 0 12px;font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--brand-navy)">What&rsquo;s in a pod</h2>
-      <p style="margin:0 0 48px;font-size:16px;line-height:1.6;color:var(--ink-600);max-width:64ch">Pods run 2–6 seats depending on your motion. Every role is filled from our bench — tech-adept generalists for breadth, niche-trained specialists where depth matters.</p>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
-        <div style="background:#fff;border:1px solid var(--border-default);border-radius:10px;padding:28px;box-shadow:var(--shadow-sm)">
-          <div style="font-family:var(--font-mono);font-size:12px;font-weight:700;color:var(--brand-blue);letter-spacing:0.05em;margin-bottom:12px">SEAT 1</div>
-          <h3 style="margin:0 0 8px;font-size:18px;font-weight:700;color:var(--brand-navy)">GTM Lead</h3>
-          <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-600)">Owns the plan and the weekly report. Your single point of contact for the whole pod.</p>
+  <section id="starting" class="rs-group">
+    <div class="rs-wrap rs-narrow">
+      <div class="rs-group-head">
+        <div>
+          <h2 class="rs-h2">Getting started</h2>
+          <p>What the two weeks actually involve, and how much of your time it takes.</p>
         </div>
-        <div style="background:#fff;border:1px solid var(--border-default);border-radius:10px;padding:28px;box-shadow:var(--shadow-sm)">
-          <div style="font-family:var(--font-mono);font-size:12px;font-weight:700;color:var(--brand-blue);letter-spacing:0.05em;margin-bottom:12px">SEATS 2–3</div>
-          <h3 style="margin:0 0 8px;font-size:18px;font-weight:700;color:var(--brand-navy)">SDRs</h3>
-          <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-600)">List building, sequencing, calls, and booking — the same specialists behind our <a href="SDR as a Service.dc.html" style="color:var(--brand-blue);font-weight:600">SDR as a Service</a> offer.</p>
-        </div>
-        <div style="background:#fff;border:1px solid var(--border-default);border-radius:10px;padding:28px;box-shadow:var(--shadow-sm)">
-          <div style="font-family:var(--font-mono);font-size:12px;font-weight:700;color:var(--brand-blue);letter-spacing:0.05em;margin-bottom:12px">SEAT 4</div>
-          <h3 style="margin:0 0 8px;font-size:18px;font-weight:700;color:var(--brand-navy)">Marketing VA</h3>
-          <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-600)">Content, social, SEO support, and campaign assembly that keeps the outbound warm.</p>
-        </div>
-        <div style="background:#fff;border:1px solid var(--border-default);border-radius:10px;padding:28px;box-shadow:var(--shadow-sm)">
-          <div style="font-family:var(--font-mono);font-size:12px;font-weight:700;color:var(--brand-blue);letter-spacing:0.05em;margin-bottom:12px">SEAT 5</div>
-          <h3 style="margin:0 0 8px;font-size:18px;font-weight:700;color:var(--brand-navy)">RevOps / CRM Admin</h3>
-          <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-600)">Pipelines, automations, attribution, and hygiene in GoHighLevel or HubSpot — so the data stays true.</p>
-        </div>
+        <a class="rs-source" href="How it Works.dc.html">How it Works page &rarr;</a>
+      </div>
+      <div class="rs-faq">
+          <details>
+            <summary>What if we have nothing documented?</summary>
+            <p>The most common starting point, and it does not block anything — it changes who we send first. We build the process with you during onboarding, write the SOP, and hand it back. That work is included rather than billed as a setup project.</p>
+          </details>
+          <details>
+            <summary>How much of our time does onboarding take?</summary>
+            <p>Realistically a few hours across two weeks: the consult, a look at the shortlist, tool access, and feedback on the first days of output. The training itself is ours to run.</p>
+          </details>
+          <details>
+            <summary>Can we start faster than two weeks?</summary>
+            <p>Sometimes. Where your SOPs already exist we can compress onboarding to under a week. Where nothing is written down, rushing it just moves the problem into month one, and we will say so rather than agree to a date we cannot hold.</p>
+          </details>
+          <details>
+            <summary>Can we start with a single seat?</summary>
+            <p>Yes, and most engagements do. One seat on one process, proven, then grown. We build the process with you first and staff against it.</p>
+          </details>
+          <details>
+            <summary>Who do we actually talk to day to day?</summary>
+            <p>A named supervisor who owns your account, not a shared inbox. They are named during team design, before anything goes live.</p>
+          </details>
       </div>
     </div>
   </section>
 
-  <!-- STACK -->
-  <section style="background:#fff;border-top:1px solid var(--border-default);border-bottom:1px solid var(--border-default)">
-    <div style="max-width:1200px;margin:0 auto;padding:64px 24px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
-      <div>
-        <h2 style="margin:0 0 16px;font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--brand-navy)">Built in your stack, not around it</h2>
-        <p style="margin:0;font-size:16px;line-height:1.65;color:var(--ink-600)">Our pods live inside GoHighLevel and HubSpot daily — funnels, workflows, snapshots, sequences, reporting dashboards. Prospecting runs on LinkedIn Sales Navigator with RevenueBase-verified data. If you run something else, our agents adapt: no software mandates, ever.</p>
+  <section id="people" class="rs-group">
+    <div class="rs-wrap rs-narrow">
+      <div class="rs-group-head">
+        <div>
+          <h2 class="rs-h2">The agents</h2>
+          <p>Who they are, how they are trained, and what happens when one is not right.</p>
+        </div>
+        <a class="rs-source" href="Virtual Back Office Team.dc.html">Virtual Back Office Team page &rarr;</a>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-        <div style="border:1px solid var(--border-default);border-radius:6px;padding:18px 20px;background:var(--bg-marketing-paper)"><div style="font-size:15px;font-weight:700;color:var(--brand-navy)">GoHighLevel</div><div style="font-size:13px;color:var(--ink-500)">Funnels, workflows, snapshots</div></div>
-        <div style="border:1px solid var(--border-default);border-radius:6px;padding:18px 20px;background:var(--bg-marketing-paper)"><div style="font-size:15px;font-weight:700;color:var(--brand-navy)">HubSpot</div><div style="font-size:13px;color:var(--ink-500)">CRM, sequences, reporting</div></div>
-        <div style="border:1px solid var(--border-default);border-radius:6px;padding:18px 20px;background:var(--bg-marketing-paper)"><div style="font-size:15px;font-weight:700;color:var(--brand-navy)">Sales Navigator</div><div style="font-size:13px;color:var(--ink-500)">Account + lead sourcing</div></div>
-        <div style="border:1px solid var(--border-default);border-radius:6px;padding:18px 20px;background:var(--bg-marketing-paper)"><div style="font-size:15px;font-weight:700;color:var(--brand-navy)">RevenueBase</div><div style="font-size:13px;color:var(--ink-500)">Verified B2B contact data</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DELIVERABLES -->
-  <section style="background:var(--bg-marketing-paper)">
-    <div style="max-width:1200px;margin:0 auto;padding:80px 24px">
-      <h2 style="margin:0 0 40px;font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--brand-navy)">What you get every week</h2>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
-        <div style="display:flex;gap:16px;align-items:baseline">
-          <span style="font-family:var(--font-mono);font-size:14px;font-weight:700;color:var(--brand-blue)">01</span>
-          <div>
-            <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:var(--brand-navy)">Pipeline report</h3>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-600)">Meetings booked, opportunities created, campaign performance — against the KPIs you set.</p>
-          </div>
-        </div>
-        <div style="display:flex;gap:16px;align-items:baseline">
-          <span style="font-family:var(--font-mono);font-size:14px;font-weight:700;color:var(--brand-blue)">02</span>
-          <div>
-            <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:var(--brand-navy)">Standup with your lead</h3>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-600)">One call, one owner. Adjust targeting, messaging, and priorities without chasing five contractors.</p>
-          </div>
-        </div>
-        <div style="display:flex;gap:16px;align-items:baseline">
-          <span style="font-family:var(--font-mono);font-size:14px;font-weight:700;color:var(--brand-blue)">03</span>
-          <div>
-            <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:var(--brand-navy)">Daily work logs</h3>
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--ink-600)">AI-assisted monitoring with hourly logs and daily email reports on every seat in the pod.</p>
-          </div>
-        </div>
+      <div class="rs-faq">
+          <details>
+            <summary>Do we have to interview the agents?</summary>
+            <p>No, but you always get the option. Some clients interview every candidate, others approve a shortlist, a few leave selection to us. What does not happen is someone being assigned to your account without your sign-off.</p>
+          </details>
+          <details>
+            <summary>Where are your agents based?</summary>
+            <p>Addis Ababa, Ethiopia and Cassino, Italy. Remote, hybrid and in-office setups are available for all agents — useful if your own security posture rules one of them out.</p>
+          </details>
+          <details>
+            <summary>How do we train the agents we hire?</summary>
+            <p>They arrive having cleared several rigorous assessments, so client training starts from a working baseline. Product training is completed before the first piece of live work, not learned on your customers.</p>
+          </details>
+          <details>
+            <summary>What happens if an agent is not the right fit?</summary>
+            <p>You interview and approve before anyone starts, and if it is still not working we replace the seat rather than ask you to manage around it. Replacement is inside the rate.</p>
+          </details>
+          <details>
+            <summary>Can agents learn a technical product?</summary>
+            <p>Yes. For accounts that need deeper knowledge we place from a niche track rather than the generalist bench, and we will tell you on the call which one fits.</p>
+          </details>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section id="book" style="background:var(--brand-navy)">
-    <div style="max-width:1200px;margin:0 auto;padding:80px 24px;text-align:center">
-      <h2 style="margin:0 auto 16px;font-family:var(--font-display);font-size:36px;font-weight:700;color:#fff">Scope your pod in one free consult</h2>
-      <p style="margin:0 auto 32px;font-size:16px;line-height:1.6;color:var(--ink-200);max-width:52ch">Tell us your motion and targets — we&rsquo;ll propose the seat mix, timeline, and pricing. Free trial included.</p>
-      <a href="https://calendly.com/j-zemene-remassistance/new-meeting" target="_blank" rel="noopener" style="display:inline-block;background:var(--brand-blue);color:#fff;font-size:17px;font-weight:600;text-decoration:none;padding:15px 32px;border-radius:6px;transition:background 150ms" style-hover="background:var(--blue-700);color:#fff">{{ ctaLabel }}</a>
+  <section id="tools-data" class="rs-group">
+    <div class="rs-wrap rs-narrow">
+      <div class="rs-group-head">
+        <div>
+          <h2 class="rs-h2">Tools and data</h2>
+          <p>Whose systems the work happens in, and how access is controlled.</p>
+        </div>
+        <a class="rs-source" href="Customer Service Agents.dc.html">Customer Experience page &rarr;</a>
+      </div>
+      <div class="rs-faq">
+          <details>
+            <summary>Do we have to use your software?</summary>
+            <p>No. Agents work in whatever you already run and the audit trail stays in your system, so nothing has to be migrated back if the engagement ends. The time-tracking client we can provide is on request only.</p>
+          </details>
+          <details>
+            <summary>Do the agents work in our helpdesk or yours?</summary>
+            <p>Yours — Zendesk, Intercom, GoHighLevel, HubSpot or an in-house tool, using your macros and tags.</p>
+          </details>
+          <details>
+            <summary>How is our data protected?</summary>
+            <p>Under ISO 27001 information security controls, independently audited rather than self-declared, with least-privilege access scoped per client. ISO 9001 covers the quality side.</p>
+          </details>
+          <details>
+            <summary>Will you have access to move our money?</summary>
+            <p>No. On finance engagements we prepare and queue payment runs; releasing them stays with you. Preparer and approver are deliberately separate roles.</p>
+          </details>
+          <details>
+            <summary>What happens to sending domains on outbound work?</summary>
+            <p>Infrastructure is warmed and monitored so your primary domain is not put at risk, and everything we build stays with you if the engagement ends.</p>
+          </details>
+      </div>
     </div>
   </section>
 
+  <section id="scope" class="rs-group">
+    <div class="rs-wrap rs-narrow">
+      <div class="rs-group-head">
+        <div>
+          <h2 class="rs-h2">Services and scope</h2>
+          <p>What one seat can realistically cover, and what we will turn down.</p>
+        </div>
+        <a class="rs-source" href="Extra Services.dc.html">All services page &rarr;</a>
+      </div>
+      <div class="rs-faq">
+          <details>
+            <summary>Can one person really cover several services?</summary>
+            <p>Within reason, and that is usually the point — a part-time seat covering inbox triage, order entry and returns is one person doing three things that were each too small to hire for. What does not work is stretching one seat across functions needing different training, and we will say so rather than sell you the seat.</p>
+          </details>
+          <details>
+            <summary>What if the service we need is not listed?</summary>
+            <p>Ask. The list covers what we staff routinely, not the limit of what our agents can be trained to do. If it is genuinely outside what we can deliver well we would rather tell you on the call.</p>
+          </details>
+          <details>
+            <summary>Do you guarantee a number of meetings, or an outcome?</summary>
+            <p>No, and be careful with anyone who does before seeing your offer, list and market. We commit to the process and the reporting, and we report meetings held rather than activity.</p>
+          </details>
+          <details>
+            <summary>Do you replace our accountant?</summary>
+            <p>No. Finance seats do the bookkeeping and transaction work that has to happen before an accountant or controller can do theirs. The close pack is built to hand straight to them.</p>
+          </details>
+          <details>
+            <summary>How do we know which service we actually need?</summary>
+            <p>Answer five questions and the fit finder names the service line, the tier and a monthly estimate with the arithmetic shown. About two minutes, and it does not ask for an email.</p>
+          </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="oversight" class="rs-group">
+    <div class="rs-wrap rs-narrow">
+      <div class="rs-group-head">
+        <div>
+          <h2 class="rs-h2">Oversight and reporting</h2>
+          <p>What arrives without you chasing anyone for it.</p>
+        </div>
+        <a class="rs-source" href="How it Works.dc.html">How it Works page &rarr;</a>
+      </div>
+      <div class="rs-faq">
+          <details>
+            <summary>What does "QA-reviewed" actually mean?</summary>
+            <p>Work is scored against criteria you agree, not a generic rubric, by a person who owns the account. You get a daily work report and a weekly quality summary, and the scoring is visible to you rather than averaged into a single number.</p>
+          </details>
+          <details>
+            <summary>What reporting do we get?</summary>
+            <p>Hourly work logs per seat, a short daily email report covering volume handled and anything stuck, and ongoing QA against your criteria. Oversight is part of the rate, not an upsell.</p>
+          </details>
+          <details>
+            <summary>How do you handle nights and weekends without overtime?</summary>
+            <p>With a rota rather than a longer day. Extended hours mean two or more seats sharing coverage; true 24/7 means a pod of three to six across timezones.</p>
+          </details>
+          <details>
+            <summary>What do we keep if we leave?</summary>
+            <p>Any SOP written during onboarding is yours. If you walk away you walk away with your process documented, which is more than you had.</p>
+          </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="rs-close">
+    <div class="rs-wrap">
+      <h2>Still not answered?</h2>
+      <p>Ask it on the consult. It is free, and if the answer is that we are not the right fit we
+        will say so on the call rather than three weeks later.</p>
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:13px;margin-top:28px">
+        <a class="rs-btn" href="https://calendly.com/j-zemene-remassistance/new-meeting" target="_blank" rel="noopener">Book a free consult <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        <a class="rs-ghost-dark" href="Qualify.dc.html">Qualify in two minutes</a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <!-- @shared:footer — generated from partials/footer.html by tools/sync-partials.js. Edit the partial, not this block. -->
