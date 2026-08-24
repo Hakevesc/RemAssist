@@ -13,38 +13,125 @@
   html, body { margin: 0; padding: 0; background: var(--bg-marketing-paper); color: var(--ink-900); font-family: var(--font-sans); }
   a { color: var(--fg-link); }
   a:hover { color: var(--blue-700); }
-  .rs-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-  .rs-eyebrow { margin: 0 0 14px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--brand-blue); }
-  .rs-h1 { margin: 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.025em;
-    line-height: 1.08; font-size: clamp(34px, 4.4vw, 52px); color: var(--brand-navy); max-width: 22ch; }
-  .rs-h1 span { color: var(--brand-blue); }
-  .rs-lede { margin: 18px 0 0; font-size: 17.5px; line-height: 1.7; color: var(--ink-600); max-width: 58ch; }
-  .rs-empty { margin-top: 44px; background: #fff; border: 1px solid var(--border-default);
-    border-radius: 18px; padding: clamp(28px, 3.4vw, 46px); box-shadow: var(--shadow-sm);
-    display: grid; grid-template-columns: 56px 1fr; gap: 22px; align-items: start; }
-  .rs-empty-ico { width: 56px; height: 56px; border-radius: 15px; background: rgba(81, 141, 224, 0.10);
-    display: grid; place-items: center; }
-  .rs-empty-ico svg { width: 27px; height: 27px; fill: none; stroke: var(--brand-blue); stroke-width: 1.8;
+
+  /* ================= BLOG / RESOURCES — design ported from blog.html ================= */
+  .bk-wrap { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+
+  .bk-hero-band { background: linear-gradient(180deg, #0085fe 0%, #326dda 34vh, var(--bg-marketing-paper) 34vh);
+    padding: 44px 0 0; }
+  .bk-hero-card { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 42px;
+    align-items: center; background: #fff; border: 1px solid var(--border-default);
+    border-radius: 26px; box-shadow: var(--shadow-sm); padding: clamp(30px, 4.6vw, 46px); }
+  .bk-eyebrow { display: inline-flex; align-items: center; gap: .6rem; margin: 0 0 16px;
+    font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-blue); }
+  .bk-eyebrow i { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-blue); }
+  .bk-h1 { margin: 0; font-family: var(--font-display); font-size: clamp(30px, 3.6vw, 46px);
+    line-height: 1.1; letter-spacing: -.02em; color: var(--brand-navy); }
+  .bk-h1 .hl { position: relative; color: var(--brand-blue); white-space: nowrap; }
+  .bk-h1 .hl::after { content: ""; position: absolute; left: -2px; right: -2px; bottom: 5px; height: 11px;
+    background: rgba(81, 141, 224, .16); border-radius: 8px; z-index: -1; }
+  .bk-lede { margin: 18px 0 0; font-size: 17px; line-height: 1.7; color: var(--ink-600); max-width: 54ch; }
+  .bk-search { margin-top: 26px; display: flex; align-items: center; gap: 10px;
+    background: var(--bg-marketing-paper); border: 1.5px solid var(--border-default);
+    border-radius: 60px; padding: 12px 8px 12px 20px; max-width: 460px; }
+  .bk-search svg { width: 18px; height: 18px; stroke: var(--ink-500); stroke-width: 2; flex-shrink: 0; }
+  .bk-search input { flex: 1; border: 0; background: none; outline: none; font: 500 15px var(--font-sans);
+    color: var(--ink-900); }
+  .bk-search input::placeholder { color: var(--ink-500); }
+
+  .bk-featured { display: block; border-radius: 20px; overflow: hidden; background: #fff;
+    border: 1px solid var(--border-default); box-shadow: var(--shadow-sm); text-decoration: none;
+    transition: transform .3s, box-shadow .3s, border-color .3s; }
+  .bk-featured:hover { transform: translateY(-4px); border-color: rgba(81, 141, 224, .45);
+    box-shadow: var(--shadow-md); }
+  .bk-thumb { height: 208px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #0085fe 0%, #326dda 55%, #000543 100%); }
+  .bk-thumb::after { content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 76% 22%, rgba(52, 189, 240, .55) 0, transparent 48%),
+                radial-gradient(circle at 10% 90%, rgba(255, 255, 255, .16) 0, transparent 40%); }
+  .bk-badge { position: absolute; top: 16px; left: 16px; z-index: 2; background: #fff; color: var(--brand-navy);
+    font-size: 10.5px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase;
+    padding: 8px 16px; border-radius: 60px; box-shadow: var(--shadow-sm); }
+  .bk-glyph { position: absolute; inset: 0; display: grid; place-content: center; z-index: 1; }
+  .bk-glyph svg { width: 68px; height: 68px; stroke: rgba(255, 255, 255, .88); fill: none; stroke-width: 1.3;
     stroke-linecap: round; stroke-linejoin: round; }
-  .rs-empty h2 { margin: 0; font-family: var(--font-display); font-size: clamp(21px, 2.2vw, 27px);
-    font-weight: 700; letter-spacing: -0.02em; color: var(--brand-navy); line-height: 1.25; }
-  .rs-empty p { margin: 12px 0 0; font-size: 16px; line-height: 1.7; color: var(--ink-600); max-width: 62ch; }
-  .rs-cta-row { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 26px; }
-  .rs-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--brand-blue); color: #fff;
-    font-size: 15.5px; font-weight: 600; text-decoration: none; padding: 13px 26px; border-radius: 8px;
-    transition: background 150ms, transform 150ms; }
-  .rs-btn:hover { background: var(--blue-700); color: #fff; transform: translateY(-1px); }
-  .rs-btn--ghost { background: #fff; color: var(--brand-blue); border: 1px solid rgba(81, 141, 224, 0.45); }
-  .rs-meanwhile { margin-top: 40px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-  .rs-alt { display: block; background: #fff; border: 1px solid var(--border-default); border-radius: 14px;
-    padding: 22px; text-decoration: none; transition: transform 180ms, box-shadow 180ms, border-color 180ms; }
-  .rs-alt:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: rgba(81, 141, 224, 0.45); }
-  .rs-alt b { display: block; font-size: 16px; font-weight: 700; color: var(--brand-navy); }
-  .rs-alt span { display: block; margin-top: 6px; font-size: 14px; line-height: 1.6; color: var(--ink-600); }
-  @media (max-width: 780px) {
-    .rs-empty { grid-template-columns: 1fr; }
-    .rs-meanwhile { grid-template-columns: 1fr; }
+  .bk-featured-body { padding: 26px 28px 30px; background: #fff; }
+  .bk-featured-body h3 { margin: 0 0 12px; font-size: 21px; line-height: 1.3; letter-spacing: -.2px;
+    color: var(--brand-navy); }
+  .bk-featured-body h3:hover { color: var(--brand-blue); }
+  .bk-featured-body p { margin: 0 0 4px; font-size: 14.5px; color: var(--ink-600); line-height: 1.6; }
+
+  .bk-meta { display: flex; align-items: center; gap: 12px; margin-top: 18px; padding-top: 16px;
+    border-top: 1px solid var(--border-default); }
+  .bk-meta img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; object-position: 50% 18%; }
+  .bk-meta .who { margin: 0; font-size: 13px; font-weight: 700; color: var(--brand-navy); line-height: 1.3; }
+  .bk-meta .when { margin: 0; font-size: 12px; color: var(--ink-500); font-weight: 500; }
+  .bk-meta .read { margin-left: auto; font-size: 12px; font-weight: 700; color: var(--brand-blue);
+    display: inline-flex; align-items: center; gap: 6px; }
+  .bk-meta .read svg { width: 15px; height: 15px; transition: transform .3s; }
+  .bk-featured:hover .bk-meta .read svg, .bk-card:hover .bk-meta .read svg { transform: translateX(4px); }
+
+  /* Cards grid */
+  .bk-band { padding: 44px 0 90px; }
+  .bk-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+    flex-wrap: wrap; margin-bottom: 22px; }
+  .bk-head h2 { margin: 0; font-family: var(--font-display); font-size: 26px; letter-spacing: -.02em;
+    color: var(--brand-navy); }
+  .bk-head p { margin: 0; font-size: 14px; color: var(--ink-500); }
+  .bk-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+  .bk-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--border-default);
+    border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-sm); text-decoration: none;
+    transition: transform .3s, box-shadow .3s, border-color .3s; }
+  .bk-card:hover { transform: translateY(-5px); border-color: rgba(81, 141, 224, .45);
+    box-shadow: 0 18px 44px -20px rgba(0, 5, 67, .35); }
+  .bk-thumb-sm { height: 150px; position: relative; overflow: hidden; }
+  .bk-thumb-sm.g1 { background: linear-gradient(135deg, #0085fe, #326dda); }
+  .bk-thumb-sm.g2 { background: linear-gradient(135deg, #326dda, #000543); }
+  .bk-thumb-sm.g3 { background: linear-gradient(135deg, #34bdf0, #0085fe); }
+  .bk-thumb-sm::after { content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 82% 16%, rgba(255, 255, 255, .22) 0, transparent 44%); }
+  .bk-type { position: absolute; top: 14px; left: 14px; z-index: 2; background: rgba(255, 255, 255, .94);
+    color: var(--brand-navy); font-size: 10.5px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase;
+    padding: 7px 14px; border-radius: 60px; box-shadow: var(--shadow-sm); }
+  .bk-card-body { padding: 22px 22px 20px; display: flex; flex-direction: column; flex: 1; }
+  .bk-topic { margin: 0 0 10px; font-size: 11px; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--brand-blue); }
+  .bk-card-body h3 { margin: 0 0 10px; font-size: 17px; line-height: 1.35; letter-spacing: -.1px;
+    color: var(--brand-navy); }
+  .bk-card-body h3:hover { color: var(--brand-blue); }
+  .bk-card-body p { margin: 0 0 4px; font-size: 13.5px; color: var(--ink-600); line-height: 1.65; }
+  .bk-card .bk-meta { margin-top: auto; }
+
+  /* Newsletter */
+  .bk-newsletter { margin-top: 48px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    gap: 38px; align-items: center; background: linear-gradient(135deg, #eef4ff 0%, #dbe7fb 100%);
+    color: var(--brand-navy); border: 1px solid var(--border-default); border-radius: 24px;
+    padding: clamp(32px, 5vw, 52px) clamp(28px, 4.4vw, 44px);
+    position: relative; overflow: hidden; box-shadow: var(--shadow-sm); }
+  .bk-newsletter::after { content: ""; position: absolute; right: -90px; top: -90px; width: 320px; height: 320px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(81, 141, 224, .16) 0, transparent 68%); }
+  .bk-newsletter h2 { margin: 12px 0 10px; font-family: var(--font-display); font-size: clamp(24px, 2.6vw, 32px);
+    line-height: 1.2; letter-spacing: -.3px; color: var(--brand-navy); }
+  .bk-newsletter p { margin: 0; font-size: 15px; line-height: 1.7; max-width: 58ch; color: var(--ink-600); }
+  .bk-newsletter .bk-eyebrow { color: var(--brand-blue); }
+  .bk-newsletter .bk-eyebrow i { background: var(--brand-blue); }
+  .bk-news-form { display: flex; gap: 12px; flex-wrap: wrap; }
+  .bk-news-form input { flex: 1; min-width: 230px; background: #fff;
+    border: 1.5px solid rgba(0, 5, 67, .15); border-radius: 60px; padding: 15px 22px;
+    color: var(--brand-navy); outline: none; font: 500 15px var(--font-sans); }
+  .bk-news-form input::placeholder { color: var(--ink-500); }
+  .bk-news-form button { flex-shrink: 0; background: var(--brand-blue); color: #fff; font-weight: 700;
+    font-size: 15px; border: 0; border-radius: 60px; padding: 0 26px; cursor: pointer; font-family: var(--font-sans); }
+  .bk-news-form button:hover { background: var(--blue-700); }
+
+  @media (max-width: 1024px) {
+    .bk-hero-card { grid-template-columns: 1fr; }
+    .bk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .bk-newsletter { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 720px) {
+    .bk-grid { grid-template-columns: 1fr; }
+    .bk-newsletter { padding: 30px 24px; }
   }
 </style>
 </helmet>
@@ -106,6 +193,9 @@
     .nav-item { display: grid; grid-template-columns: 38px 1fr; align-items: center; gap: 13px;
       padding: 11px 12px; border-radius: 12px; text-decoration: none; transition: background 130ms; }
     .nav-item:hover, .nav-item:focus-visible { background: rgba(81, 141, 224, 0.09); }
+    .nav-item[aria-disabled="true"] { cursor: default; }
+    .nav-item[aria-disabled="true"]:hover, .nav-item[aria-disabled="true"]:focus-visible {
+      background: transparent; cursor: default; }
     .nav-ico { width: 38px; height: 38px; border-radius: 9px; background: rgba(81, 141, 224, 0.11);
       display: grid; place-items: center; }
     .nav-ico svg { width: 19px; height: 19px; fill: none; stroke: var(--brand-blue); stroke-width: 1.9;
@@ -182,13 +272,13 @@
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
               <span><b>Back Office</b><small>Data entry, documents, claims, EAs</small></span>
             </a>
-            <a class="nav-item" href="Extra Services.dc.html#managed-it">
+            <a class="nav-item" href="Managed IT.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span>
               <span><b>Managed IT</b><small>Endpoints, help desk, security, cloud</small></span>
             </a>
           </span>
           <span class="nav-box">
-            <a class="nav-item" href="Extra Services.dc.html#hr-recruiting">
+            <a class="nav-item" href="HR and Recruiting.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3 20v-1.4A4.6 4.6 0 0 1 7.6 14h2.8a4.6 4.6 0 0 1 4.6 4.6V20"/><path d="M16.5 4.6a3.4 3.4 0 0 1 0 6.6M21 20v-1.4a4.6 4.6 0 0 0-3.2-4.4"/></svg></span>
               <span><b>HR &amp; Recruiting</b><small>Sourcing, onboarding, records</small></span>
             </a>
@@ -200,7 +290,7 @@
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4l12 5V5z"/><path d="M16 9a3 3 0 0 1 0 6"/></svg></span>
               <span><b>Marketing &amp; Content</b><small>GTM pods, SEO, content, research</small></span>
             </a>
-            <a class="nav-item" href="Extra Services.dc.html#ai-automation">
+            <a class="nav-item" href="AI and Automation.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.7 4.4 4.4 1.7-4.4 1.7L12 15.2l-1.7-4.4L5.9 9.1l4.4-1.7z"/><path d="m18.5 15.5.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span>
               <span><b>AI &amp; Automation</b><small>Workflows, agents, integration</small></span>
             </a>
@@ -223,19 +313,19 @@
         <span class="nav-mega nav-mega--sm">
           <span class="nav-mega-cols">
           <span class="nav-box">
-            <a class="nav-item" href="Case Studies.dc.html">
+            <span class="nav-item" aria-disabled="true" aria-label="Case Studies — coming soon">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7M9 16h5"/></svg></span>
               <span><b>Case Studies <i class="nav-soon">soon</i></b><small>Engagements written up, with client sign-off</small></span>
-            </a>
+            </span>
             <a class="nav-item" href="Reviews.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.6 5.8 6.4.7-4.8 4.3 1.3 6.2L12 17l-5.5 3 1.3-6.2L3 9.5l6.4-.7z"/></svg></span>
-              <span><b>Reviews <i class="nav-soon">soon</i></b><small>What clients say on Trustpilot</small></span>
+              <span><b>Reviews</b><small>Live reviews on Trustpilot</small></span>
             </a>
           </span>
           <span class="nav-box">
             <a class="nav-item" href="Blog.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V6a2 2 0 0 1 2-2h9l5 5v10.5"/><path d="M8 9h6M8 13h8M8 17h5"/></svg></span>
-              <span><b>Blog &amp; Guides <i class="nav-soon">soon</i></b><small>Playbooks on delegation and operations</small></span>
+              <span><b>Blog &amp; Guides</b><small>Playbooks on delegation and operations</small></span>
             </a>
             <a class="nav-item" href="FAQ.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.2a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .9-1 1.6v.4"/><path d="M12 17h.01"/></svg></span>
@@ -263,32 +353,104 @@
 
 <main data-screen-label="Blog and Guides">
 
-  <section style="background:linear-gradient(180deg,#f7faff 0%,var(--bg-marketing-paper) 70%)">
-    <div class="rs-wrap" style="padding-top:76px;padding-bottom:80px">
-      <p class="rs-eyebrow">Blog &amp; guides</p>
-      <h1 class="rs-h1">Playbooks for <span>handing work over.</span></h1>
-      <p class="rs-lede">Practical writing on delegation, hiring offshore, and running a back office you are not personally holding together.</p>
-
-      <!-- Honest empty state. Replace this block with real entries as they publish;
-           do not fill it with illustrative clients or numbers. -->
-      <div class="rs-empty">
-        <span class="rs-empty-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V6a2 2 0 0 1 2-2h9l5 5v10.5"/><path d="M8 9h6M8 13h8M8 17h5"/></svg></span>
+  <section class="bk-hero-band">
+    <div class="bk-wrap">
+      <div class="bk-hero-card">
         <div>
-          <h2>First pieces are in draft</h2>
-          <p>Rather than fill this page with generic outsourcing content, we are writing from actual engagements — what the handover looked like, where it broke, and what fixed it. In the meantime the FAQ answers the questions we field most often.</p>
-          <div class="rs-cta-row">
-            <a class="rs-btn" href="https://calendly.com/j-zemene-remassistance/new-meeting" target="_blank" rel="noopener">Book a free consult
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
-            <a class="rs-btn rs-btn--ghost" href="Extra Services.dc.html">Browse all 35 services</a>
-          </div>
+          <span class="bk-eyebrow"><i></i>REM Resources</span>
+          <h1 class="bk-h1">Playbooks for building a remote team that <span class="hl">actually delivers.</span></h1>
+          <p class="bk-lede">Hiring guides, cost breakdowns and operating templates from the team that sources, onboards and manages dedicated remote staff every day.</p>
+          <form class="bk-search" role="search" onsubmit="return false;">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16" y1="7" x2="20.5" y2="20"/></svg>
+            <input type="search" placeholder="Search guides and articles…" aria-label="Search resources">
+          </form>
         </div>
+
+        <a href="Blog Post.dc.html" class="bk-featured">
+          <div class="bk-thumb">
+            <span class="bk-badge">Featured</span>
+            <span class="bk-glyph"><svg viewBox="0 0 64 64" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="22" cy="22" r="8"/><circle cx="44" cy="26" r="6"/><path d="M8 56c0-6 6-15 15-15s15 6 15 15"/><path d="M42 56c0-6 4-12 12-12s11 5 11 12"/></svg></span>
+          </div>
+          <div class="bk-featured-body">
+            <div class="bk-topic">Hiring Strategy</div>
+            <h3>The 2026 Guide to Hiring Offshore Without Losing Quality Control</h3>
+            <p>What separates teams that scale from teams that stay stuck — scope the role, run the first 90 days, and track the four KPIs that predict retention.</p>
+            <div class="bk-meta">
+              <img src="assets/images/teams/Johnathan.jpg" alt="">
+              <div><div class="who">Johnathan M.</div><div class="when">Aug 6, 2026 · 11 min read</div></div>
+              <span class="read">Read more<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bk-band">
+    <div class="bk-wrap">
+      <div class="bk-head">
+        <h2>Latest resources</h2>
+        <p>Three practical guides to start with</p>
       </div>
 
-      <div class="rs-meanwhile">
-        <a class="rs-alt" href="index.html#faq"><b>FAQ</b><span>Pricing, onboarding, replacement, and how data is handled.</span></a>
-        <a class="rs-alt" href="Qualify.dc.html"><b>Qualify in two minutes</b><span>Five questions and we name the service line, tier, and estimate.</span></a>
-        <a class="rs-alt" href="Pricing.dc.html"><b>Pricing</b><span>Pro from $8/hr, Expert from $11/hr, free trial either way.</span></a>
+      <div class="bk-grid">
+
+        <a href="Blog Post.dc.html" class="bk-card">
+          <div class="bk-thumb-sm g1"><span class="bk-type">Guide</span></div>
+          <div class="bk-card-body">
+            <div class="bk-topic">Hiring Strategy</div>
+            <h3>The Role Scorecard: Define a Remote Hire in One Page</h3>
+            <p>A fill-in template that turns &ldquo;I need help&rdquo; into a roleable hire with clear outcomes and KPIs.</p>
+            <div class="bk-meta">
+              <img src="assets/images/teams/Kalkidan.jpg" alt="">
+              <div><div class="who">Kalkidan T.</div><div class="when">Aug 4, 2026 · 7 min</div></div>
+              <span class="read">Read<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a href="Blog Post.dc.html" class="bk-card">
+          <div class="bk-thumb-sm g2"><span class="bk-type">Blog</span></div>
+          <div class="bk-card-body">
+            <div class="bk-topic">Cost &amp; ROI</div>
+            <h3>When Offshore Hiring Is the Wrong Call</h3>
+            <p>Four situations where staying local is cheaper — and what to do instead in each one.</p>
+            <div class="bk-meta">
+              <img src="assets/images/teams/Minassie.jpg" alt="">
+              <div><div class="who">Minassie B.</div><div class="when">Jul 30, 2026 · 6 min</div></div>
+              <span class="read">Read<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a href="Blog Post.dc.html" class="bk-card">
+          <div class="bk-thumb-sm g3"><span class="bk-type">Guide</span></div>
+          <div class="bk-card-body">
+            <div class="bk-topic">Team Management</div>
+            <h3>The First 30 Days: An Onboarding Plan You Can Copy</h3>
+            <p>Week-by-week milestones, access checklists and the check-in cadence that builds trust fast.</p>
+            <div class="bk-meta">
+              <img src="assets/images/teams/Yonas.jpg" alt="">
+              <div><div class="who">Yonas B.</div><div class="when">Jul 25, 2026 · 9 min</div></div>
+              <span class="read">Read<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+            </div>
+          </div>
+        </a>
+
       </div>
+
+      <div class="bk-newsletter">
+        <div>
+          <span class="bk-eyebrow"><i></i>The REM Brief</span>
+          <h2>One useful email a month. Nothing else.</h2>
+          <p>Salary benchmarks, hiring templates and the occasional teardown of what worked for a client last quarter.</p>
+        </div>
+        <form class="bk-news-form" onsubmit="return false;">
+          <input type="email" placeholder="you@company.com" aria-label="Work email">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
     </div>
   </section>
 

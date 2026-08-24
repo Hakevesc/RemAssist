@@ -75,22 +75,37 @@
   .pr-tier li svg { width: 18px; height: 18px; margin-top: 1px; fill: none; stroke: var(--brand-blue);
     stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 
-  /* ---------- the monthly grid ---------- */
-  .pr-table-wrap { margin-top: 40px; overflow-x: auto; border: 1px solid var(--border-default);
-    border-radius: 16px; background: #fff; box-shadow: var(--shadow-sm); }
-  table.pr-table { width: 100%; border-collapse: collapse; min-width: 620px; }
-  .pr-table th, .pr-table td { padding: 15px 18px; text-align: left; border-top: 1px solid var(--border-default); }
-  .pr-table thead th { border-top: 0; background: var(--bg-marketing-paper);
-    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--ink-500); font-weight: 600; }
-  .pr-table tbody th { font-size: 15px; font-weight: 700; color: var(--brand-navy); }
-  .pr-table tbody th span { display: block; margin-top: 3px; font-size: 12.5px; font-weight: 500;
-    color: var(--ink-500); }
-  .pr-table td { font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--brand-navy); }
-  .pr-table td span { font-family: var(--font-sans); font-size: 12px; font-weight: 500; color: var(--ink-500);
-    display: block; margin-top: 2px; }
-  .pr-table tbody tr:hover { background: rgba(81,141,224,0.05); }
-  .pr-table-note { margin: 14px 0 0; font-size: 13px; line-height: 1.6; color: var(--ink-500); }
+  /* ---------- compare plans ---------- */
+  .pr-plans { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px; margin-top: 46px;
+    align-items: stretch; }
+  .pr-plan { position: relative; display: flex; flex-direction: column; text-align: left; background: #fff;
+    border: 1px solid var(--border-default); border-radius: 18px; padding: 30px 24px 26px;
+    box-shadow: var(--shadow-sm);
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+  .pr-plan:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(81,141,224,0.5); }
+  .pr-plan--featured { border-color: rgba(81,141,224,0.55); box-shadow: 0 26px 48px -28px rgba(81,141,224,0.5); }
+  .pr-plan-tag { position: absolute; top: -11px; left: 22px; font-family: var(--font-mono); font-size: 10.5px;
+    letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; color: #fff;
+    background: var(--brand-blue); border-radius: 999px; padding: 5px 11px; }
+  .pr-plan h3 { margin: 0; font-family: var(--font-display); font-size: 20px; font-weight: 700;
+    letter-spacing: -0.01em; color: var(--brand-navy); }
+  .pr-plan-price { display: block; margin-top: 14px; font-family: var(--font-display); font-size: 40px;
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--brand-navy); }
+  .pr-plan-unit { display: block; margin-top: 10px; font-size: 13px; line-height: 1.55; color: var(--ink-500); }
+  /* box-sizing is not reset globally in this project, so a padded 100%-wide
+     button would overflow the card. Keep it border-box and pinned to the card. */
+  .pr-plan .pr-btn { box-sizing: border-box; margin-top: 20px; width: 100%;
+    justify-content: center; font-size: 14.5px; padding: 12px 18px; }
+  .pr-plan ul { list-style: none; margin: 22px 0 0; padding: 20px 0 0; display: grid; gap: 11px;
+    border-top: 1px solid var(--border-default); }
+  .pr-plan li { display: grid; grid-template-columns: 17px 1fr; gap: 10px; font-size: 14px;
+    line-height: 1.6; color: var(--ink-700); }
+  .pr-plan li svg { width: 17px; height: 17px; margin-top: 2px; fill: none; stroke: var(--brand-blue);
+    stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  .pr-plan-more { margin-top: auto; padding-top: 22px; font-size: 14px; font-weight: 600;
+    color: var(--brand-blue); text-decoration: none; }
+  .pr-plan-more:hover { color: var(--blue-700); text-decoration: underline; }
+  .pr-plans-note { margin: 24px 0 0; font-size: 13px; line-height: 1.6; color: var(--ink-500); }
 
   /* ---------- in / out lists ---------- */
   .pr-two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
@@ -151,8 +166,11 @@
     color: rgba(255,255,255,0.78); }
 
   @media (prefers-reduced-motion: reduce) {
-    .pr-tier, .pr-step, .pr-btn { transition: none; }
-    .pr-tier:hover, .pr-step:hover, .pr-btn:hover { transform: none; }
+    .pr-tier, .pr-step, .pr-btn, .pr-plan { transition: none; }
+    .pr-tier:hover, .pr-step:hover, .pr-btn:hover, .pr-plan:hover { transform: none; }
+  }
+  @media (max-width: 1180px) {
+    .pr-plans { grid-template-columns: repeat(2, minmax(0,1fr)); }
   }
   @media (max-width: 1024px) {
     .pr-steps, .pr-where { grid-template-columns: 1fr; }
@@ -162,6 +180,7 @@
     .pr-section { padding: 62px 0; }
     .pr-hero { padding-top: 54px; }
     .pr-tiers { grid-template-columns: 1fr; }
+    .pr-plans { grid-template-columns: 1fr; }
   }
 </style>
 </helmet>
@@ -223,6 +242,9 @@
     .nav-item { display: grid; grid-template-columns: 38px 1fr; align-items: center; gap: 13px;
       padding: 11px 12px; border-radius: 12px; text-decoration: none; transition: background 130ms; }
     .nav-item:hover, .nav-item:focus-visible { background: rgba(81, 141, 224, 0.09); }
+    .nav-item[aria-disabled="true"] { cursor: default; }
+    .nav-item[aria-disabled="true"]:hover, .nav-item[aria-disabled="true"]:focus-visible {
+      background: transparent; cursor: default; }
     .nav-ico { width: 38px; height: 38px; border-radius: 9px; background: rgba(81, 141, 224, 0.11);
       display: grid; place-items: center; }
     .nav-ico svg { width: 19px; height: 19px; fill: none; stroke: var(--brand-blue); stroke-width: 1.9;
@@ -299,13 +321,13 @@
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
               <span><b>Back Office</b><small>Data entry, documents, claims, EAs</small></span>
             </a>
-            <a class="nav-item" href="Extra Services.dc.html#managed-it">
+            <a class="nav-item" href="Managed IT.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span>
               <span><b>Managed IT</b><small>Endpoints, help desk, security, cloud</small></span>
             </a>
           </span>
           <span class="nav-box">
-            <a class="nav-item" href="Extra Services.dc.html#hr-recruiting">
+            <a class="nav-item" href="HR and Recruiting.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3 20v-1.4A4.6 4.6 0 0 1 7.6 14h2.8a4.6 4.6 0 0 1 4.6 4.6V20"/><path d="M16.5 4.6a3.4 3.4 0 0 1 0 6.6M21 20v-1.4a4.6 4.6 0 0 0-3.2-4.4"/></svg></span>
               <span><b>HR &amp; Recruiting</b><small>Sourcing, onboarding, records</small></span>
             </a>
@@ -317,7 +339,7 @@
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4l12 5V5z"/><path d="M16 9a3 3 0 0 1 0 6"/></svg></span>
               <span><b>Marketing &amp; Content</b><small>GTM pods, SEO, content, research</small></span>
             </a>
-            <a class="nav-item" href="Extra Services.dc.html#ai-automation">
+            <a class="nav-item" href="AI and Automation.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.7 4.4 4.4 1.7-4.4 1.7L12 15.2l-1.7-4.4L5.9 9.1l4.4-1.7z"/><path d="m18.5 15.5.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span>
               <span><b>AI &amp; Automation</b><small>Workflows, agents, integration</small></span>
             </a>
@@ -340,19 +362,19 @@
         <span class="nav-mega nav-mega--sm">
           <span class="nav-mega-cols">
           <span class="nav-box">
-            <a class="nav-item" href="Case Studies.dc.html">
+            <span class="nav-item" aria-disabled="true" aria-label="Case Studies — coming soon">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7M9 16h5"/></svg></span>
               <span><b>Case Studies <i class="nav-soon">soon</i></b><small>Engagements written up, with client sign-off</small></span>
-            </a>
+            </span>
             <a class="nav-item" href="Reviews.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.6 5.8 6.4.7-4.8 4.3 1.3 6.2L12 17l-5.5 3 1.3-6.2L3 9.5l6.4-.7z"/></svg></span>
-              <span><b>Reviews <i class="nav-soon">soon</i></b><small>What clients say on Trustpilot</small></span>
+              <span><b>Reviews</b><small>Live reviews on Trustpilot</small></span>
             </a>
           </span>
           <span class="nav-box">
             <a class="nav-item" href="Blog.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V6a2 2 0 0 1 2-2h9l5 5v10.5"/><path d="M8 9h6M8 13h8M8 17h5"/></svg></span>
-              <span><b>Blog &amp; Guides <i class="nav-soon">soon</i></b><small>Playbooks on delegation and operations</small></span>
+              <span><b>Blog &amp; Guides</b><small>Playbooks on delegation and operations</small></span>
             </a>
             <a class="nav-item" href="FAQ.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.2a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .9-1 1.6v.4"/><path d="M12 17h.01"/></svg></span>
@@ -433,48 +455,73 @@
     </div>
   </section>
 
-  <!-- ================= WHAT COVERAGE COSTS ================= -->
+  <!-- ================= COMPARE PLANS ================= -->
   <section class="pr-section" style="background:var(--bg-marketing-paper)">
     <div class="pr-wrap">
-      <span class="pr-kicker">Do the maths yourself</span>
-      <h2 class="pr-h2" style="margin-top:14px">Coverage drives the cost, <span>not seniority.</span></h2>
-      <p class="pr-lede">Hours multiplied by the rate above. Nothing hidden in the middle, so you can
-        sanity-check us before you ever speak to anyone.</p>
+      <span class="pr-kicker">Compare plans</span>
+      <h2 class="pr-h2" style="margin-top:14px">Pick the shape, <span>then we scope it.</span></h2>
+      <p class="pr-lede">Every plan runs on the two published rates above. What changes is how the seats
+        are grouped &mdash; a single agent, a pod, or a mix layered into what you already have.</p>
 
-      <div class="pr-table-wrap">
-        <table class="pr-table">
-          <thead>
-            <tr>
-              <th scope="col">Coverage</th>
-              <th scope="col">Pro &mdash; $8/hr</th>
-              <th scope="col">Expert &mdash; $11/hr</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Part-time<span>About 80 hrs/month, one seat</span></th>
-              <td>$640<span>per month</span></td>
-              <td>$880<span>per month</span></td>
-            </tr>
-            <tr>
-              <th scope="row">Full-time<span>160 hrs/month, one seat</span></th>
-              <td>$1,280<span>per month</span></td>
-              <td>$1,760<span>per month</span></td>
-            </tr>
-            <tr>
-              <th scope="row">Extended hours<span>320 hrs/month, two seats on a rota</span></th>
-              <td>$2,560<span>per month</span></td>
-              <td>$3,520<span>per month</span></td>
-            </tr>
-            <tr>
-              <th scope="row">True 24/7<span>640 hrs/month, a pod across timezones</span></th>
-              <td>$5,120<span>per month</span></td>
-              <td>$7,040<span>per month</span></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="pr-plans">
+        <div class="pr-plan">
+          <h3>Customer Service Agents</h3>
+          <span class="pr-plan-price">From $8</span>
+          <span class="pr-plan-unit">Per agent per hour,<br>customized in consultation</span>
+          <a class="pr-btn" href="mailto:support@remassistance.com">Get started</a>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Voice, chat &amp; email coverage</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>24/7 or business-hours shifts</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>QA scoring + daily reports</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>30&ndash;60-day pilot program</li>
+          </ul>
+          <a class="pr-plan-more" href="Customer Service Agents.dc.html">Learn more &rarr;</a>
+        </div>
+
+        <div class="pr-plan pr-plan--featured">
+          <span class="pr-plan-tag">Most popular</span>
+          <h3>GTM Team</h3>
+          <span class="pr-plan-price">Custom</span>
+          <span class="pr-plan-unit">Per pod of 2&ndash;6 seats,<br>scoped to your motion</span>
+          <a class="pr-btn" href="mailto:support@remassistance.com">Get started</a>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Lead + SDRs + marketing + RevOps</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>GHL / HubSpot builds included</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Weekly pipeline reporting</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>30&ndash;60-day pilot program</li>
+          </ul>
+          <a class="pr-plan-more" href="GTM Teams.dc.html">Learn more &rarr;</a>
+        </div>
+
+        <div class="pr-plan">
+          <h3>SDR as a Service</h3>
+          <span class="pr-plan-price">From $8</span>
+          <span class="pr-plan-unit">Per SDR per hour,<br>customized in consultation</span>
+          <a class="pr-btn" href="mailto:support@remassistance.com">Get started</a>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Lists, sequences &amp; booking</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Sales Navigator + RevenueBase data</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Reported on meetings held</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>30&ndash;60-day pilot program</li>
+          </ul>
+          <a class="pr-plan-more" href="SDR as a Service.dc.html">Learn more &rarr;</a>
+        </div>
+
+        <div class="pr-plan">
+          <h3>Extra Services</h3>
+          <span class="pr-plan-price">Custom</span>
+          <span class="pr-plan-unit">Per seat or per project,<br>mix into any plan</span>
+          <a class="pr-btn" href="mailto:support@remassistance.com">Get started</a>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>IT helpdesk, marketing, AI, research</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>One VA can cover several tasks</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Add or remove plans anytime</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>Custom software available</li>
+          </ul>
+          <a class="pr-plan-more" href="Extra Services.dc.html">Learn more &rarr;</a>
+        </div>
       </div>
-      <p class="pr-table-note">Figures are floors, not quotes &mdash; your exact rate depends on hours,
+      <p class="pr-plans-note">Figures are floors, not quotes &mdash; your exact rate depends on hours,
         start date and whether a mixed-tier pod suits you better. Extras are quoted a la carte and
         confirmed in writing before anything starts.</p>
     </div>

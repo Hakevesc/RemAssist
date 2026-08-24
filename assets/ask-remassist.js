@@ -36,6 +36,7 @@
     cs:         'Customer Service Agents.dc.html',
     gtm:        'GTM Teams.dc.html',
     sdr:        'SDR as a Service.dc.html',
+    managedit:  'Managed IT.dc.html',
     extra:      'Extra Services.dc.html',
     pricing:    'Pricing.dc.html',
     privacy:    'Privacy Policy.dc.html',
@@ -214,10 +215,15 @@
 
   /* ---------- extra services, itemised ---------- */
   { id: 'it_helpdesk',
-    kw: ['it help desk', 'it helpdesk', 'helpdesk', 'help desk', 'it support', 'managed service', 'sysadmin', 'system admin', 'network support', 'tech support', 'infrastructure', 'devops', 'it team'],
-    title: 'IT Help Desk & Managed Services',
-    text: ['Comprehensive help desk and managed services designed to keep your digital backbone resilient — first-line triage through to ongoing infrastructure management, under ISO 27001-aligned handling.'],
-    links: [['Read more', P.extra], ['Book a consultation', P.book]],
+    kw: ['it help desk', 'it helpdesk', 'helpdesk', 'help desk', 'it support', 'managed service', 'managed it', 'sysadmin', 'system admin', 'network support', 'tech support', 'infrastructure', 'devops', 'it team', 'endpoint', 'cybersecurity', 'co-managed', 'cloud infrastructure'],
+    title: 'Managed IT',
+    text: ['Endpoints, help desk, security, and cloud — run as one coordinated layer, under the same ISO 9001 and ISO 27001-aligned controls as the rest of Rem Assist.',
+           '• Managed IT Services — endpoints, networks and monitoring',
+           '• IT Help Desk — Tier 1 and Tier 2 support',
+           '• Cybersecurity & Compliance — threat monitoring and access control',
+           '• Cloud & Infrastructure — Microsoft 365/Google Workspace, backup and recovery',
+           'Available Co-Managed (alongside an existing IT team) or Fully Managed (as your whole IT function).'],
+    links: [['View the service', P.managedit], ['Book a consultation', P.book]],
     chips: [['Security', 'security'], ['Pricing', 'pricing']] },
 
   { id: 'virtual_sales',
@@ -412,7 +418,7 @@
   { id: 'reviews',
     kw: ['review', 'reviews', 'testimonial', 'testimonials', 'trustpilot', 'reference', 'references', 'case study', 'case studies', 'client', 'clients', 'proof', 'rating', 'reputation'],
     title: 'What clients say',
-    text: ['We are rated Excellent on Trustpilot, verified against real engagements — including a virtual sales team stood up quickly for TANO Group, and support work described as prompt, detailed and reliable.'],
+    text: ['We are rated 5 out of 5 on Trustpilot with two reviews currently live — a virtual sales team stood up quickly for TANO Group, and ease-of-access for ROOFING PROS. You can read both, verbatim, on our profile or on the Reviews page.'],
     links: [['Read them on Trustpilot', P.trustpilot], ['Book a consultation', P.book]],
     chips: [['Quality and QA', 'quality'], ['Follow us', 'social'], ['Book a consultation', 'book']] },
 
