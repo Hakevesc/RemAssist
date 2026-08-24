@@ -89,52 +89,15 @@
     text-transform: uppercase; color: var(--ink-500); }
 
   /* ---------- role grid ---------- */
-  /* ---- before / after ledger -------------------------------------------
-     The same week read twice. Two columns, one row per task, so a reader can
-     travel across a row instead of down a list of cards. */
-  .vb-ba { margin-top: 46px; border-top: 1px solid var(--border-default); }
-  .vb-ba-head { display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-    border-bottom: 1px solid var(--border-default); }
-  .vb-ba-head > div { padding: 16px 22px; font-family: var(--font-mono); font-size: 11.5px;
-    letter-spacing: 0.11em; text-transform: uppercase; font-weight: 700; }
-  .vb-ba-head > div:first-child { color: var(--ink-500); }
-  .vb-ba-head > div:last-child { color: var(--brand-blue); background: rgba(81, 141, 224, 0.05);
-    border-left: 1px solid var(--border-default); }
-
-  .vb-ba-row { display: grid; grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid var(--border-default); }
-  .vb-ba-task { grid-column: 1 / -1; padding: 20px 22px 0; font-size: 13px; font-weight: 700;
-    color: var(--brand-navy); letter-spacing: -0.005em; }
-  .vb-ba-cell { padding: 10px 22px 20px; font-size: 15px; line-height: 1.65; color: var(--ink-600);
-    display: grid; grid-template-columns: 17px 1fr; gap: 11px; align-items: start; }
-  .vb-ba-cell:last-child { border-left: 1px solid var(--border-default);
-    background: rgba(81, 141, 224, 0.05); color: var(--brand-navy); }
-  .vb-ba-cell svg { width: 17px; height: 17px; margin-top: 3px; fill: none; stroke-width: 2;
+  .vb-roles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 44px; }
+  .vb-role { background: #fff; border: 1px solid var(--border-default); border-radius: 16px; padding: 26px 24px;
+    transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), border-color 200ms; }
+  .vb-role-ico { width: 44px; height: 44px; border-radius: 12px; background: rgba(81, 141, 224, 0.10);
+    display: grid; place-items: center; margin-bottom: 16px; }
+  .vb-role-ico svg { width: 22px; height: 22px; fill: none; stroke: var(--brand-blue); stroke-width: 1.9;
     stroke-linecap: round; stroke-linejoin: round; }
-  .vb-ba-cell:first-of-type svg { stroke: var(--ink-400); }
-  .vb-ba-cell:last-child svg { stroke: var(--brand-blue); }
-  /* the task label spans both columns, so the tinted right column needs its own
-     backing above it or the tint would start halfway down the row */
-  .vb-ba-row { position: relative; }
-  .vb-ba-row::after { content: ""; position: absolute; top: 0; right: 0; width: 50%; height: 100%;
-    background: rgba(81, 141, 224, 0.05); border-left: 1px solid var(--border-default);
-    pointer-events: none; z-index: 0; }
-  .vb-ba-task, .vb-ba-cell { position: relative; z-index: 1; }
-  .vb-ba-cell:last-child { background: none; border-left: 0; }
-
-  .vb-ba-foot { margin-top: 22px; font-size: 14px; line-height: 1.7; color: var(--ink-500); max-width: 66ch; }
-
-  /* ---- roles as ruled rows, not cards --------------------------------- */
-  .vb-roles { margin-top: 44px; border-top: 1px solid var(--border-default); }
-  .vb-role { display: grid; grid-template-columns: 34px minmax(0, 250px) minmax(0, 1fr);
-    gap: 20px; align-items: start; padding: 22px 4px;
-    border-bottom: 1px solid var(--border-default); }
-  .vb-role-ico { width: 34px; height: 34px; border-radius: 9px; background: rgba(81, 141, 224, 0.10);
-    display: grid; place-items: center; }
-  .vb-role-ico svg { width: 18px; height: 18px; fill: none; stroke: var(--brand-blue); stroke-width: 1.9;
-    stroke-linecap: round; stroke-linejoin: round; }
-  .vb-role h3 { margin: 5px 0 0; font-size: 16.5px; font-weight: 700; color: var(--brand-navy); line-height: 1.35; }
-  .vb-role p { margin: 5px 0 0; font-size: 14.5px; line-height: 1.7; color: var(--ink-600); }
+  .vb-role h3 { margin: 0 0 8px; font-size: 17px; font-weight: 700; color: var(--brand-navy); line-height: 1.3; }
+  .vb-role p { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--ink-600); }
 
   /* ---------- steps ---------- */
   .vb-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 44px; }
@@ -206,23 +169,13 @@
   @media (max-width: 1024px) {
     .vb-hero { grid-template-columns: 1fr; gap: 48px; padding: 56px 0 64px; }
     .vb-wall { max-width: 680px; margin: 0 auto; }
-    .vb-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .vb-roles, .vb-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .vb-contact-card { grid-template-columns: 1fr; }
     .vb-contact-photo { min-height: 320px; }
   }
   @media (max-width: 680px) {
     .vb-section { padding: 62px 0; }
-    .vb-steps, .vb-tiers, .vb-form-grid { grid-template-columns: 1fr; }
-    .vb-role { grid-template-columns: 28px 1fr; gap: 14px; }
-    .vb-role p { grid-column: 2; }
-    /* the ledger stacks: each version of the week becomes its own labelled block */
-    .vb-ba-head { display: none; }
-    .vb-ba-row { grid-template-columns: 1fr; }
-    .vb-ba-row::after { display: none; }
-    .vb-ba-cell { padding: 8px 0 0; }
-    .vb-ba-cell:last-child { background: rgba(81, 141, 224, 0.06); border-radius: 10px;
-      padding: 12px 14px; margin: 10px 0 4px; }
-    .vb-ba-task { padding: 18px 0 0; }
+    .vb-roles, .vb-steps, .vb-tiers, .vb-form-grid { grid-template-columns: 1fr; }
     .vb-wall { height: 420px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .vb-col:nth-of-type(3) { display: none; }
     .vb-wall-badge { white-space: normal; max-width: 84%; }
@@ -411,13 +364,13 @@
             </a>
             <a class="nav-item" href="Reviews.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.6 5.8 6.4.7-4.8 4.3 1.3 6.2L12 17l-5.5 3 1.3-6.2L3 9.5l6.4-.7z"/></svg></span>
-              <span><b>Reviews</b><small>Live reviews on Trustpilot</small></span>
+              <span><b>Reviews <i class="nav-soon">soon</i></b><small>What clients say on Trustpilot</small></span>
             </a>
           </span>
           <span class="nav-box">
             <a class="nav-item" href="Blog.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V6a2 2 0 0 1 2-2h9l5 5v10.5"/><path d="M8 9h6M8 13h8M8 17h5"/></svg></span>
-              <span><b>Blog &amp; Guides</b><small>Playbooks on delegation and operations</small></span>
+              <span><b>Blog &amp; Guides <i class="nav-soon">soon</i></b><small>Playbooks on delegation and operations</small></span>
             </a>
             <a class="nav-item" href="FAQ.dc.html">
               <span class="nav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.2a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .9-1 1.6v.4"/><path d="M12 17h.01"/></svg></span>
@@ -537,79 +490,38 @@
   <!-- ================= WHAT THE TEAM COVERS ================= -->
   <section class="vb-section" style="background:var(--bg-marketing-paper)">
     <div class="vb-wrap">
-      <span class="vb-kicker">Same week, two versions</span>
+      <span class="vb-kicker">What the team covers</span>
       <h2 class="vb-h2" style="margin-top:14px">The work that never <span>reaches the front line.</span></h2>
-      <p class="vb-lede">None of this is the job you hired your team to do. It still has to happen, so it
-        lands on whoever has a spare hour &mdash; usually the person you can least afford to lose.</p>
+      <p class="vb-lede">Product experts, software experts, account admins, email and chat admins, bookkeepers,
+        data-entry and order-processing clerks. Take one seat or the whole pod.</p>
 
-      <div class="vb-ba">
-        <div class="vb-ba-head">
-          <div>Without a back-office seat</div>
-          <div>With a trained seat</div>
-        </div>
-        <div class="vb-ba-row">
-          <span class="vb-ba-task">Order exceptions</span>
-          <div class="vb-ba-cell"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></svg><span>A failed order sits until someone notices, then a manager reverse-engineers what went wrong.</span></div>
-          <div class="vb-ba-cell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><span>Caught the same day, chased to resolution, and the refund or reship closed out under your rules.</span></div>
-        </div>
-        <div class="vb-ba-row">
-          <span class="vb-ba-task">Invoices and reconciliation</span>
-          <div class="vb-ba-cell"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></svg><span>Raised in batches when there is time, so the ageing report is always a little out of date.</span></div>
-          <div class="vb-ba-cell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><span>Raised daily, reconciled against the bank, payment runs prepared and flagged for your sign-off.</span></div>
-        </div>
-        <div class="vb-ba-row">
-          <span class="vb-ba-task">The shared inbox</span>
-          <div class="vb-ba-cell"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></svg><span>Read by four people, answered by none, because nobody is sure whose it is.</span></div>
-          <div class="vb-ba-cell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><span>One owner, tagged and triaged to zero, escalated only on the thresholds you set.</span></div>
-        </div>
-        <div class="vb-ba-row">
-          <span class="vb-ba-task">CRM hygiene</span>
-          <div class="vb-ba-cell"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></svg><span>Records drift. Renewal dates live in someone&rsquo;s calendar rather than the system.</span></div>
-          <div class="vb-ba-cell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><span>Records corrected as they change, renewals tracked in one place, onboarding packets sent on time.</span></div>
-        </div>
-        <div class="vb-ba-row">
-          <span class="vb-ba-task">The data backlog</span>
-          <div class="vb-ba-cell"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></svg><span>The migration or de-duplication everyone agrees matters and nobody ever starts.</span></div>
-          <div class="vb-ba-cell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><span>Worked through steadily in the background, with a weekly count of what has actually moved.</span></div>
-        </div>
-        <div class="vb-ba-row">
-          <span class="vb-ba-task">Internal product questions</span>
-          <div class="vb-ba-cell"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12h7"/></svg><span>Land on your engineers, who context-switch out of the work you are paying them for.</span></div>
-          <div class="vb-ba-cell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><span>Answered by an agent who learned your product, so engineering only sees genuine escalations.</span></div>
-        </div>
-      </div>
-      <p class="vb-ba-foot">Nothing above is automation. It is a trained person working your process, on your
-        tools, inside your hours &mdash; which is why the right-hand column can say &ldquo;closed&rdquo; instead
-        of &ldquo;queued&rdquo;.</p>
-
-      <h3 class="vb-kicker" style="margin-top:56px">The seats that cover it</h3>
       <div class="vb-roles">
-        <div class="vb-role">
+        <div class="vb-role" style-hover="transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(81,141,224,0.4)">
           <span class="vb-role-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg></span>
           <h3>Order processing</h3>
           <p>Orders keyed, exceptions chased, refunds and returns closed out &mdash; with your rules applied the same way every time.</p>
         </div>
-        <div class="vb-role">
+        <div class="vb-role" style-hover="transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(81,141,224,0.4)">
           <span class="vb-role-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10h18M6 6h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"/><path d="M9 15h4"/></svg></span>
           <h3>Bookkeeping &amp; AP/AR</h3>
           <p>Invoices raised and reconciled, receipts filed, payment runs prepared and flagged for your sign-off.</p>
         </div>
-        <div class="vb-role">
+        <div class="vb-role" style-hover="transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(81,141,224,0.4)">
           <span class="vb-role-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 3z"/><path d="M8 9h8M8 12h5"/></svg></span>
           <h3>Inbox &amp; chat admin</h3>
           <p>Shared inboxes and live chat kept at zero &mdash; triaged, tagged, answered, escalated on your thresholds.</p>
         </div>
-        <div class="vb-role">
+        <div class="vb-role" style-hover="transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(81,141,224,0.4)">
           <span class="vb-role-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1.5A5.5 5.5 0 0 1 9.5 14h5a5.5 5.5 0 0 1 5.5 5.5V21"/></svg></span>
           <h3>Account administration</h3>
           <p>Records created and corrected, renewals tracked, onboarding packets sent &mdash; your CRM kept honest.</p>
         </div>
-        <div class="vb-role">
+        <div class="vb-role" style-hover="transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(81,141,224,0.4)">
           <span class="vb-role-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
           <h3>Data entry &amp; cleanup</h3>
           <p>Migrations, de-duplication, enrichment and the long backlog nobody on your team has time to finish.</p>
         </div>
-        <div class="vb-role">
+        <div class="vb-role" style-hover="transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(81,141,224,0.4)">
           <span class="vb-role-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6.5V12c0 4.4 3.2 8 8 9 4.8-1 8-4.6 8-9V6.5z"/><path d="m8.7 12.2 2.3 2.3 4.4-4.7"/></svg></span>
           <h3>Product &amp; software support</h3>
           <p>Agents who actually learn your product, so internal questions stop landing on your engineers.</p>
