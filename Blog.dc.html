@@ -55,6 +55,7 @@
   .bk-glyph { position: absolute; inset: 0; display: grid; place-content: center; z-index: 1; }
   .bk-glyph svg { width: 68px; height: 68px; stroke: rgba(255, 255, 255, .88); fill: none; stroke-width: 1.3;
     stroke-linecap: round; stroke-linejoin: round; }
+  .bk-thumb-pic { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
   .bk-featured-body { padding: 26px 28px 30px; background: #fff; }
   .bk-featured-body h3 { margin: 0 0 12px; font-size: 21px; line-height: 1.3; letter-spacing: -.2px;
     color: var(--brand-navy); }
@@ -369,7 +370,7 @@
         <a href="Blog Post.dc.html" class="bk-featured">
           <div class="bk-thumb">
             <span class="bk-badge">Featured</span>
-            <span class="bk-glyph"><svg viewBox="0 0 64 64" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="22" cy="22" r="8"/><circle cx="44" cy="26" r="6"/><path d="M8 56c0-6 6-15 15-15s15 6 15 15"/><path d="M42 56c0-6 4-12 12-12s11 5 11 12"/></svg></span>
+            <img class="bk-thumb-pic" src="assets/images/blog/hiring-offshore.svg" alt="" loading="lazy">
           </div>
           <div class="bk-featured-body">
             <div class="bk-topic">Hiring Strategy</div>
@@ -396,7 +397,7 @@
       <div class="bk-grid">
 
         <a href="Blog Post.dc.html" class="bk-card">
-          <div class="bk-thumb-sm g1"><span class="bk-type">Guide</span></div>
+          <div class="bk-thumb-sm g1"><img class="bk-thumb-pic" src="assets/images/blog/role-scorecard.svg" alt="" loading="lazy"><span class="bk-type">Guide</span></div>
           <div class="bk-card-body">
             <div class="bk-topic">Hiring Strategy</div>
             <h3>The Role Scorecard: Define a Remote Hire in One Page</h3>
@@ -410,7 +411,7 @@
         </a>
 
         <a href="Blog Post.dc.html" class="bk-card">
-          <div class="bk-thumb-sm g2"><span class="bk-type">Blog</span></div>
+          <div class="bk-thumb-sm g2"><img class="bk-thumb-pic" src="assets/images/blog/cost-roi.svg" alt="" loading="lazy"><span class="bk-type">Blog</span></div>
           <div class="bk-card-body">
             <div class="bk-topic">Cost &amp; ROI</div>
             <h3>When Offshore Hiring Is the Wrong Call</h3>
@@ -424,7 +425,7 @@
         </a>
 
         <a href="Blog Post.dc.html" class="bk-card">
-          <div class="bk-thumb-sm g3"><span class="bk-type">Guide</span></div>
+          <div class="bk-thumb-sm g3"><img class="bk-thumb-pic" src="assets/images/blog/onboarding-30-days.svg" alt="" loading="lazy"><span class="bk-type">Guide</span></div>
           <div class="bk-card-body">
             <div class="bk-topic">Team Management</div>
             <h3>The First 30 Days: An Onboarding Plan You Can Copy</h3>
