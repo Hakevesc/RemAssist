@@ -1,0 +1,33 @@
+{
+  "name": "rem-assist",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "package:standalone": "node tools/package-standalone.js",
+    "db:sync-partials": "node tools/sync-partials.js --check"
+  },
+  "dependencies": {
+    "next": "15.5.24",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@tailwindcss/postcss": "^4.1.7",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.17.0",
+    "eslint-config-next": "15.5.24",
+    "node-html-parser": "^9.0.1",
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.7.2"
+  }
+}

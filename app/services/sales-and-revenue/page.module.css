@@ -1,0 +1,257 @@
+/* Auto-generated from Sales and Revenue.dc.html by tools/codemod/codemod.js (Phase 01 §7.1). Do not hand-edit directly. */
+/* ---------- furniture ---------- */
+  .sr-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .sr-kicker { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--brand-blue); font-weight: 600; }
+  .sr-h1 { margin: 16px 0 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.025em;
+    line-height: 1.06; font-size: clamp(34px, 4.5vw, 56px); color: var(--brand-navy); }
+  .sr-h1 span { color: var(--brand-blue); }
+  .sr-h2 { margin: 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.12; font-size: clamp(28px, 3.2vw, 42px); color: var(--brand-navy); }
+  .sr-h2 span { color: var(--brand-blue); }
+  .sr-lede { margin: 18px 0 0; font-size: 17px; line-height: 1.7; color: var(--ink-600); max-width: 54ch; }
+  .sr-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--brand-blue); color: #fff;
+    font-size: 16px; font-weight: 600; text-decoration: none; padding: 14px 30px; border-radius: 8px;
+    transition: background 150ms, transform 150ms, box-shadow 150ms; }
+  .sr-btn--ghost { background: #fff; color: var(--brand-blue); border: 1px solid rgba(81, 141, 224, 0.45); }
+  .sr-section { padding: 88px 0; }
+
+  /* ---------- hero ---------- */
+  .sr-hero { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center;
+    padding: 74px 0 82px; }
+  .sr-checks { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 13px; }
+  .sr-checks li { display: flex; align-items: flex-start; gap: 12px; font-size: 15.5px; line-height: 1.55;
+    color: var(--ink-700); }
+  .sr-tick { flex: none; width: 22px; height: 22px; border-radius: 50%; background: rgba(81, 141, 224, 0.12);
+    display: grid; place-items: center; margin-top: 1px; }
+  .sr-tick svg { width: 13px; height: 13px; fill: none; stroke: var(--brand-blue); stroke-width: 3;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .sr-cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+
+  /* proof strip */
+  .sr-proof { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0;
+    margin-top: 38px; background: #fff; border: 1px solid var(--border-default); border-radius: 14px;
+    box-shadow: var(--shadow-sm); overflow: hidden; }
+  .sr-proof div { padding: 16px 18px; border-left: 1px solid var(--border-default); }
+  .sr-proof div:first-child { border-left: 0; }
+  .sr-proof b { display: block; font-family: var(--font-display); font-size: 21px; font-weight: 700;
+    color: var(--brand-navy); line-height: 1.1; }
+  .sr-proof span { display: block; margin-top: 5px; font-size: 12.5px; line-height: 1.45; color: var(--ink-500); }
+
+  /* ---------- hero: channel orchestration diagram ----------
+     Three channels converge on one dedicated seat, which emits one booked
+     meeting. The paths are SVG; the nodes are HTML so their labels stay crisp
+     text. Node positions are percentages of the square that match the SVG
+     coordinates in the 0 0 400 400 viewBox, so both layers stay registered at
+     any size. */
+  .sr-orb { position: relative; width: 100%; max-width: 470px; margin: 0 auto; aspect-ratio: 1; }
+  .sr-orb-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .sr-orb-rail { fill: none; stroke: rgba(81, 141, 224, 0.22); stroke-width: 2; stroke-linecap: round; }
+  /* paths carry pathLength="100", so these numbers are percentages of each leg
+     and one pulse crosses per cycle whatever the leg's real length */
+  .sr-orb-flow { fill: none; stroke: var(--brand-blue); stroke-width: 2.5; stroke-linecap: round;
+    stroke-dasharray: 24 76; animation: sr-signal 2.9s cubic-bezier(.45, 0, .55, 1) infinite; }
+  .sr-orb-flow--b { animation-delay: .55s; }
+  .sr-orb-flow--c { animation-delay: 1.1s; }
+  /* the outbound leg fires after the three inbound signals have landed */
+  .sr-orb-flow--out { stroke-dasharray: 30 70; animation-delay: 1.6s; }
+  @keyframes sr-signal { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+
+  /* slow halo behind the seat */
+  .sr-orb-halo { position: absolute; left: 50%; top: 50%; width: 62%; aspect-ratio: 1;
+    transform: translate(-50%, -50%); border-radius: 50%;
+    background: conic-gradient(from 0deg, rgba(81,141,224,0), rgba(81,141,224,.30), rgba(0,71,179,.16), rgba(81,141,224,0));
+    animation: sr-spin 16s linear infinite; }
+  .sr-orb-halo::after { content: ""; position: absolute; inset: 12%; border-radius: 50%;
+    background: var(--bg-marketing-paper); }
+  @keyframes sr-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+  /* the seat */
+  .sr-orb-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 47%; aspect-ratio: 1; border-radius: 50%; background: #fff;
+    border: 1px solid var(--border-default); box-shadow: 0 26px 54px -22px rgba(0, 5, 67, 0.34);
+    display: grid; place-items: center; align-content: center; gap: 7px; text-align: center; z-index: 2; }
+  .sr-orb-faces { display: flex; justify-content: center; }
+  .sr-orb-faces > span { width: 34px; height: 34px; border-radius: 50%; overflow: hidden;
+    border: 2px solid #fff; box-shadow: 0 0 0 1.5px rgba(81, 141, 224, 0.5); background: var(--ink-100); }
+  .sr-orb-faces > span + span { margin-left: -10px; }
+  .sr-orb-faces img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%;
+    display: block; filter: grayscale(1); }
+  .sr-orb-core b { display: block; font-family: var(--font-display); font-size: clamp(15px, 1.7vw, 19px);
+    font-weight: 700; letter-spacing: -0.01em; color: var(--brand-navy); line-height: 1.15; }
+  .sr-orb-core small { display: block; font-size: 10.5px; letter-spacing: 0.11em;
+    text-transform: uppercase; color: var(--ink-500); }
+
+  /* channel nodes */
+  .sr-orb-node { position: absolute; transform: translate(-50%, -50%); z-index: 3;
+    display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px 8px 9px;
+    border-radius: 999px; background: #fff; border: 1px solid var(--border-default);
+    box-shadow: 0 14px 30px -14px rgba(0, 5, 67, 0.3); white-space: nowrap;
+    transition: box-shadow 200ms, border-color 200ms;
+    animation: sr-bob 6s ease-in-out infinite; }
+  .sr-orb-node:hover { border-color: rgba(81, 141, 224, 0.55);
+    box-shadow: 0 18px 36px -14px rgba(81, 141, 224, 0.5); }
+  .sr-orb-node i { flex: none; width: 30px; height: 30px; border-radius: 50%;
+    background: rgba(81, 141, 224, 0.11); display: grid; place-items: center;
+    transition: background 200ms; }
+  .sr-orb-node:hover i { background: var(--brand-blue); }
+  .sr-orb-node svg { width: 16px; height: 16px; fill: none; stroke: var(--brand-blue);
+    stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; display: block;
+    transition: stroke 200ms; }
+  .sr-orb-node:hover svg { stroke: #fff; }
+  .sr-orb-node b { display: block; font-size: 13px; font-weight: 700; color: var(--brand-navy); line-height: 1.2; }
+  .sr-orb-node em { display: block; font-style: normal; font-size: 10.5px; color: var(--ink-500); line-height: 1.3; }
+  /* bob via margin, so it cannot fight the translate that centres the node */
+  @keyframes sr-bob { 0%, 100% { margin-top: 0; } 50% { margin-top: -6px; } }
+
+  .sr-orb-node--email { left: 18%; top: 24%; }
+  .sr-orb-node--phone { left: 50%; top: 10%; animation-delay: .9s; }
+  .sr-orb-node--li    { left: 82%; top: 24%; animation-delay: 1.8s; }
+
+  /* the outcome */
+  .sr-orb-out { position: absolute; left: 50%; top: 88%; transform: translate(-50%, -50%); z-index: 3;
+    display: inline-flex; align-items: center; gap: 9px; padding: 11px 18px; border-radius: 999px;
+    background: linear-gradient(160deg, #518de0, #0047b3 82%); color: #fff; white-space: nowrap;
+    box-shadow: 0 20px 40px -16px rgba(0, 71, 179, 0.6); }
+  .sr-orb-out svg { width: 17px; height: 17px; fill: none; stroke: #fff; stroke-width: 2.2;
+    stroke-linecap: round; stroke-linejoin: round; display: block; }
+  .sr-orb-out b { font-size: 14px; font-weight: 700; }
+  .sr-orb-out span { font-size: 11.5px; color: rgba(255, 255, 255, 0.82); }
+  .sr-orb-pulse { position: absolute; left: 50%; top: 88%; width: 78px; aspect-ratio: 1;
+    transform: translate(-50%, -50%); border-radius: 50%;
+    border: 1.5px solid rgba(81, 141, 224, 0.5); z-index: 1;
+    animation: sr-ping 2.9s ease-out infinite; animation-delay: 2.4s; }
+  @keyframes sr-ping { 0% { transform: translate(-50%, -50%) scale(.5); opacity: .85; }
+    70%, 100% { transform: translate(-50%, -50%) scale(1.75); opacity: 0; } }
+
+  /* The node pills are text-sized, so they do not shrink with the square and
+     start clipping around 520px. Compact the pills only - their 18%/82% anchors
+     are what the SVG path ends are registered to, so those must not move. */
+  @media (max-width: 760px) {
+    .sr-orb { max-width: 400px; }
+    .sr-orb-node { gap: 7px; padding: 6px 12px 6px 7px; }
+    .sr-orb-node em { display: none; }
+    .sr-orb-node i { width: 26px; height: 26px; }
+    .sr-orb-node svg { width: 14px; height: 14px; }
+    .sr-orb-node b { font-size: 12px; }
+    .sr-orb-out { padding: 9px 15px; gap: 7px; }
+    .sr-orb-out b { font-size: 13px; }
+    .sr-orb-out span { display: none; }
+    .sr-orb-faces > span { width: 30px; height: 30px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sr-orb-flow { animation: none; stroke-dasharray: none; stroke: rgba(81, 141, 224, 0.5); }
+    .sr-orb-halo, .sr-orb-node, .sr-orb-pulse { animation: none; }
+    .sr-orb-pulse { opacity: .3; transform: translate(-50%, -50%) scale(1); }
+  }
+
+  /* ---------- service cards ---------- */
+  .sr-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 44px; }
+  .sr-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--border-default);
+    border-radius: 16px; padding: 26px 24px;
+    transition: transform 190ms var(--ease-out), box-shadow 190ms var(--ease-out), border-color 190ms; }
+  .sr-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(81, 141, 224, 0.45); }
+  .sr-card-ico, .sr-card-ico svg { transition: background 190ms, stroke 190ms; }
+  .sr-card:hover .sr-card-ico { background: var(--brand-blue); }
+  .sr-card:hover .sr-card-ico svg { stroke: #fff; }
+  .sr-card-ico { width: 44px; height: 44px; border-radius: 12px; background: rgba(81, 141, 224, 0.10);
+    display: grid; place-items: center; margin-bottom: 16px; }
+  .sr-card-ico svg { width: 22px; height: 22px; fill: none; stroke: var(--brand-blue); stroke-width: 1.9;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .sr-card h3 { margin: 0 0 8px; font-size: 17px; font-weight: 700; color: var(--brand-navy); line-height: 1.3; }
+  .sr-card p { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--ink-600); }
+  .sr-more { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 13.5px;
+    font-weight: 600; color: var(--brand-blue); text-decoration: none; }
+  .sr-more svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2.2;
+    stroke-linecap: round; stroke-linejoin: round; transition: transform 150ms; }
+  .sr-more:hover svg { transform: translateX(3px); }
+
+  /* ---------- channels + stack (dark band) ---------- */
+  .sr-band { padding: 84px 0; background: #518de0;
+    background-image: radial-gradient(ellipse 900px 450px at 85% 0%, rgba(90,155,240,0.20), transparent 65%),
+      linear-gradient(160deg, #518de0, #0047b3 82%); position: relative; overflow: hidden; }
+  .sr-chan { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 42px; }
+  .sr-chan-card { padding: 26px 24px; border-radius: 16px; background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    transition: transform 190ms var(--ease-out), background 190ms, border-color 190ms; }
+  .sr-chan-card:hover { transform: translateY(-4px); background: rgba(255, 255, 255, 0.17);
+    border-color: rgba(255, 255, 255, 0.42); }
+  .sr-chan-card span.sr-chan-ico { width: 42px; height: 42px; border-radius: 11px;
+    background: rgba(255, 255, 255, 0.16); display: grid; place-items: center; margin-bottom: 15px; }
+  .sr-chan-ico svg { width: 21px; height: 21px; fill: none; stroke: #fff; stroke-width: 1.9;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .sr-chan-card h3 { margin: 0 0 8px; font-size: 18px; font-weight: 700; color: #fff; line-height: 1.3; }
+  .sr-chan-card p { margin: 0; font-size: 14.5px; line-height: 1.7; color: rgba(255, 255, 255, 0.88); }
+  .sr-stack { margin-top: 40px; padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, 0.22); }
+  .sr-stack p { margin: 0 0 16px; font-size: 13px; font-weight: 700; letter-spacing: 0.09em;
+    text-transform: uppercase; color: rgba(255, 255, 255, 0.7); }
+  .sr-stack-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .sr-pill { display: inline-flex; align-items: center; padding: 9px 16px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.24);
+    font-size: 14px; font-weight: 600; color: #fff;
+    transition: background 150ms, border-color 150ms, transform 150ms; }
+  .sr-pill:hover { background: rgba(255, 255, 255, 0.22); border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px); }
+
+  /* ---------- tiers ---------- */
+  .sr-tiers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 44px; }
+  .sr-tier { background: #fff; border: 1px solid var(--border-default); border-radius: 18px; padding: 30px 28px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 190ms var(--ease-out), box-shadow 190ms var(--ease-out), border-color 190ms; }
+  .sr-tier:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(81, 141, 224, 0.5); }
+  .sr-tier--expert { border-color: rgba(81, 141, 224, 0.55); box-shadow: 0 24px 44px -28px rgba(81, 141, 224, 0.5); }
+  .sr-tier-head { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .sr-tier-head h3 { margin: 0; font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--brand-navy); }
+  .sr-tier-price { display: flex; align-items: baseline; gap: 6px; white-space: nowrap; }
+  .sr-tier-price small { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-500); font-weight: 600; }
+  .sr-tier-price b { font-family: var(--font-display); font-size: clamp(38px, 3.6vw, 52px);
+    font-weight: 800; line-height: 0.9; letter-spacing: -0.03em; color: var(--brand-blue); }
+  .sr-tier-price em { font-style: normal; font-size: 16px; font-weight: 700; color: var(--brand-blue); }
+  .sr-tier p { margin: 12px 0 0; font-size: 15px; line-height: 1.7; color: var(--ink-600); }
+  .sr-tier ul { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
+  .sr-tier li { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; color: var(--ink-700); }
+  .sr-tier li svg { flex: none; width: 17px; height: 17px; margin-top: 2px; fill: none; stroke: var(--brand-blue);
+    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ---------- faq ---------- */
+  .sr-faq { margin-top: 44px; border-top: 1px solid var(--border-default); }
+  .sr-faq details { border-bottom: 1px solid var(--border-default); }
+  .sr-faq summary { cursor: pointer; list-style: none; padding: 22px 4px; display: flex; align-items: center;
+    justify-content: space-between; gap: 24px; font-size: 16px; font-weight: 600; color: var(--brand-navy); }
+  .sr-faq summary::-webkit-details-marker { display: none; }
+  .sr-faq summary::after { content: "+"; flex: none; width: 34px; height: 34px; border-radius: 50%;
+    background: rgba(81, 141, 224, 0.10); color: var(--brand-blue); display: grid; place-items: center;
+    font-size: 19px; font-weight: 600; line-height: 1; }
+  .sr-faq details[open] summary::after { content: "\2212"; background: var(--brand-blue); color: #fff; }
+  .sr-faq p { margin: 0 4px 24px; font-size: 15px; line-height: 1.75; color: var(--ink-600); max-width: 78ch; }
+
+  /* ---------- closing cta ---------- */
+  .sr-close { background: var(--brand-navy); padding: 84px 0; text-align: center; }
+  .sr-close h2 { margin: 0 auto; max-width: 24ch; font-family: var(--font-display);
+    font-size: clamp(28px, 3.2vw, 42px); font-weight: 700; letter-spacing: -0.02em; color: #fff; line-height: 1.14; }
+  .sr-close p { margin: 16px auto 0; max-width: 56ch; font-size: 16.5px; line-height: 1.7;
+    color: rgba(255, 255, 255, 0.78); }
+  .sr-close-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+  .sr-close-ghost { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: #fff;
+    border: 1.5px solid rgba(255, 255, 255, 0.4); border-radius: 8px; padding: 13px 26px;
+    font-size: 16px; font-weight: 600; text-decoration: none; transition: background 150ms, border-color 150ms; }
+  .sr-close-ghost:hover { background: rgba(255, 255, 255, 0.10); border-color: #fff; color: #fff; }
+
+  @media (max-width: 1024px) {
+    .sr-hero { grid-template-columns: 1fr; gap: 46px; padding: 54px 0 62px; }
+    .sr-grid, .sr-chan { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sr-proof { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sr-proof div:nth-child(3) { border-left: 0; }
+    .sr-proof div:nth-child(n+3) { border-top: 1px solid var(--border-default); }
+  }
+  @media (max-width: 680px) {
+    .sr-section { padding: 62px 0; }
+    .sr-grid, .sr-chan, .sr-tiers, .sr-proof { grid-template-columns: 1fr; }
+    .sr-proof div { border-left: 0; border-top: 1px solid var(--border-default); }
+    .sr-proof div:first-child { border-top: 0; }
+  }
+.hv-1{background:var(--blue-700);color:#fff;transform:translateY(-1px);box-shadow:0 6px 16px rgba(81,141,224,0.32)}
+.hv-2{background:rgba(81,141,224,0.06);border-color:var(--brand-blue);color:var(--brand-blue)}
+.hv-3{background:var(--blue-700);color:#fff;transform:translateY(-1px)}

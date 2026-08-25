@@ -1,0 +1,254 @@
+/* Auto-generated from Industry Specific.dc.html by tools/codemod/codemod.js (Phase 01 §7.1). Do not hand-edit directly. */
+/* ============================================================
+     Industry-Specific. Shares the spine and tokens with every other service
+     page. Section treatments are again deliberately new, so the site does not
+     read as one layout re-skinned seven times:
+       .iv-scope  - hero art. Four desks, each drawn as a proportional bar
+                    split between the work we run and the act that stays with
+                    the client, with the specific boundary named on the divider.
+                    The dividers draw in sequence.
+       .iv-vocab  - the terminology each desk is actually made of, as pill
+                    clusters. Concrete, checkable, and impossible to fake.
+       .iv-desks  - a 2x2 of substantial desk panels, each ending in a
+                    boundary callout rather than a generic CTA.
+
+     COMPLIANCE NOTE FOR WHOEVER EDITS THIS NEXT
+     -------------------------------------------
+     Nothing on this page claims HIPAA, SOC 2, GLBA or any licensed status,
+     because none of those is substantiated anywhere on this site. The only
+     certifications claimed are ISO 9001 and ISO 27001, which are claimed
+     throughout it already.
+
+     Terms of Service currently says, verbatim: "The Services are not tailored
+     to comply with industry-specific regulations such as HIPAA or FISMA - if
+     your interactions would be subject to such laws, you may not use the
+     Services." That clause and the Medical Billing offering cannot both stand
+     as written. The FAQ answer below is written to be true under either
+     outcome - it states the certifications that exist and sends the buyer to
+     get the rest in writing. If a BAA and a HIPAA posture are put in place,
+     the "protected health information" answer is the paragraph to rewrite,
+     and nothing else on the page needs to change.
+     ============================================================ */
+
+  .iv-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .iv-kicker { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--brand-blue); font-weight: 600; }
+  .iv-h1 { margin: 16px 0 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.025em;
+    line-height: 1.06; font-size: clamp(34px, 4.5vw, 56px); color: var(--brand-navy); }
+  .iv-h1 span { color: var(--brand-blue); }
+  .iv-h2 { margin: 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.12; font-size: clamp(28px, 3.2vw, 42px); color: var(--brand-navy); }
+  .iv-h2 span { color: var(--brand-blue); }
+  .iv-lede { margin: 18px 0 0; font-size: 17px; line-height: 1.7; color: var(--ink-600); max-width: 54ch; }
+  .iv-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--brand-blue); color: #fff;
+    font-size: 16px; font-weight: 600; text-decoration: none; padding: 14px 30px; border-radius: 8px;
+    transition: background 150ms, transform 150ms, box-shadow 150ms; }
+  .iv-btn--ghost { background: #fff; color: var(--brand-blue); border: 1px solid rgba(81, 141, 224, 0.45); }
+  .iv-section { padding: 88px 0; }
+  .iv-cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+  .iv-inline-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; font-size: 15px;
+    font-weight: 600; color: var(--brand-blue); text-decoration: none; }
+  .iv-inline-cta svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.3;
+    stroke-linecap: round; stroke-linejoin: round; transition: transform 150ms; }
+  .iv-inline-cta:hover svg { transform: translateX(3px); }
+
+  /* ---------- hero ---------- */
+  .iv-hero { display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 56px; align-items: center;
+    padding: 74px 0 82px; }
+  .iv-checks { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 13px; }
+  .iv-checks li { display: flex; align-items: flex-start; gap: 12px; font-size: 15.5px; line-height: 1.55;
+    color: var(--ink-700); }
+  .iv-tick { flex: none; width: 22px; height: 22px; border-radius: 50%; background: rgba(81, 141, 224, 0.12);
+    display: grid; place-items: center; margin-top: 1px; }
+  .iv-tick svg { width: 13px; height: 13px; fill: none; stroke: var(--brand-blue); stroke-width: 3;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .iv-proof { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0;
+    margin-top: 34px; padding-top: 4px; border-top: 1px solid var(--border-default); }
+  .iv-proof div { padding: 16px 18px; border-left: 1px solid var(--border-default); }
+  .iv-proof div:first-child { border-left: 0; padding-left: 0; }
+  .iv-proof b { display: block; font-family: var(--font-display); font-size: 21px; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--brand-navy); }
+  .iv-proof span { display: block; margin-top: 5px; font-size: 12.5px; line-height: 1.45; color: var(--ink-500); }
+
+  /* ---------- hero art: the scope bars ----------
+     One row per desk. The bar is split between the operational work we run and
+     the act that is legally or professionally the client's, with the specific
+     boundary named on the divider. Proportions are illustrative of scope, not a
+     measurement of anything - so no number appears anywhere on it. */
+  .iv-scope { background: #fff; border: 1px solid var(--border-default); border-radius: 20px;
+    padding: 24px 26px 22px; box-shadow: 0 30px 60px -34px rgba(0, 5, 67, 0.36); overflow: hidden; }
+  .iv-scope-head { display: flex; align-items: center; gap: 12px; padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-default); }
+  .iv-scope-head i { font-style: normal; flex: none; width: 40px; height: 40px; border-radius: 11px;
+    background: rgba(81, 141, 224, 0.10); display: grid; place-items: center; }
+  .iv-scope-head svg { width: 20px; height: 20px; fill: none; stroke: var(--brand-blue); stroke-width: 1.9;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .iv-scope-head b { display: block; font-family: var(--font-display); font-size: 17px; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--brand-navy); line-height: 1.2; }
+  .iv-scope-head em { display: block; margin-top: 3px; font-style: normal; font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.09em; text-transform: uppercase; font-weight: 700; color: var(--ink-500); }
+  .iv-scope-key { display: flex; gap: 16px; margin: 16px 0 4px; }
+  .iv-scope-key span { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-mono);
+    font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--ink-500); }
+  .iv-scope-key i { width: 9px; height: 9px; border-radius: 2px; }
+  .iv-scope-key span:first-child i { background: var(--brand-blue); }
+  .iv-scope-key span:last-child i { background: var(--brand-navy); }
+
+  .iv-bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  .iv-bar > b { display: block; font-size: 12.5px; font-weight: 700; color: var(--brand-navy);
+    margin-bottom: 7px; }
+  .iv-track { position: relative; display: flex; height: 26px; border-radius: 7px; overflow: hidden;
+    background: var(--bg-marketing-paper); }
+  .iv-run { background-image: linear-gradient(120deg, #518de0, #0047b3 90%); }
+  .iv-own { background: var(--brand-navy); }
+  /* the divider draws itself in, one desk after the next */
+  .iv-track::after { content: ""; position: absolute; top: 0; bottom: 0; width: 2px; background: #fff;
+    transform: scaleY(0); transform-origin: top;
+    animation: iv-draw 900ms var(--ease-out) forwards; }
+  @keyframes iv-draw { to { transform: scaleY(1); } }
+  .iv-bar:nth-child(1) .iv-track::after { left: 78%; animation-delay: 200ms; }
+  .iv-bar:nth-child(2) .iv-track::after { left: 74%; animation-delay: 420ms; }
+  .iv-bar:nth-child(3) .iv-track::after { left: 70%; animation-delay: 640ms; }
+  .iv-bar:nth-child(4) .iv-track::after { left: 82%; animation-delay: 860ms; }
+  .iv-bar:nth-child(1) .iv-run { width: 78%; }
+  .iv-bar:nth-child(2) .iv-run { width: 74%; }
+  .iv-bar:nth-child(3) .iv-run { width: 70%; }
+  .iv-bar:nth-child(4) .iv-run { width: 82%; }
+  .iv-bar .iv-own { flex: 1; }
+  /* the boundary, named */
+  .iv-line-label { display: flex; align-items: center; gap: 7px; margin-top: 7px; font-size: 11px;
+    line-height: 1.4; color: var(--ink-600); opacity: 0; animation: iv-fade 600ms ease forwards; }
+  .iv-line-label svg { width: 12px; height: 12px; flex: none; fill: none; stroke: var(--brand-navy);
+    stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .iv-line-label b { font-weight: 700; color: var(--brand-navy); }
+  @keyframes iv-fade { to { opacity: 1; } }
+  .iv-bar:nth-child(1) .iv-line-label { animation-delay: 700ms; }
+  .iv-bar:nth-child(2) .iv-line-label { animation-delay: 920ms; }
+  .iv-bar:nth-child(3) .iv-line-label { animation-delay: 1140ms; }
+  .iv-bar:nth-child(4) .iv-line-label { animation-delay: 1360ms; }
+
+  .iv-scope-foot { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-default);
+    font-size: 11.5px; line-height: 1.55; color: var(--ink-500); }
+
+  /* ---------- the vocabulary strip ---------- */
+  .iv-vocab { margin-top: 44px; border-top: 1px solid rgba(0, 5, 67, 0.14); }
+  .iv-vgroup { display: grid; grid-template-columns: 200px 1fr; gap: 30px; padding: 24px 0;
+    border-bottom: 1px solid var(--border-default); align-items: start; }
+  .iv-vgroup > b { font-size: 15px; font-weight: 700; color: var(--brand-navy); line-height: 1.35; }
+  .iv-terms { display: flex; flex-wrap: wrap; gap: 8px; }
+  .iv-terms span { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.02em;
+    padding: 6px 11px; border-radius: 999px; background: var(--bg-marketing-paper);
+    border: 1px solid var(--border-default); color: var(--ink-700);
+    transition: border-color 150ms, color 150ms; }
+  .iv-terms span:hover { border-color: rgba(81, 141, 224, 0.5); color: var(--blue-700); }
+
+  /* ---------- the four desks, 2x2 ---------- */
+  .iv-desks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 44px; }
+  .iv-desk { display: flex; flex-direction: column; background: #fff;
+    border: 1px solid var(--border-default); border-radius: 18px; padding: 30px 28px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 190ms var(--ease-out), border-color 190ms; }
+  .iv-desk:hover { box-shadow: var(--shadow-lg); border-color: rgba(81, 141, 224, 0.45); }
+  .iv-desk-head { display: flex; align-items: center; gap: 13px; }
+  .iv-desk-head i { font-style: normal; flex: none; width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(81, 141, 224, 0.10); display: grid; place-items: center; transition: background 190ms; }
+  .iv-desk-head svg { width: 22px; height: 22px; fill: none; stroke: var(--brand-blue); stroke-width: 1.9;
+    stroke-linecap: round; stroke-linejoin: round; transition: stroke 190ms; }
+  .iv-desk:hover .iv-desk-head i { background: var(--brand-blue); }
+  .iv-desk:hover .iv-desk-head svg { stroke: #fff; }
+  .iv-desk-head h3 { margin: 0; font-family: var(--font-display); font-size: 20px; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--brand-navy); line-height: 1.2; }
+  .iv-desk-head em { display: block; margin-top: 3px; font-style: normal; font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.09em; text-transform: uppercase; font-weight: 700; color: var(--ink-500); }
+  .iv-runs { list-style: none; margin: 20px 0 0; padding: 20px 0 0; display: grid; gap: 11px;
+    border-top: 1px solid var(--border-default); }
+  .iv-runs li { display: grid; grid-template-columns: 17px 1fr; gap: 11px; font-size: 14.5px;
+    line-height: 1.6; color: var(--ink-700); }
+  .iv-runs svg { width: 17px; height: 17px; margin-top: 2px; fill: none; stroke: var(--brand-blue);
+    stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+  .iv-desk-sys { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+  .iv-desk-sys span { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em;
+    text-transform: uppercase; font-weight: 700; padding: 4px 9px; border-radius: 999px;
+    background: rgba(81, 141, 224, 0.07); border: 1px solid rgba(81, 141, 224, 0.28);
+    color: var(--blue-700); }
+  /* every desk ends on its boundary, in navy so it reads as the client's side */
+  .iv-bound { margin-top: auto; padding: 16px 18px 16px 16px; border-radius: 13px;
+    background: rgba(0, 5, 67, 0.035); border-left: 3px solid var(--brand-navy);
+    margin-top: 20px; font-size: 13.5px; line-height: 1.65; color: var(--ink-700); }
+  .iv-bound b { display: block; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--brand-navy); margin-bottom: 5px; }
+
+  /* ---------- blue band: the shared rule ---------- */
+  .iv-band { padding: 84px 0; background: #518de0;
+    background-image: radial-gradient(ellipse 900px 450px at 85% 0%, rgba(90,155,240,0.20), transparent 65%),
+      linear-gradient(160deg, #518de0, #0047b3 82%); position: relative; overflow: hidden; }
+  .iv-band .iv-kicker { color: rgba(255, 255, 255, 0.78); }
+  .iv-band .iv-h2, .iv-band .iv-h2 span { color: #fff; }
+  .iv-band .iv-lede { color: rgba(255, 255, 255, 0.86); }
+  .iv-band .iv-inline-cta { color: #fff; }
+  .iv-band-note { margin: 32px 0 0; font-size: 14px; line-height: 1.7; color: rgba(255, 255, 255, 0.76);
+    max-width: 74ch; }
+  .iv-band-note a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+  .iv-band-note a:hover { color: #fff; }
+  .iv-rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 42px; }
+  .iv-rule { padding: 26px 24px; border-radius: 16px; background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    transition: background 190ms var(--ease-out), border-color 190ms; }
+  .iv-rule:hover { background: rgba(255, 255, 255, 0.16); border-color: rgba(255, 255, 255, 0.42); }
+  .iv-rule-n { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.09em; font-weight: 700;
+    color: rgba(255, 255, 255, 0.60); }
+  .iv-rule h3 { margin: 9px 0 0; font-size: 18px; font-weight: 700; color: #fff; line-height: 1.3; }
+  .iv-rule p { margin: 11px 0 0; font-size: 14.5px; line-height: 1.7; color: rgba(255, 255, 255, 0.90);
+    max-width: 34em; }
+
+  /* ---------- faq accordion ---------- */
+  .iv-faq { margin-top: 44px; border-top: 1px solid var(--border-default); }
+  .iv-faq details { border-bottom: 1px solid var(--border-default); }
+  .iv-faq summary { cursor: pointer; list-style: none; padding: 22px 4px; display: flex; align-items: center;
+    justify-content: space-between; gap: 24px; font-size: 16px; font-weight: 600; color: var(--brand-navy); }
+  .iv-faq summary::-webkit-details-marker { display: none; }
+  .iv-faq summary::after { content: "+"; flex: none; width: 34px; height: 34px; border-radius: 50%;
+    background: rgba(81, 141, 224, 0.10); color: var(--brand-blue); display: grid; place-items: center;
+    font-size: 19px; font-weight: 600; line-height: 1; }
+  .iv-faq details[open] summary::after { content: "\2212"; background: var(--brand-blue); color: #fff; }
+  .iv-faq p { margin: 0 4px 24px; font-size: 15px; line-height: 1.75; color: var(--ink-600); max-width: 78ch; }
+
+  /* ---------- navy centred close ---------- */
+  .iv-close { background: var(--brand-navy); padding: 84px 0; text-align: center; }
+  .iv-close h2 { margin: 0 auto; max-width: 26ch; font-family: var(--font-display);
+    font-size: clamp(28px, 3.2vw, 42px); font-weight: 700; letter-spacing: -0.02em; color: #fff;
+    line-height: 1.14; }
+  .iv-close p { margin: 16px auto 0; max-width: 58ch; font-size: 16.5px; line-height: 1.7; color: var(--ink-200); }
+  .iv-close .iv-cta-row { justify-content: center; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .iv-btn, .iv-desk, .iv-rule, .iv-terms span { transition: none; }
+    .iv-btn:hover { transform: none; }
+    /* the bars are informational, so they land finished rather than not at all */
+    .iv-track::after { animation: none; transform: scaleY(1); }
+    .iv-line-label { animation: none; opacity: 1; }
+  }
+
+  @media (max-width: 1024px) {
+    .iv-hero { grid-template-columns: 1fr; gap: 44px; padding: 56px 0 62px; }
+    .iv-scope { max-width: 560px; }
+    .iv-desks { grid-template-columns: 1fr; }
+    .iv-desk { max-width: 640px; }
+    .iv-rules { grid-template-columns: 1fr; }
+    .iv-rule p { max-width: none; }
+  }
+  @media (max-width: 760px) {
+    .iv-section, .iv-band, .iv-close { padding: 58px 0; }
+    .iv-proof { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .iv-proof div:nth-child(3) { border-left: 0; padding-left: 0; }
+    .iv-proof div:nth-child(n+3) { border-top: 1px solid var(--border-default); }
+    /* the vocabulary rows stack, label above its terms */
+    .iv-vgroup { grid-template-columns: 1fr; gap: 12px; }
+    .iv-desk { padding: 26px 22px; }
+    .iv-scope { padding: 20px 18px; }
+    .iv-terms span { font-size: 11px; padding: 5px 9px; }
+  }
+.hv-1{background:var(--blue-700);color:#fff;transform:translateY(-1px);box-shadow:0 6px 16px rgba(81,141,224,0.32)}
+.hv-2{background:rgba(81,141,224,0.06);border-color:var(--brand-blue);color:var(--brand-blue)}
+.hv-3{background:var(--blue-700);color:#fff;transform:translateY(-1px);box-shadow:0 6px 16px rgba(81,141,224,0.32)}
+.hv-4{background:rgba(81,141,224,0.06);border-color:var(--brand-blue);color:var(--brand-blue)}

@@ -1,0 +1,199 @@
+/* Auto-generated from Finance and Accounting.dc.html by tools/codemod/codemod.js (Phase 01 §7.1). Do not hand-edit directly. */
+/* ============================================================
+     Finance & Accounting. Same spine as Sales & Revenue, Customer Experience and
+     Back Office: gradient hero, three-column card grid, blue gradient band, two
+     tier cards, accordion FAQ, navy centred close. Class names mirror .sr-* one
+     for one so a change to the shared look can be applied to every service page.
+     ============================================================ */
+
+  .fn-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .fn-kicker { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--brand-blue); font-weight: 600; }
+  .fn-h1 { margin: 16px 0 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.025em;
+    line-height: 1.06; font-size: clamp(34px, 4.5vw, 56px); color: var(--brand-navy); }
+  .fn-h1 span { color: var(--brand-blue); }
+  .fn-h2 { margin: 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.12; font-size: clamp(28px, 3.2vw, 42px); color: var(--brand-navy); }
+  .fn-h2 span { color: var(--brand-blue); }
+  .fn-lede { margin: 18px 0 0; font-size: 17px; line-height: 1.7; color: var(--ink-600); max-width: 54ch; }
+  .fn-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--brand-blue); color: #fff;
+    font-size: 16px; font-weight: 600; text-decoration: none; padding: 14px 30px; border-radius: 8px;
+    transition: background 150ms, transform 150ms, box-shadow 150ms; }
+  .fn-btn--ghost { background: #fff; color: var(--brand-blue); border: 1px solid rgba(81, 141, 224, 0.45); }
+  .fn-section { padding: 88px 0; }
+
+  /* ---------- hero ---------- */
+  .fn-hero { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center;
+    padding: 74px 0 82px; }
+  .fn-checks { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 13px; }
+  .fn-checks li { display: flex; align-items: flex-start; gap: 12px; font-size: 15.5px; line-height: 1.55;
+    color: var(--ink-700); }
+  .fn-tick { flex: none; width: 22px; height: 22px; border-radius: 50%; background: rgba(81, 141, 224, 0.12);
+    display: grid; place-items: center; margin-top: 1px; }
+  .fn-tick svg { width: 13px; height: 13px; fill: none; stroke: var(--brand-blue); stroke-width: 3;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .fn-cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+
+  .fn-proof { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0;
+    margin-top: 34px; padding-top: 4px; border-top: 1px solid var(--border-default); }
+  .fn-proof div { padding: 16px 18px; border-left: 1px solid var(--border-default); }
+  .fn-proof div:first-child { border-left: 0; padding-left: 0; }
+  .fn-proof b { display: block; font-family: var(--font-display); font-size: 21px; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--brand-navy); }
+  .fn-proof span { display: block; margin-top: 5px; font-size: 12.5px; line-height: 1.45; color: var(--ink-500); }
+
+  /* hero panel: the control split, which is the thing a finance buyer actually
+     wants to see before anything else */
+  .fn-art { background: #fff; border: 1px solid var(--border-default); border-radius: 20px;
+    padding: 28px 26px; box-shadow: 0 30px 60px -34px rgba(0, 5, 67, 0.36); }
+  .fn-art-top { display: flex; align-items: center; gap: 12px; }
+  .fn-art-top i { font-style: normal; width: 40px; height: 40px; border-radius: 11px;
+    background: rgba(81, 141, 224, 0.10); display: grid; place-items: center; flex: none; }
+  .fn-art-top svg { width: 20px; height: 20px; fill: none; stroke: var(--brand-blue); stroke-width: 1.9;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .fn-art-top b { font-family: var(--font-display); font-size: 19px; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--brand-navy); }
+  .fn-art > p { margin: 14px 0 0; font-size: 14px; line-height: 1.65; color: var(--ink-600); }
+  .fn-art-split { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--border-default);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .fn-art-col em { display: block; font-style: normal; font-family: var(--font-mono); font-size: 10.5px;
+    letter-spacing: 0.09em; text-transform: uppercase; font-weight: 700; }
+  .fn-art-col:first-child em { color: var(--ink-500); }
+  .fn-art-col:last-child em { color: var(--brand-blue); }
+  .fn-art-col ul { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 9px; }
+  .fn-art-col li { display: grid; grid-template-columns: 15px 1fr; gap: 9px; font-size: 13px;
+    line-height: 1.5; color: var(--ink-700); }
+  .fn-art-col svg { width: 15px; height: 15px; margin-top: 2px; fill: none; stroke-width: 2.2;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .fn-art-col:first-child svg { stroke: var(--ink-400); }
+  .fn-art-col:last-child svg { stroke: var(--brand-blue); }
+
+  /* ---------- three-column card grid ---------- */
+  .fn-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 44px; }
+  .fn-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--border-default);
+    border-radius: 16px; padding: 26px 24px;
+    transition: transform 190ms var(--ease-out), box-shadow 190ms var(--ease-out), border-color 190ms; }
+  .fn-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(81, 141, 224, 0.45); }
+  .fn-card-ico, .fn-card-ico svg { transition: background 190ms, stroke 190ms; }
+  .fn-card:hover .fn-card-ico { background: var(--brand-blue); }
+  .fn-card:hover .fn-card-ico svg { stroke: #fff; }
+  .fn-card-ico { width: 44px; height: 44px; border-radius: 12px; background: rgba(81, 141, 224, 0.10);
+    display: grid; place-items: center; margin-bottom: 16px; }
+  .fn-card-ico svg { width: 22px; height: 22px; fill: none; stroke: var(--brand-blue); stroke-width: 1.9;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .fn-card h3 { margin: 0 0 8px; font-size: 17px; font-weight: 700; color: var(--brand-navy); line-height: 1.3; }
+  .fn-card p { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--ink-600); }
+  .fn-tag { align-self: flex-start; margin-top: 15px; font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; padding: 4px 9px;
+    border-radius: 999px; border: 1px solid var(--border-default); color: var(--ink-500);
+    background: var(--bg-marketing-paper); }
+  .fn-tag--core { color: var(--brand-blue); border-color: rgba(81, 141, 224, 0.4);
+    background: rgba(81, 141, 224, 0.07); }
+
+  /* ---------- blue gradient band ---------- */
+  .fn-band { padding: 84px 0; background: #518de0;
+    background-image: radial-gradient(ellipse 900px 450px at 85% 0%, rgba(90,155,240,0.20), transparent 65%),
+      linear-gradient(160deg, #518de0, #0047b3 82%); position: relative; overflow: hidden; }
+  .fn-band .fn-kicker { color: rgba(255, 255, 255, 0.78); }
+  .fn-band .fn-h2 { color: #fff; }
+  .fn-band .fn-lede { color: rgba(255, 255, 255, 0.86); }
+  .fn-cadence { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 42px; }
+  .fn-beat { padding: 26px 24px; border-radius: 16px; background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    transition: transform 190ms var(--ease-out), background 190ms, border-color 190ms; }
+  .fn-beat:hover { transform: translateY(-4px); background: rgba(255, 255, 255, 0.17);
+    border-color: rgba(255, 255, 255, 0.42); }
+  .fn-beat em { display: block; font-style: normal; font-family: var(--font-mono); font-size: 11.5px;
+    letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255, 255, 255, 0.70); font-weight: 700; }
+  .fn-beat h3 { margin: 10px 0 0; font-size: 18px; font-weight: 700; color: #fff; line-height: 1.3; }
+  .fn-beat ul { list-style: none; margin: 14px 0 0; padding: 14px 0 0; display: grid; gap: 11px;
+    border-top: 1px solid rgba(255, 255, 255, 0.20); }
+  .fn-beat li { display: grid; grid-template-columns: 16px 1fr; gap: 10px; font-size: 14px;
+    line-height: 1.6; color: rgba(255, 255, 255, 0.90); }
+  .fn-beat svg { width: 16px; height: 16px; margin-top: 3px; fill: none; stroke: #fff; stroke-width: 2.2;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .fn-band-note { margin: 34px 0 0; font-size: 14px; line-height: 1.7; color: rgba(255, 255, 255, 0.76);
+    max-width: 74ch; }
+
+  /* ---------- who does what ---------- */
+  .fn-split { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 44px; }
+  .fn-col { background: #fff; border: 1px solid var(--border-default); border-radius: 16px; padding: 26px 24px; }
+  .fn-col--you { border-color: rgba(81, 141, 224, 0.45); background: rgba(81, 141, 224, 0.04); }
+  .fn-col h3 { margin: 0; font-family: var(--font-display); font-size: 19px; font-weight: 700;
+    color: var(--brand-navy); }
+  .fn-col ul { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 11px; }
+  .fn-col li { display: grid; grid-template-columns: 17px 1fr; gap: 11px; font-size: 14.5px;
+    line-height: 1.6; color: var(--ink-700); }
+  .fn-col svg { width: 17px; height: 17px; margin-top: 2px; fill: none; stroke-width: 2.1;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .fn-col:first-child svg { stroke: var(--ink-400); }
+  .fn-col--you svg { stroke: var(--brand-blue); }
+  .fn-rule { margin: 26px 0 0; padding: 20px 22px; border-radius: 14px;
+    background: var(--bg-marketing-paper); border: 1px solid var(--border-default);
+    font-size: 15px; line-height: 1.75; color: var(--ink-600); }
+  .fn-rule b { color: var(--brand-navy); }
+
+  /* ---------- two tiers ---------- */
+  .fn-tiers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 44px; }
+  .fn-tier { background: #fff; border: 1px solid var(--border-default); border-radius: 18px; padding: 30px 28px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 190ms var(--ease-out), box-shadow 190ms var(--ease-out), border-color 190ms; }
+  .fn-tier:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(81, 141, 224, 0.5); }
+  .fn-tier--expert { border-color: rgba(81, 141, 224, 0.55); box-shadow: 0 24px 44px -28px rgba(81, 141, 224, 0.5); }
+  .fn-tier-head { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .fn-tier-head h3 { margin: 0; font-family: var(--font-display); font-size: 24px; font-weight: 700;
+    color: var(--brand-navy); }
+  .fn-tier-price { display: flex; align-items: baseline; gap: 6px; white-space: nowrap; }
+  .fn-tier-price small { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-500); font-weight: 600; }
+  .fn-tier-price b { font-family: var(--font-display); font-size: clamp(38px, 3.6vw, 52px);
+    font-weight: 800; line-height: 0.9; letter-spacing: -0.03em; color: var(--brand-blue); }
+  .fn-tier-price em { font-style: normal; font-size: 16px; font-weight: 700; color: var(--brand-blue); }
+  .fn-tier p { margin: 12px 0 0; font-size: 15px; line-height: 1.7; color: var(--ink-600); }
+  .fn-tier ul { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
+  .fn-tier li { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; color: var(--ink-700); }
+  .fn-tier li svg { flex: none; width: 17px; height: 17px; margin-top: 2px; fill: none; stroke: var(--brand-blue);
+    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .fn-tier-note { margin: 24px 0 0; font-size: 13.5px; line-height: 1.65; color: var(--ink-500); }
+
+  /* ---------- faq accordion ---------- */
+  .fn-faq { margin-top: 44px; border-top: 1px solid var(--border-default); }
+  .fn-faq details { border-bottom: 1px solid var(--border-default); }
+  .fn-faq summary { cursor: pointer; list-style: none; padding: 22px 4px; display: flex; align-items: center;
+    justify-content: space-between; gap: 24px; font-size: 16px; font-weight: 600; color: var(--brand-navy); }
+  .fn-faq summary::-webkit-details-marker { display: none; }
+  .fn-faq summary::after { content: "+"; flex: none; width: 34px; height: 34px; border-radius: 50%;
+    background: rgba(81, 141, 224, 0.10); color: var(--brand-blue); display: grid; place-items: center;
+    font-size: 19px; font-weight: 600; line-height: 1; }
+  .fn-faq details[open] summary::after { content: "\2212"; background: var(--brand-blue); color: #fff; }
+  .fn-faq p { margin: 0 4px 24px; font-size: 15px; line-height: 1.75; color: var(--ink-600); max-width: 78ch; }
+
+  /* ---------- navy centred close ---------- */
+  .fn-close { background: var(--brand-navy); padding: 84px 0; text-align: center; }
+  .fn-close h2 { margin: 0 auto; max-width: 24ch; font-family: var(--font-display);
+    font-size: clamp(28px, 3.2vw, 42px); font-weight: 700; letter-spacing: -0.02em; color: #fff; line-height: 1.14; }
+  .fn-close p { margin: 16px auto 0; max-width: 56ch; font-size: 16.5px; line-height: 1.7; color: var(--ink-200); }
+  .fn-close .fn-cta-row { justify-content: center; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fn-btn, .fn-card, .fn-beat, .fn-tier { transition: none; }
+    .fn-btn:hover, .fn-card:hover, .fn-beat:hover, .fn-tier:hover { transform: none; }
+  }
+  @media (max-width: 1024px) {
+    .fn-hero { grid-template-columns: 1fr; gap: 44px; padding: 56px 0 62px; }
+    .fn-grid, .fn-cadence { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fn-art { max-width: 560px; }
+  }
+  @media (max-width: 760px) {
+    .fn-section, .fn-band, .fn-close { padding: 58px 0; }
+    .fn-grid, .fn-cadence, .fn-tiers, .fn-split { grid-template-columns: 1fr; }
+    .fn-proof { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fn-proof div:nth-child(3) { border-left: 0; padding-left: 0; }
+    .fn-proof div:nth-child(n+3) { border-top: 1px solid var(--border-default); }
+    .fn-art-split { grid-template-columns: 1fr; gap: 18px; }
+    .fn-art { padding: 24px 20px; }
+  }
+.hv-1{background:var(--blue-700);color:#fff;transform:translateY(-1px);box-shadow:0 6px 16px rgba(81,141,224,0.32)}
+.hv-2{background:rgba(81,141,224,0.06);border-color:var(--brand-blue);color:var(--brand-blue)}
+.hv-3{background:var(--blue-700);color:#fff;transform:translateY(-1px);box-shadow:0 6px 16px rgba(81,141,224,0.32)}
+.hv-4{background:rgba(81,141,224,0.06);border-color:var(--brand-blue);color:var(--brand-blue)}
