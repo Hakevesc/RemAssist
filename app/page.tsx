@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import HomeHero from '@/components/home/HomeHero';
+import HomeMarquee from '@/components/home/HomeMarquee';
 
 export const metadata: Metadata = {
   title: 'Remote Teams | Rem Assist',
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <main>
       <HomeHero />
+      <HomeMarquee />
       <section style={{ background: 'var(--bg-marketing-paper)', color: 'var(--ink-900)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '120px 24px', textAlign: 'center' }}>
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 40, fontWeight: 700, color: 'var(--brand-navy)' }}>
