@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { Sora } from 'next/font/google';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import AskRemAssist from '@/components/widgets/AskRemAssist';
 import '@/styles/globals.css';
 
 /**
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Header />
         {children}
         <Footer />
+        <AskRemAssist />
       </body>
     </html>
   );
