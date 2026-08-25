@@ -1,0 +1,114 @@
+/* Quiz card component styles — ported verbatim from Qualify.dc.html (Phase 02).
+   Scoped as a CSS module so the interactive card is reusable across /qualify
+   and the home page without colliding with page-level .q- classes. */
+
+.card { margin: 40px auto 0; background: #fff; border: 1px solid var(--border-default);
+  border-radius: 22px; box-shadow: 0 44px 90px -46px rgba(0, 5, 67, 0.46); overflow: hidden; text-align: left; }
+.bar { height: 4px; background: var(--ink-100); }
+.barFill { display: block; height: 100%; width: 0; background: var(--brand-blue);
+  transition: width 420ms cubic-bezier(.2,.8,.2,1); }
+.body { padding: clamp(26px, 3.4vw, 44px); }
+
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+.step { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-500); }
+.back { font-family: inherit; font-size: 13px; font-weight: 600; color: var(--ink-500);
+  background: none; border: 0; padding: 4px 6px; border-radius: 6px; cursor: pointer; transition: color 140ms; }
+.back:hover { color: var(--brand-blue); }
+
+.q { margin: 0 0 10px; font-family: var(--font-display); font-size: clamp(21px, 2.5vw, 28px);
+  font-weight: 700; line-height: 1.24; letter-spacing: -0.02em; color: var(--brand-navy); }
+.help { margin: 0 0 24px; font-size: 15px; line-height: 1.65; color: var(--ink-600); max-width: 64ch; }
+
+.opts { display: grid; gap: 10px; }
+.opt { display: grid; grid-template-columns: 30px 1fr 20px; align-items: start; gap: 14px;
+  width: 100%; text-align: left; font-family: inherit; cursor: pointer;
+  background: #fff; border: 1px solid var(--border-default); border-radius: 13px; padding: 15px 16px;
+  transition: border-color 150ms, background 150ms, transform 150ms, box-shadow 150ms; }
+.opt:hover, .opt:focus-visible { border-color: var(--brand-blue); background: rgba(81, 141, 224, 0.05);
+  transform: translateY(-1px); box-shadow: 0 8px 20px -12px rgba(81, 141, 224, 0.5); outline: none; }
+.optKey { width: 30px; height: 30px; border-radius: 8px; background: var(--bg-marketing-paper);
+  border: 1px solid var(--border-default); display: grid; place-items: center;
+  font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--ink-600);
+  transition: background 150ms, color 150ms, border-color 150ms; }
+.opt:hover .optKey, .opt:focus-visible .optKey { background: var(--brand-blue);
+  border-color: var(--brand-blue); color: #fff; }
+.opt b { display: block; font-size: 15.5px; font-weight: 700; color: var(--brand-navy); line-height: 1.35; }
+.opt em { display: block; margin-top: 3px; font-style: normal; font-size: 13.5px; line-height: 1.55;
+  color: var(--ink-600); }
+.optGo { width: 20px; height: 20px; margin-top: 5px; fill: none; stroke: var(--ink-300);
+  stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: stroke 150ms, transform 150ms; }
+.opt:hover .optGo, .opt:focus-visible .optGo { stroke: var(--brand-blue); transform: translateX(3px); }
+
+.fyi { display: grid; grid-template-columns: 20px 1fr; gap: 11px; margin-top: 22px; padding-top: 20px;
+  border-top: 1px solid var(--border-default); }
+.fyi svg { width: 20px; height: 20px; margin-top: 1px; fill: none; stroke: var(--brand-blue);
+  stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.fyi p { margin: 0; font-size: 13.5px; line-height: 1.65; color: var(--ink-600); }
+
+.live { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding: 13px 16px;
+  border-radius: 12px; background: rgba(81, 141, 224, 0.07);
+  border: 1px dashed rgba(81, 141, 224, 0.42); }
+.live b { font-family: var(--font-display); font-size: 17px; color: var(--brand-navy); }
+.live span { font-size: 13px; color: var(--ink-600); }
+/* result */
+.resTop { display: flex; align-items: center; gap: 11px; }
+.resTick { width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(160deg, #518de0, #0047b3 82%); display: grid; place-items: center; flex: none; }
+.resTick svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2.6;
+  stroke-linecap: round; stroke-linejoin: round; }
+.resEyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--brand-blue); font-weight: 600; }
+.resTitle { margin: 16px 0 0; font-family: var(--font-display); font-size: clamp(24px, 3vw, 34px);
+  font-weight: 700; line-height: 1.18; letter-spacing: -0.022em; color: var(--brand-navy); }
+.resBlurb { margin: 14px 0 0; font-size: 16px; line-height: 1.72; color: var(--ink-600); max-width: 66ch; }
+
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.tile { background: var(--bg-marketing-paper); border: 1px solid var(--border-default);
+  border-radius: 13px; padding: 17px 18px; }
+.tile span { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-500); }
+.tile b { display: block; margin-top: 7px; font-family: var(--font-display); font-size: 19px;
+  font-weight: 700; color: var(--brand-navy); line-height: 1.25; }
+
+.math { margin-top: 16px; border: 1px solid rgba(81, 141, 224, 0.34); border-radius: 14px;
+  background: rgba(81, 141, 224, 0.055); overflow: hidden; }
+.mathHead { display: flex; align-items: center; gap: 9px; padding: 13px 18px;
+  border-bottom: 1px solid rgba(81, 141, 224, 0.24); }
+.mathHead svg { width: 16px; height: 16px; fill: none; stroke: var(--brand-blue); stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round; }
+.mathHead b { font-size: 13.5px; color: var(--brand-navy); }
+.mathRows { padding: 6px 18px 14px; }
+.mathRow { display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  padding: 9px 0; font-size: 14.5px; color: var(--ink-700); }
+.mathRow + .mathRow { border-top: 1px solid rgba(81, 141, 224, 0.18); }
+.mathRow b { font-family: var(--font-mono); font-size: 14px; color: var(--brand-navy); white-space: nowrap; }
+.mathRowTotal { border-top: 1.5px solid rgba(81, 141, 224, 0.4) !important; margin-top: 3px; }
+.mathRowTotal span { font-weight: 700; color: var(--brand-navy); }
+.mathRowTotal b { font-family: var(--font-display); font-size: 19px; }
+.mathNote { margin: 0; padding: 0 18px 15px; font-size: 12.5px; line-height: 1.6; color: var(--ink-500); }
+
+.answers { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--border-default); }
+.answersHeader { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-500); margin-bottom: 12px; }
+.answerRow { display: flex; flex-wrap: wrap; gap: 8px; }
+.answer { display: inline-flex; align-items: center; gap: 8px; padding: 8px 13px; border-radius: 999px;
+  background: #fff; border: 1px solid var(--border-default); font-family: inherit; font-size: 13px;
+  color: var(--ink-700); cursor: pointer; transition: border-color 140ms, background 140ms, color 140ms; }
+.answer:hover { border-color: var(--brand-blue); background: rgba(81, 141, 224, 0.06); color: var(--brand-navy); }
+.answer svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.2;
+  stroke-linecap: round; stroke-linejoin: round; opacity: 0.55; }
+.answer b { font-weight: 700; color: var(--brand-navy); }
+
+.resCta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 28px; }
+.cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--brand-blue); color: #fff; font-size: 16px; font-weight: 600; text-decoration: none;
+  padding: 14px 28px; border-radius: 8px; border: 0; cursor: pointer; font-family: inherit;
+  transition: background 150ms, transform 150ms, box-shadow 150ms; }
+.cta:hover { background: var(--blue-700); color: #fff; transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(81, 141, 224, 0.32); }
+.copied { font-size: 13px; font-weight: 600; color: var(--brand-blue); opacity: 0; transition: opacity 200ms; }
+.copiedOn { opacity: 1; }
+
+.quiet { background: none; color: var(--ink-600); padding: 14px 10px; }
+.quiet:hover { background: none; color: var(--brand-blue); transform: none; box-shadow: none; }
