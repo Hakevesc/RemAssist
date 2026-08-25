@@ -7,6 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "package:standalone": "node tools/package-standalone.js",
@@ -28,6 +30,7 @@
     "eslint-config-next": "15.5.24",
     "node-html-parser": "^9.0.1",
     "tailwindcss": "^4.1.7",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^4.1.11"
   }
 }
