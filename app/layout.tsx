@@ -4,6 +4,7 @@ import { Sora } from 'next/font/google';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import AskRemAssist from '@/components/widgets/AskRemAssist';
+import BookingModal from '@/components/widgets/BookingModal';
 import '@/styles/globals.css';
 
 /**
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {children}
         <Footer />
         <AskRemAssist />
+        <BookingModal />
       </body>
     </html>
   );

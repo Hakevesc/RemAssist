@@ -1,0 +1,45 @@
+/* "Book a Call" modal — ported from assets/booking-modal.js (Phase 02). */
+.overlay { position: fixed; inset: 0; z-index: 100000; display: flex; align-items: center;
+  justify-content: center; padding: 24px; }
+.backdrop { position: absolute; inset: 0; background: rgba(0, 5, 67, 0.62); backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px); opacity: 0; transition: opacity 0.28s ease; }
+.visible .backdrop { opacity: 1; }
+.dialog { position: relative; display: grid; grid-template-columns: minmax(300px, 380px) 1fr;
+  width: min(1180px, 96vw); height: min(820px, 92vh); background: #fff; border-radius: 20px;
+  overflow: hidden; box-shadow: 0 60px 120px -40px rgba(0, 5, 67, 0.6); opacity: 0;
+  transform: translateY(14px) scale(0.985); transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.visible .dialog { opacity: 1; transform: none; }
+
+.brand { position: relative; display: flex; flex-direction: column; padding: 78px 38px 44px;
+  background: linear-gradient(160deg, #326dda, #000543 70%); color: #fff; overflow: hidden; }
+.brand::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,0.14) 1.3px, transparent 1.4px);
+  background-size: 13px 13px; opacity: 0.45; }
+.brand > * { position: relative; z-index: 1; }
+.logo { align-self: flex-start; height: 86px; width: auto; display: block; filter: brightness(0) invert(1); }
+.divider { width: 44px; height: 3px; border-radius: 3px; background: #34bdf0; margin: 30px 0 22px; }
+.host { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(255, 255, 255, 0.72); }
+.event { display: block; margin-top: 10px; font-size: 20px; font-weight: 700; line-height: 1.35; color: #fff; }
+.isoRow { display: flex; gap: 22px; margin-top: auto; padding-top: 40px; }
+.iso { display: flex; flex-direction: column; gap: 6px; }
+.iso img { height: 40px; width: auto; display: block; filter: brightness(0) invert(1); }
+.isoTop { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6); }
+.isoBot { font-size: 11px; font-weight: 700; color: rgba(255, 255, 255, 0.85); }
+
+.body { position: relative; background: #fff; min-width: 0; }
+.frame { width: 100%; height: 100%; border: 0; display: block; }
+
+.close { position: absolute; top: 14px; right: 14px; z-index: 2; width: 38px; height: 38px;
+  border-radius: 50%; border: 1px solid var(--border-default); background: #fff; color: var(--ink-600);
+  display: grid; place-items: center; cursor: pointer; transition: background 140ms, color 140ms, border-color 140ms; }
+.close:hover { background: var(--blue-50); color: var(--brand-blue); border-color: var(--brand-blue); }
+
+@media (max-width: 780px) {
+  .dialog { grid-template-columns: 1fr; grid-template-rows: auto 1fr; overflow-y: auto; }
+  .brand { padding: 40px 28px 30px; }
+  .brand img, .brand .logo { height: 56px; }
+  .isoRow { padding-top: 24px; }
+  .iframe { min-height: 480px; }
+}
