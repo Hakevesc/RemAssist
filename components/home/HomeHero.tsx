@@ -10,10 +10,15 @@ import styles from './HomeHero.module.css';
  * orbiting chip to reveal its tip popover. The marquee + lower sections stay in
  * app/page.tsx.
  */
+/* pop: '' default (down, centered) | 'popRight' (chip on the right) |
+   'popUpRight' (chip on the right, popover opens upward). Mirrors the
+   dc-hero-pop--right / dc-hero-pop--up modifiers in index.html so the
+   popovers don't get clipped by the hero edges. */
 const CHIPS = [
-  { top: 20, left: 380, label: 'Watch Extra Services', tipTitle: 'Hear what Extra Services are', tip: 'IT helpdesk, AI automations, and back-office support — the rest of the bench at work.', delay: 0.8 },
-  { top: 380, left: 390, label: 'Watch GTM Teams', tipTitle: 'Hear what GTM Teams are', tip: 'Inside a GTM pod — outbound, marketing ops, and CRM admin working as one unit.', delay: 1.6 },
-  { top: 360, left: -40, label: 'Watch SDR explainer', tipTitle: 'Hear what SDR as a Service is', tip: 'From list building to booked meetings — the full outbound engine, end to end.', delay: 2.4 },
+  { top: 10, left: 10, label: 'Watch Customer Service', tipTitle: 'Hear what Customer Service is', tip: 'Meet our CS agents and see how 24/7 voice, chat, and email coverage runs day to day.', delay: 0, pop: '' },
+  { top: 380, left: 390, label: 'Watch GTM Teams', tipTitle: 'Hear what GTM Teams are', tip: 'Inside a GTM pod — outbound, marketing ops, and CRM admin working as one unit.', delay: 1.6, pop: 'popRight' },
+  { top: 360, left: -40, label: 'Watch SDR explainer', tipTitle: 'Hear what SDR as a Service is', tip: 'From list building to booked meetings — the full outbound engine, end to end.', delay: 2.4, pop: '' },
+  { top: 20, left: 380, label: 'Watch Extra Services', tipTitle: 'Hear what Extra Services are', tip: 'IT helpdesk, AI automations, and back-office support — the rest of the bench at work.', delay: 0.8, pop: 'popUpRight' },
 ];
 
 const BOOK = 'https://calendly.com/j-zemene-remassistance/new-meeting';
@@ -70,8 +75,18 @@ export default function HomeHero() {
               <span className={styles.word}>{WORDS[0]} </span>
             </div>
           </div>
+          <p className={styles.lead}>
+            A hyper-efficient outsourcing team, delivered in pods and <br />built to the exact shape of your operation.
+          </p>
+          <div className={styles.cta}>
+            <a className={styles.ctaPrimary} href={BOOK} target="_blank" rel="noopener">Book a call</a>
+            <a className={styles.ctaGhost} href="/pricing">See pricing</a>
+          </div>
         </div>
-        <div style={{ position: 'relative', height: 540, minWidth: 0 }}>
+        <div className={styles.stage}>
+          <div className={styles.orbit} aria-hidden="true">
+            <div className={styles.orbitRing} />
+          </div>
           {CHIPS.map((c, i) => (
             <div
               key={c.label}
@@ -85,7 +100,7 @@ export default function HomeHero() {
                 <span className={styles.chipLabel}>{c.label}</span>
               </a>
               {hover === i && (
-                <div className={styles.pop}>
+                <div className={`${styles.pop} ${c.pop ? styles[c.pop] : ''}`}>
                   <div className={styles.popT}>{c.tipTitle}</div>
                   <p className={styles.popB}>{c.tip}</p>
                   <div className={styles.popRow}>

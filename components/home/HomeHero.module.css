@@ -24,6 +24,17 @@
   64%, 75% { transform: translateY(-288px); } 80%, 91% { transform: translateY(-360px); }
   96%, 100% { transform: translateY(-432px); } }
 
+/* left column subhead + CTAs */
+.lead { margin: 0 0 36px; font-size: 19px; line-height: 1.6; color: #fff; max-width: 52ch; }
+.cta { display: flex; gap: 16px; align-items: center; }
+.ctaPrimary { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: #000543;
+  font-size: 17px; font-weight: 600; text-decoration: none; padding: 15px 30px; border-radius: 6px;
+  transition: all 150ms var(--ease-out); }
+.ctaPrimary:hover { background: var(--blue-50); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.ctaGhost { color: #fff; font-size: 17px; font-weight: 600; text-decoration: none; padding: 15px 22px;
+  border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.5); transition: all 150ms var(--ease-out); }
+.ctaGhost:hover { border-color: #fff; color: #fff; }
+
 /* grid + orbit */
 .grid { width: 100%; max-width: 1200px; box-sizing: border-box; margin: 0 auto;
   padding: 26px 24px 14px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 32px;
@@ -32,6 +43,12 @@
 
 /* orbit chip */
 .chip { position: absolute; width: 108px; z-index: 40; pointer-events: auto; }
+.stage { position: relative; height: 540px; min-width: 0; margin-right: -84px; transform: translateX(44px); }
+.orbit { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px;
+  border-radius: 9999px; z-index: 10; pointer-events: none; }
+.orbitRing { position: absolute; inset: 0; border-radius: 9999px; border: 1px dashed rgba(255, 255, 255, 0.35);
+  animation: orbitSpin 40s linear infinite; }
+@keyframes orbitSpin { to { transform: rotate(360deg); } }
 .chipCard { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
   width: 108px; height: 108px; box-sizing: border-box; padding: 12px 9px; background: #fff; border-radius: 12px;
   text-decoration: none; box-shadow: 0 14px 30px -10px rgba(0, 5, 67, 0.45);
@@ -46,6 +63,21 @@
 .pop { position: absolute; top: 122px; left: 50%; transform: translateX(-50%); z-index: 60;
   background: #fff; border-radius: 14px; box-shadow: var(--shadow-lg); padding: 16px 18px;
   width: 260px; text-align: left; }
+.pop::before { content: ""; position: absolute; left: 50%; bottom: 100%; width: 2px; height: 14px;
+  background: rgba(0, 5, 67, 0.18); transform: translateX(-50%); }
+.pop::after { content: ""; position: absolute; left: 50%; bottom: calc(100% + 11px); width: 8px; height: 8px;
+  border-radius: 9999px; background: var(--brand-blue); transform: translateX(-50%); }
+/* chip on the right: popover opens to the right, arrow at right edge */
+.popRight { left: auto; right: -6px; transform: none; }
+.popRight::before { left: auto; right: 59px; transform: none; }
+.popRight::after { left: auto; right: 56px; transform: none; }
+/* chip on the right, opens upward: arrow flips to the bottom edge */
+.popUp { top: auto; bottom: 122px; }
+.popUp::before { bottom: auto; top: 100%; }
+.popUp::after { bottom: auto; top: calc(100% + 11px); }
+.popUpRight { top: auto; bottom: 122px; left: auto; right: -6px; transform: none; }
+.popUpRight::before { left: auto; right: 59px; transform: none; bottom: auto; top: 100%; }
+.popUpRight::after { left: auto; right: 56px; transform: none; bottom: auto; top: calc(100% + 11px); }
 .popT { font-size: 14px; font-weight: 700; color: var(--brand-navy); }
 .popB { margin: 6px 0 12px; font-size: 13.5px; line-height: 1.6; color: var(--ink-600); }
 .popRow { display: flex; align-items: center; justify-content: space-between; }
